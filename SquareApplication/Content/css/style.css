@@ -1,0 +1,12 @@
+.invertColors {
+    -webkit-filter: invert(100%);
+}
+.noBorder{
+    border: 0px;
+}
+#selectedTileStyle{
+    display: block;
+}
+.doubleSize{
+    transform: scale(2);
+float: right;}

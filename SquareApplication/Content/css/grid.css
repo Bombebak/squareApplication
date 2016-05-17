@@ -1,0 +1,101 @@
+.blockDisplay{
+    display: block;
+}
+.halfSize{
+    transform: scale(0.1);;
+}
+
+/* Pulse http://ianlunn.github.io/Hover/ */
+@-webkit-keyframes hvr-pulse {
+    25% {
+        -webkit-transform: scale(1.02);
+        transform: scale(1.02);
+    }
+
+    75% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.94);
+    }
+}
+
+@keyframes hvr-pulse {
+    25% {
+        -webkit-transform: scale(1.02);
+        transform: scale(1.02);
+    }
+
+    75% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+}
+
+.hvr-pulse {
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    /*box-shadow: 0 0 1px rgba(0, 0, 0, 0);*/
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    /*animation*/
+    -webkit-animation-name: hvr-pulse;
+    animation-name: hvr-pulse;
+    -webkit-animation-duration: 1.2s;
+    animation-duration: 1.2s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: 5;
+    animation-iteration-count: 5;
+}
+
+.orangeOverlay{
+    background-color: #D36A48;
+    opacity: 0.5;
+}
+.arrangedTiles{
+    height: 200px;
+    width: 200px;
+    display: inline-block;
+    box-shadow: 0 2px 4px #919890;
+}
+.arrangedTiles [draggable] {
+    transform: scale(0.5);;
+
+}
+
+.productGridItem img{
+    height: 200px;
+    width: 200px;
+
+}
+.productGridItem img :active{
+    -webkit-animation:hue 60s infinite linear;
+
+}
+/*Product Grid*/
+.productGridContainer{
+    padding: 0.1% 0 0.1% 0;
+    display: block;
+}
+
+.productGridItem{
+    background-color: aquamarine;
+height: 200px;
+    width: 200px;
+    display: inline-block;
+    /*width:100%;*/
+    /*height: auto;*/
+    float:left;
+    /*margin: 0 1% 2% 1%;*/
+    border: solid 1px rgba(158, 155, 155, 0.23);
+    /*border-radius: 4px;*/
+}
+.max200size{
+   width: 200px;
+    height: 200px;
+}
+
+
+
