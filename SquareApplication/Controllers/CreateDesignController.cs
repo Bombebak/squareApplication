@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace SquareApplication.Controllers
 {
-    public class CreateController : Controller
+    public class CreateDesignController : Controller
     {
+        // GET: CreateDesign
         public ActionResult Index()
         {
-            return View();
+            return View("CreateDesign");
         }
-
     }
 }
