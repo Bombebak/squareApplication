@@ -1,7 +1,40 @@
-﻿
-@{
-    ViewBag.Title = "CreateDesign";
-}
+﻿<!DOCTYPE html>
 
-<h2>CreateDesign</h2>
+<html>
+<head>
+        <meta charset=utf-8>
+        <meta name="viewport" content="width=620">
+        <title>HTML5 Demo: Drag and drop</title>
 
+        <link rel="stylesheet" href="~/Content/css/reset.css" />
+        <link rel="stylesheet" href="~/Content/css/grid.css" />
+        <link rel="stylesheet" href="~/Content/css/style.css" />
+    </head>
+
+        <body>
+            <section id="droppableGrid" class="productGridContainer blockDisplay"></section>
+            <section>
+                <div id="imageContainter">
+                </div>
+            </section>
+
+
+
+            <button id="Materials" onclick="materialize()">Remove Grid</button>
+            <section id="selectedTileStyle"></section>
+            <button id="rotate" onclick="rotate()">Rotate</button>
+            <button id="invert" onclick="invert()">Invert</button>
+            <button id="removeGrid" onclick="removeGrid()">Remove Grid</button>
+
+            <a class="hvr-pulse">Potato</a>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+            <script rel="script" src="~/Scripts/app/dragNdrop.js"></script>
+            <script rel="script" src="~/Scripts/app/grid.js"></script>
+            <script rel="script" src="~/Scripts/app/script.js"></script>
+
+
+        </body>
+
+
+
+</html>

@@ -9,7 +9,7 @@ namespace SquareApplication.Controllers
     public class CreateDesignController : Controller
     {
         // GET: CreateDesign
-        public ActionResult Index()
+        public ActionResult CreateDesign()
         {
             return View("CreateDesign");
         }

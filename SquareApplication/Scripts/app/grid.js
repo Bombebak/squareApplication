@@ -13,7 +13,7 @@
     for (var i=1;i<25; i++){
         var img= $('<img class="arrangedTiles" ondragstart="drag(event)" draggable="true" onclick="selectTile(this)">');
         var name= i+".jpg";
-        var path="squares/"+ name;
+        var path="/Assets/images/"+ name;
         img.attr('src', path);
         img.attr('id',name);
         $('#imageContainter').append(img);

@@ -1,0 +1,96 @@
+$blue: #75A48B;
+$red:#EC2F39;
+$brown: #42282e;
+$orange: #DC9B74;
+$grey: #666666;
+
+.circleLogo{
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  border: solid 1px grey;
+  margin:4px;
+  background-color: white;
+}
+header {
+position: absolute;
+  display: block;
+  clear: both;
+}
+main{
+  margin-left:50px;
+  margin-right:50px;
+}
+
+@mixin makeMeSquare($size){
+  width: $size;
+  height: $size;
+}
+.square100 {
+  height: 50px;
+  width: 50px;
+  color: white;
+  -webkit-border-radius: 0;
+  -ms-border-radius: 0;
+
+}
+
+@mixin colourSquare($color) {
+  background-color: $color;
+}
+// Different color squares
+.squareRed{
+  @extend .square100;
+  @include colourSquare($red);
+}
+.squareOrange{
+  @extend .square100;
+  @include colourSquare($orange);
+}
+.squareBlue{
+  @extend .square100;
+  @include colourSquare($blue);
+}
+.squareBrown{
+  @extend .square100;
+  @include  colourSquare($brown);
+}
+.squareGrey{
+  @extend .square100;
+  @include colourSquare($grey);
+}
+
+@mixin topLeftNav($top,$left){
+  top: $top;
+  left: $left;
+}
+@mixin topRightNav($top,$right){
+  top: $top;
+  right: $right;
+}
+.centerTextInDiv{
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
+}
+
+.fixed {
+  position: fixed;
+}
+.marginBottom150{
+  margin-bottom: 150px;
+}
+
+
+.top0left0{
+  @include topLeftNav(0,0);
+}
+.top50left50{
+  @include topLeftNav(50px,50px);
+}
+.top0right50{
+  @include topRightNav(0,50px);
+}
+.top50right0{
+  @include topRightNav(50px,0);
+}
