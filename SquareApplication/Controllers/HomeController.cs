@@ -16,7 +16,11 @@ namespace SquareApplication.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            using (SquaresEntities dbContext = new SquaresEntities())
+            {
+                Console.WriteLine(dbContext.Database.Exists());
+                ViewBag.Message = dbContext.Orders.FirstOrDefault().purchase_date.ToString();
+            }
             return View();
         }
 
