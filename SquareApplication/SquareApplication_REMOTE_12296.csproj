@@ -44,54 +44,15 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="IronRuby, Version=1.1.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronRuby.1.1.3\Lib\IronRuby.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IronRuby.Libraries, Version=1.1.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronRuby.1.1.3\Lib\IronRuby.Libraries.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IronRuby.Libraries.Yaml, Version=1.1.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronRuby.1.1.3\Lib\IronRuby.Libraries.Yaml.dll</HintPath>
-      <Private>True</Private>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath> 
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Dynamic, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronRuby.1.1.3\Lib\Microsoft.Dynamic.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Scripting, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronRuby.1.1.3\Lib\Microsoft.Scripting.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Scripting.Metadata, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronRuby.1.1.3\Lib\Microsoft.Scripting.Metadata.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SassAndCoffee.AspNet, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SassAndCoffee.AspNet.2.1.1.0\lib\net40\SassAndCoffee.AspNet.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SassAndCoffee.Core, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SassAndCoffee.Core.2.1.1.0\lib\net40-Client\SassAndCoffee.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SassAndCoffee.JavaScript, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SassAndCoffee.JavaScript.2.1.1.0\lib\net40-Client\SassAndCoffee.JavaScript.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SassAndCoffee.Ruby, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SassAndCoffee.Ruby.2.1.1.0\lib\net40-Client\SassAndCoffee.Ruby.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -202,7 +163,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CreateDesignController.cs" />
+    <Compile Include="Controllers\CreateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -251,52 +212,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\images\1.jpg" />
-    <Content Include="Assets\images\10.jpg" />
-    <Content Include="Assets\images\11.jpg" />
-    <Content Include="Assets\images\12.jpg" />
-    <Content Include="Assets\images\13.jpg" />
-    <Content Include="Assets\images\14.jpg" />
-    <Content Include="Assets\images\15.jpg" />
-    <Content Include="Assets\images\16.jpg" />
-    <Content Include="Assets\images\17.jpg" />
-    <Content Include="Assets\images\18.jpg" />
-    <Content Include="Assets\images\19.jpg" />
-    <Content Include="Assets\images\2.jpg" />
-    <Content Include="Assets\images\20.jpg" />
-    <Content Include="Assets\images\21.jpg" />
-    <Content Include="Assets\images\22.jpg" />
-    <Content Include="Assets\images\23.jpg" />
-    <Content Include="Assets\images\24.jpg" />
-    <Content Include="Assets\images\25.jpg" />
-    <Content Include="Assets\images\26.jpg" />
-    <Content Include="Assets\images\27.jpg" />
-    <Content Include="Assets\images\28.jpg" />
-    <Content Include="Assets\images\29.jpg" />
-    <Content Include="Assets\images\3.jpg" />
-    <Content Include="Assets\images\30.jpg" />
-    <Content Include="Assets\images\31.jpg" />
-    <Content Include="Assets\images\32.jpg" />
-    <Content Include="Assets\images\33.jpg" />
-    <Content Include="Assets\images\34.jpg" />
-    <Content Include="Assets\images\35.jpg" />
-    <Content Include="Assets\images\36.jpg" />
-    <Content Include="Assets\images\37.jpg" />
-    <Content Include="Assets\images\38.jpg" />
-    <Content Include="Assets\images\4.jpg" />
-    <Content Include="Assets\images\5.jpg" />
-    <Content Include="Assets\images\6.jpg" />
-    <Content Include="Assets\images\7.jpg" />
-    <Content Include="Assets\images\8.jpg" />
-    <Content Include="Assets\images\9.jpg" />
-    <Content Include="Assets\images\blizniak.jpg" />
-    <Content Include="Assets\images\panibut.jpg" />
-    <Content Include="Assets\images\panie.jpg" />
-    <Content Include="Assets\images\panimrowa.jpg" />
-    <Content Include="Assets\images\panipan.jpg" />
-    <Content Include="Assets\images\panreka.jpg" />
-    <Content Include="Assets\images\panzegar.jpg" />
-    <Content Include="Assets\images\ulvogkat.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -304,10 +219,6 @@
     <Content Include="Content\css\grid.css" />
     <Content Include="Content\css\landingPage.css" />
     <Content Include="Content\css\reset.css" />
-<<<<<<< HEAD
-    <Content Include="Content\css\sass.css" />
-=======
->>>>>>> origin/master
     <Content Include="Content\css\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -366,8 +277,6 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Content\style.scss" />
-    <Content Include="Content\css\sass.scss" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1174,10 +1083,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
-<<<<<<< HEAD
-    <Content Include="Views\CreateDesign\CreateDesign.cshtml" />
-    <Content Include="Views\Navigation.cshtml" />
-=======
     <EntityDeploy Include="SquaresModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SquaresModel.Designer.cs</LastGenOutput>
@@ -1185,11 +1090,9 @@
     <Content Include="SquaresModel.edmx.diagram">
       <DependentUpon>SquaresModel.edmx</DependentUpon>
     </Content>
->>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Navigation\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

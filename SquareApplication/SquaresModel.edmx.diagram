@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4cf61e786e964de484699cbdb275ceb0" Name="Diagram1">
+        <EntityTypeShape EntityType="SquaresModel.Order" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SquaresModel.Set" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SquaresModel.Set_Tag" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SquaresModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SquaresModel.Tag" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SquaresModel.Tile" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SquaresModel.User" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="SquaresModel.FK__Order__set_id__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="SquaresModel.FK__Order__user_id__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="SquaresModel.FK__Set__user_id__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="SquaresModel.FK__Set_Tag__set_id__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="SquaresModel.FK__Tile__set_id__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="SquaresModel.FK__Set_Tag__tag_id__5DCAEF64" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
