@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SquareApplication
+namespace SquareApplication.Models
 {
     using System;
     using System.Data.Entity;
