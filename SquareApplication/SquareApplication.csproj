@@ -252,6 +252,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-SquareApplication-20160517104849.mdf" />
+    <Content Include="App_Data\aspnet-SquareApplication-20160517104849_log.ldf">
+      <DependentUpon>aspnet-SquareApplication-20160517104849.mdf</DependentUpon>
+    </Content>
     <Content Include="Assets\images\1.jpg" />
     <Content Include="Assets\images\10.jpg" />
     <Content Include="Assets\images\11.jpg" />
@@ -1181,9 +1185,10 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\CreateDesign\CreateDesign.cshtml" />
     <Content Include="Views\Navigation.cshtml" />
+    <Content Include="Views\Home\Landing.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Scripts\app\accountControls\" />
     <Folder Include="Views\Navigation\" />
   </ItemGroup>
   <ItemGroup>
