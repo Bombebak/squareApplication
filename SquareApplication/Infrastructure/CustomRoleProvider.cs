@@ -3,20 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using SquareApplication.DAL;
 using SquareApplication.Models;
 
 namespace SquareApplication.Infrastructure
 {
     public class CustomRoleProvider : RoleProvider
     {
-        public override bool IsUserInRole(string username, string roleName)
+        private UserRepository userRepository = new UserRepository();
+
+        public override bool IsUserInRole(string name, string roleName)
         {
-            throw new NotImplementedException();
+            var user = userRepository.GetUser(name);
+            if (user == null)
+                return false;
+            return user.UserRoles != null && user.UserRoles.Select(u => u.Role).Any(r => r.name == roleName);
         }
 
         public override string[] GetRolesForUser(string username)
         {
-            return new string[]{};
+            using (var usersContext = new SquaresEntities())
+            {
+                var user = usersContext.GetUser(username);
+            if (user == null)
+                return new string[]{};
+            return user.UserRoles == null ? new string[] { } : user.UserRoles.Select(u => u.Role).Select(u => u.name).ToArray();
+            }
+            
         }
 
         public override void CreateRole(string roleName)

@@ -11,10 +11,8 @@ namespace SquareApplication.Interfaces
         int MinPasswordLength { get; }
 
         bool ValidateUser(string userName, string password);
-        MembershipCreateStatus CreateUser(string userName, string password, string email);
+        MembershipCreateStatus CreateUser(string name, string password, string email, string address, bool isDesigner);
         bool ChangePassword(string userName, string oldPassword, string newPassword);
-        bool RetrievePassword(string email);
-        void SendConfirmationEmail(string userName);
         bool GetUserById(int id);
     }
 }

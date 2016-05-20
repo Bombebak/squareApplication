@@ -33,6 +33,8 @@ namespace SquareApplication.Controllers
     {
         public IMembershipService MembershipService { get; set; }
         private UserRepository userRepository = new UserRepository();
+        private SetRepository setRepository = new SetRepository();
+        private SquaresEntities db = new SquaresEntities();
 
         protected override void Initialize(RequestContext requestContext)
         {
@@ -60,26 +62,26 @@ namespace SquareApplication.Controllers
 
             if (ModelState.IsValid)
             {
-                if (MembershipService.ValidateUser(model.UserName, model.Password))
+                if (MembershipService.ValidateUser(model.Email, model.Password))
                 {
-                        SetupFormsAuthTicket(model.UserName, model.RememberMe);
+                    SetupFormsAuthTicket(model.Email, model.RememberMe);
 
-                        string decodedUrl = "";
-                        if (!string.IsNullOrEmpty(returnUrl))
-                            decodedUrl = Server.UrlDecode(returnUrl);
-                        if (Url.IsLocalUrl(decodedUrl))
-                        {
-                            return Redirect(decodedUrl);
-                        }
-                        else
-                        {
-                            return RedirectToAction("Index", "Home");
-                        }
-                    
+                    string decodedUrl = "";
+                    if (!string.IsNullOrEmpty(returnUrl))
+                        decodedUrl = Server.UrlDecode(returnUrl);
+                    if (Url.IsLocalUrl(decodedUrl))
+                    {
+                        return Redirect(decodedUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Brugernavnet og adgangskoden passer ikke sammen.");
+                    ModelState.AddModelError("", "Email and password doesn't match.");
                 }
 
             }
@@ -107,42 +109,20 @@ namespace SquareApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new Models.UserViewModel
+                MembershipCreateStatus createStatus;
+                Membership.CreateUser(model.Name, model.Password, model.Email, model.Address, null, model.IsDesigner, null, out createStatus);
+
+                if (createStatus == MembershipCreateStatus.Success)
                 {
-                    Address = model.Address, Email = model.Email, Name = model.Name,
-                    Password = model.Password, isDesigner = model.Designer
-                };
-                using (SquaresEntities dbContext = new SquaresEntities())
-                {
-                    dbContext.Users.Add(new User
-                    {
-                         address = user.Address,
-                         email = user.Email,
-                         isDesigner = user.isDesigner,
-                         name = user.Name,
-                         password = user.Password,
-                    });
-                    dbContext.SaveChanges();
+                    SetupFormsAuthTicket(model.Email, false);
+                    return RedirectToAction("Index", "Home");
                 }
+                ModelState.AddModelError("", ErrorCodeToString(createStatus));
             }
-
             // If we got this far, something failed, redisplay form
-            return RedirectToAction("Index", "Home");
+            return View(model);
         }
 
-        //
-        // GET: /Account/ConfirmEmail
-        [AllowAnonymous]
-        public async Task<ActionResult> ConfirmEmail(string userId, string code)
-        {
-            if (userId == null || code == null)
-            {
-                return View("Error");
-            }
-            //var result = await UserManager<>.ConfirmEmailAsync(userId, code);
-            //return View(result.Succeeded ? "ConfirmEmail" : "Error");
-            return View();
-        }
 
         //
         // GET: /Account/ForgotPassword
@@ -241,21 +221,58 @@ namespace SquareApplication.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        private User SetupFormsAuthTicket(string userName, bool persistanceFlag)
+        [Authorize]
+        public ActionResult UserProfile()
         {
-            User user;
-            using (var usersContext = new SquaresEntities())
+            var username = User.Identity.Name;
+            var user = db.Users.SingleOrDefault(u => u.name == username);
+            if (user == null)
+                return null;
+            AccountProfileViewModel profile = new AccountProfileViewModel(userRepository.GetUser(user.user_id), setRepository.GetSetsFromUser(user.user_id));
+            return View(profile);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeProfileSettings(ChangeProfileInfoViewModel viewModel)
+        {
+            if (ModelState.IsValid)
             {
-                user = userRepository.GetUser(userName);
-                //user.LastLogin = DateTime.Now;
-                //usersContext.Entry(user).State = EntityState.Modified;
-                //usersContext.SaveChanges();
+                var user = db.Users.SingleOrDefault(u => u.user_id == viewModel.UserId);
+                if (user == null)
+                {
+                    return null;
+                }
+                user.name = viewModel.Name;
+                user.address = viewModel.Address;
+                try
+                {
+                    db.Entry(user).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
+                TempData["TempUserMsg"] = "<div class='alert alert-success'><p>Update succesfull" + "</p>" +
+                                                        "<p><span class='glyphicon glyphicon-ok'></span> You have succesfully updated your information. </p></div>";
+                return RedirectToAction("UserProfile");
+                //return PartialView(viewModel);
             }
+            return View(viewModel);
+        }
+
+        private User SetupFormsAuthTicket(string email, bool persistanceFlag)
+        {
+            var user = userRepository.GetUserFromMail(email);
+
             var userId = user.user_id;
             var userData = userId.ToString(CultureInfo.InvariantCulture);
 
             var authTicket = new FormsAuthenticationTicket(1, //version
-                                                        userName, // user name
+                                                        user.name, // user name
                                                         DateTime.Now,             //creation
                                                         DateTime.Now.AddMinutes(30), //Expiration
                                                         persistanceFlag, //Persistent
@@ -265,6 +282,52 @@ namespace SquareApplication.Controllers
             Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
             return user;
         }
+
+
+        #region Status Codes
+
+        //private static string ErrorCOdeToStringValidateRegistration(MembershipCreateStatus createStatus)
+        //{
+
+        //}
+        private static string ErrorCodeToString(MembershipCreateStatus createStatus)
+        {
+            // See http://go.microsoft.com/fwlink/?LinkID=177550 for
+            // a full list of status codes.
+            switch (createStatus)
+            {
+                case MembershipCreateStatus.DuplicateUserName:
+                    return "A user with that name already exists. Please choose another";
+
+                case MembershipCreateStatus.DuplicateEmail:
+                    return "A user with that mail already exists. Please choose another.";
+
+                case MembershipCreateStatus.InvalidPassword:
+                    return "The entered password is invalid. Please enter a valid password.";
+
+                case MembershipCreateStatus.InvalidEmail:
+                    return "The entered mail is invalid. Please enter a valid email.";
+
+                case MembershipCreateStatus.InvalidAnswer:
+                    return "The password retrieval answer provided is invalid. Please check the value and try again.";
+
+                case MembershipCreateStatus.InvalidQuestion:
+                    return "The password retrieval question provided is invalid. Please check the value and try again.";
+
+                case MembershipCreateStatus.InvalidUserName:
+                    return "Det angivet brugernavn er invalid. Indtast venligst et acceptabel brugernavn.";
+
+                case MembershipCreateStatus.ProviderError:
+                    return "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+
+                case MembershipCreateStatus.UserRejected:
+                    return "The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+
+                default:
+                    return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+            }
+        }
+        #endregion
 
         #region Helpers
         // Used for XSRF protection when adding external logins
@@ -295,8 +358,10 @@ namespace SquareApplication.Controllers
             return RedirectToAction("Index", "Home");
         }
 
- 
-        }
-        #endregion
+
     }
+        #endregion
+
+
+}
 

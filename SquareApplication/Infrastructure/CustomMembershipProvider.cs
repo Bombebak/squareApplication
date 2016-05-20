@@ -49,7 +49,7 @@ namespace SquareApplication.Infrastructure
 
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
-            var args = new ValidatePasswordEventArgs(username, password, true);
+            var args = new ValidatePasswordEventArgs(email, password, true);
             OnValidatingPassword(args);
 
             if (args.Cancel)
@@ -64,20 +64,48 @@ namespace SquareApplication.Infrastructure
                 return null;
             }
 
-            var user = GetUser(username, true);
+            var user = GetUser(email, true);
 
             if (user == null)
             {
-                var userObj = new User { name = username, password = GetMd5Hash(password), email = email, address = ""};
-
-                using (var usersContext = new SquaresEntities())
+                using (var dbContext = new SquaresEntities())
                 {
-                    usersContext.Users.Add(userObj);
-                }
+                    var userObj = new User { name = username, password = password, email = email, address = passwordQuestion };
 
+                    dbContext.Users.Add(userObj);
+
+                    //This is a hack
+                    if (isApproved)
+                    {
+                        var role = dbContext.Roles.SingleOrDefault(r => r.name == "Designer");
+                        if (role != null)
+                        {
+                            var userRole = new UserRole()
+                            {
+                                role_id = role.role_id,
+                                user_id = userObj.user_id
+                            };
+                            dbContext.UserRoles.Add(userRole);
+                        }
+                    }
+                    else
+                    {
+                        var role = dbContext.Roles.SingleOrDefault(r => r.name == "User");
+                        if (role != null)
+                        {
+                            var userRole = new UserRole()
+                            {
+                                role_id = role.role_id,
+                                user_id = userObj.user_id
+                            };
+                            dbContext.UserRoles.Add(userRole);
+                        }
+                    }
+                    dbContext.SaveChanges();
+                }
                 status = MembershipCreateStatus.Success;
 
-                return GetUser(username, true);
+                return GetUser(email, true);
             }
             status = MembershipCreateStatus.DuplicateUserName;
 
@@ -130,15 +158,14 @@ namespace SquareApplication.Infrastructure
             throw new NotImplementedException();
         }
 
-        public override MembershipUser GetUser(string username, bool userIsOnline)
+        public override MembershipUser GetUser(string email, bool userIsOnline)
         {
-            var usersContext = new SquaresEntities();
-            var user = userRepository.GetUser(username);
+            var user = userRepository.GetUserFromMail(email);
             if (user != null)
             {
-                var memUser = new MembershipUser("CustomMembershipProvider", username, user.user_id, user.email,
+                var memUser = new MembershipUser("CustomMembershipProvider", email, user.user_id, user.email,
                                                             string.Empty, string.Empty,
-                                                            true, false, DateTime.Now,
+                                                            true, false, DateTime.Now, //Registered
                                                              DateTime.Now, //lastLogin
                                                             DateTime.MinValue,
                                                             DateTime.MinValue, DateTime.MinValue);
@@ -149,14 +176,13 @@ namespace SquareApplication.Infrastructure
 
         public MembershipUser GetUser(int providerUserKey, bool userIsOnline)
         {
-            var usersContext = new SquaresEntities();
             var user = userRepository.GetUserById(providerUserKey);
             if (user != null)
             {
                 var memUser = new MembershipUser("CustomMembershipProvider", user.name, user.user_id, user.email,
                                                             string.Empty, string.Empty,
                                                             false, false, DateTime.Now, //Registered
-                                                            DateTime.Now , //LastLogin
+                                                            DateTime.Now, //LastLogin
                                                             DateTime.MinValue,
                                                             DateTime.Now, DateTime.Now);
                 return memUser;
@@ -166,7 +192,6 @@ namespace SquareApplication.Infrastructure
 
         public MembershipUser GetUserFromId(int id, bool userIsOnline)
         {
-            var usersContext = new SquaresEntities();
             var user = userRepository.GetUserFromId(id);
             if (user != null)
             {
@@ -180,23 +205,6 @@ namespace SquareApplication.Infrastructure
             }
             return null;
         }
-
-        //public MembershipUser GetUserFromMail(string email, bool userIsOnline)
-        //{
-        //    var usersContext = new SquaresEntities();
-        //    var user = usersContext.GetUserFromMail(email);
-        //    if (user != null)
-        //    {
-        //        var memUser = new MembershipUser("CustomMembershipProvider", email, user.id, user.email,
-        //                                                    string.Empty, string.Empty,
-        //                                                    user.EmailConfirmed, false, (DateTime) user.Registered,
-        //                                                    (DateTime) user.LastLogin,
-        //                                                    DateTime.MinValue,
-        //                                                    DateTime.Now, DateTime.Now);
-        //        return memUser;
-        //    }
-        //    return null;
-        //}
 
         public override string GetUserNameByEmail(string email)
         {
@@ -276,27 +284,10 @@ namespace SquareApplication.Infrastructure
 
 
 
-        public override bool ValidateUser(string username, string password)
+        public override bool ValidateUser(string email, string password)
         {
-            var md5Hash = GetMd5Hash(password);
-
-            using (var usersContext = new SquaresEntities())
-            {
-                var requiredUser = userRepository.GetUser(username, password);
-                return requiredUser != null;
-            }
-        }
-
-        public static string GetMd5Hash(string value)
-        {
-            var md5Hasher = MD5.Create();
-            var data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(value));
-            var sBuilder = new StringBuilder();
-            for (var i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-            return sBuilder.ToString();
+            var requiredUser = userRepository.GetUser(email, password);
+            return requiredUser != null;
         }
     }
 }

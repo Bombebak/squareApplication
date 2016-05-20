@@ -14,6 +14,14 @@
           <Property Name="set_id" Type="int" />
           <Property Name="purchase_date" Type="datetime" />
         </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Set">
           <Key>
             <PropertyRef Name="set_id" />
@@ -31,16 +39,6 @@
           <Property Name="settag_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="set_id" Type="int" />
           <Property Name="tag_id" Type="int" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -66,9 +64,16 @@
           <Property Name="email" Type="nvarchar" MaxLength="50" />
           <Property Name="address" Type="nvarchar" MaxLength="50" />
           <Property Name="password" Type="nvarchar" MaxLength="50" />
-          <Property Name="isDesigner" Type="bit" />
         </EntityType>
-        <Association Name="FK__Order__set_id__619B8048">
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="userRole_id" />
+          </Key>
+          <Property Name="userRole_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="role_id" Type="int" />
+        </EntityType>
+        <Association Name="FK__Order__set_id__5DCAEF64">
           <End Role="Set" Type="Self.Set" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -80,7 +85,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__user_id__60A75C0F">
+        <Association Name="FK__Order__user_id__5CD6CB2B">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -92,7 +97,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Set__user_id__5535A963">
+        <Association Name="FK__Set__user_id__5165187F">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Set" Type="Self.Set" Multiplicity="*" />
           <ReferentialConstraint>
@@ -104,7 +109,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Set_Tag__set_id__5CD6CB2B">
+        <Association Name="FK__Set_Tag__set_id__59063A47">
           <End Role="Set" Type="Self.Set" Multiplicity="0..1" />
           <End Role="Set_Tag" Type="Self.Set_Tag" Multiplicity="*" />
           <ReferentialConstraint>
@@ -116,7 +121,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Set_Tag__tag_id__5DCAEF64">
+        <Association Name="FK__Set_Tag__tag_id__59FA5E80">
           <End Role="Tag" Type="Self.Tag" Multiplicity="0..1" />
           <End Role="Set_Tag" Type="Self.Set_Tag" Multiplicity="*" />
           <ReferentialConstraint>
@@ -128,7 +133,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tile__set_id__5812160E">
+        <Association Name="FK__Tile__set_id__5441852A">
           <End Role="Set" Type="Self.Set" Multiplicity="0..1" />
           <End Role="Tile" Type="Self.Tile" Multiplicity="*" />
           <ReferentialConstraint>
@@ -140,43 +145,118 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__UserRole__role_i__4E88ABD4">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRole__user_i__4D94879B">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SquaresModelStoreContainer">
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Set" EntityType="Self.Set" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Set_Tag" EntityType="Self.Set_Tag" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tile" EntityType="Self.Tile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Order__set_id__619B8048" Association="Self.FK__Order__set_id__619B8048">
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Order__set_id__5DCAEF64" Association="Self.FK__Order__set_id__5DCAEF64">
             <End Role="Set" EntitySet="Set" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__user_id__60A75C0F" Association="Self.FK__Order__user_id__60A75C0F">
+          <AssociationSet Name="FK__Order__user_id__5CD6CB2B" Association="Self.FK__Order__user_id__5CD6CB2B">
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__Set__user_id__5535A963" Association="Self.FK__Set__user_id__5535A963">
+          <AssociationSet Name="FK__Set__user_id__5165187F" Association="Self.FK__Set__user_id__5165187F">
             <End Role="User" EntitySet="User" />
             <End Role="Set" EntitySet="Set" />
           </AssociationSet>
-          <AssociationSet Name="FK__Set_Tag__set_id__5CD6CB2B" Association="Self.FK__Set_Tag__set_id__5CD6CB2B">
+          <AssociationSet Name="FK__Set_Tag__set_id__59063A47" Association="Self.FK__Set_Tag__set_id__59063A47">
             <End Role="Set" EntitySet="Set" />
             <End Role="Set_Tag" EntitySet="Set_Tag" />
           </AssociationSet>
-          <AssociationSet Name="FK__Set_Tag__tag_id__5DCAEF64" Association="Self.FK__Set_Tag__tag_id__5DCAEF64">
+          <AssociationSet Name="FK__Set_Tag__tag_id__59FA5E80" Association="Self.FK__Set_Tag__tag_id__59FA5E80">
             <End Role="Tag" EntitySet="Tag" />
             <End Role="Set_Tag" EntitySet="Set_Tag" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tile__set_id__5812160E" Association="Self.FK__Tile__set_id__5812160E">
+          <AssociationSet Name="FK__Tile__set_id__5441852A" Association="Self.FK__Tile__set_id__5441852A">
             <End Role="Set" EntitySet="Set" />
             <End Role="Tile" EntitySet="Tile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRole__role_i__4E88ABD4" Association="Self.FK__UserRole__role_i__4E88ABD4">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRole__user_i__4D94879B" Association="Self.FK__UserRole__user_i__4D94879B">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRole" EntitySet="UserRole" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SquaresModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SquaresEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Orders" EntityType="SquaresModel.Order" />
+          <EntitySet Name="Roles" EntityType="SquaresModel.Role" />
+          <EntitySet Name="Sets" EntityType="SquaresModel.Set" />
+          <EntitySet Name="Set_Tag" EntityType="SquaresModel.Set_Tag" />
+          <EntitySet Name="Tags" EntityType="SquaresModel.Tag" />
+          <EntitySet Name="Tiles" EntityType="SquaresModel.Tile" />
+          <EntitySet Name="Users" EntityType="SquaresModel.User" />
+          <EntitySet Name="UserRoles" EntityType="SquaresModel.UserRole" />
+          <AssociationSet Name="FK__Order__set_id__5DCAEF64" Association="SquaresModel.FK__Order__set_id__5DCAEF64">
+            <End Role="Set" EntitySet="Sets" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__user_id__5CD6CB2B" Association="SquaresModel.FK__Order__user_id__5CD6CB2B">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRole__role_i__4E88ABD4" Association="SquaresModel.FK__UserRole__role_i__4E88ABD4">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Set__user_id__5165187F" Association="SquaresModel.FK__Set__user_id__5165187F">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Set" EntitySet="Sets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Set_Tag__set_id__59063A47" Association="SquaresModel.FK__Set_Tag__set_id__59063A47">
+            <End Role="Set" EntitySet="Sets" />
+            <End Role="Set_Tag" EntitySet="Set_Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tile__set_id__5441852A" Association="SquaresModel.FK__Tile__set_id__5441852A">
+            <End Role="Set" EntitySet="Sets" />
+            <End Role="Tile" EntitySet="Tiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Set_Tag__tag_id__59FA5E80" Association="SquaresModel.FK__Set_Tag__tag_id__59FA5E80">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="Set_Tag" EntitySet="Set_Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRole__user_i__4D94879B" Association="SquaresModel.FK__UserRole__user_i__4D94879B">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="order_id" />
@@ -185,8 +265,17 @@
           <Property Name="user_id" Type="Int32" />
           <Property Name="set_id" Type="Int32" />
           <Property Name="purchase_date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Set" Relationship="Self.FK__Order__set_id__619B8048" FromRole="Order" ToRole="Set" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Order__user_id__60A75C0F" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="Set" Relationship="SquaresModel.FK__Order__set_id__5DCAEF64" FromRole="Order" ToRole="Set" />
+          <NavigationProperty Name="User" Relationship="SquaresModel.FK__Order__user_id__5CD6CB2B" FromRole="Order" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserRoles" Relationship="SquaresModel.FK__UserRole__role_i__4E88ABD4" FromRole="Role" ToRole="UserRole" />
         </EntityType>
         <EntityType Name="Set">
           <Key>
@@ -197,30 +286,20 @@
           <Property Name="price" Type="Int32" />
           <Property Name="user_id" Type="Int32" />
           <Property Name="upload_date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Order__set_id__619B8048" FromRole="Set" ToRole="Order" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Set__user_id__5535A963" FromRole="Set" ToRole="User" />
-          <NavigationProperty Name="Set_Tag" Relationship="Self.FK__Set_Tag__set_id__5CD6CB2B" FromRole="Set" ToRole="Set_Tag" />
-          <NavigationProperty Name="Tiles" Relationship="Self.FK__Tile__set_id__5812160E" FromRole="Set" ToRole="Tile" />
+          <NavigationProperty Name="Orders" Relationship="SquaresModel.FK__Order__set_id__5DCAEF64" FromRole="Set" ToRole="Order" />
+          <NavigationProperty Name="User" Relationship="SquaresModel.FK__Set__user_id__5165187F" FromRole="Set" ToRole="User" />
+          <NavigationProperty Name="Set_Tag" Relationship="SquaresModel.FK__Set_Tag__set_id__59063A47" FromRole="Set" ToRole="Set_Tag" />
+          <NavigationProperty Name="Tiles" Relationship="SquaresModel.FK__Tile__set_id__5441852A" FromRole="Set" ToRole="Tile" />
         </EntityType>
         <EntityType Name="Set_Tag">
           <Key>
             <PropertyRef Name="settag_id" />
           </Key>
+          <Property Name="settag_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="set_id" Type="Int32" />
           <Property Name="tag_id" Type="Int32" />
-          <NavigationProperty Name="Set" Relationship="Self.FK__Set_Tag__set_id__5CD6CB2B" FromRole="Set_Tag" ToRole="Set" />
-          <NavigationProperty Name="Tag" Relationship="Self.FK__Set_Tag__tag_id__5DCAEF64" FromRole="Set_Tag" ToRole="Tag" />
-          <Property Name="settag_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Set" Relationship="SquaresModel.FK__Set_Tag__set_id__59063A47" FromRole="Set_Tag" ToRole="Set" />
+          <NavigationProperty Name="Tag" Relationship="SquaresModel.FK__Set_Tag__tag_id__59FA5E80" FromRole="Set_Tag" ToRole="Tag" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -228,7 +307,7 @@
           </Key>
           <Property Name="tag_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Set_Tag" Relationship="Self.FK__Set_Tag__tag_id__5DCAEF64" FromRole="Tag" ToRole="Set_Tag" />
+          <NavigationProperty Name="Set_Tag" Relationship="SquaresModel.FK__Set_Tag__tag_id__59FA5E80" FromRole="Tag" ToRole="Set_Tag" />
         </EntityType>
         <EntityType Name="Tile">
           <Key>
@@ -237,7 +316,7 @@
           <Property Name="tile_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="set_id" Type="Int32" />
           <Property Name="url" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Set" Relationship="Self.FK__Tile__set_id__5812160E" FromRole="Tile" ToRole="Set" />
+          <NavigationProperty Name="Set" Relationship="SquaresModel.FK__Tile__set_id__5441852A" FromRole="Tile" ToRole="Set" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -248,13 +327,23 @@
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="isDesigner" Type="Boolean" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Order__user_id__60A75C0F" FromRole="User" ToRole="Order" />
-          <NavigationProperty Name="Sets" Relationship="Self.FK__Set__user_id__5535A963" FromRole="User" ToRole="Set" />
+          <NavigationProperty Name="Orders" Relationship="SquaresModel.FK__Order__user_id__5CD6CB2B" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Sets" Relationship="SquaresModel.FK__Set__user_id__5165187F" FromRole="User" ToRole="Set" />
+          <NavigationProperty Name="UserRoles" Relationship="SquaresModel.FK__UserRole__user_i__4D94879B" FromRole="User" ToRole="UserRole" />
         </EntityType>
-        <Association Name="FK__Order__set_id__619B8048">
-          <End Role="Set" Type="Self.Set" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="userRole_id" />
+          </Key>
+          <Property Name="userRole_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="role_id" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="SquaresModel.FK__UserRole__role_i__4E88ABD4" FromRole="UserRole" ToRole="Role" />
+          <NavigationProperty Name="User" Relationship="SquaresModel.FK__UserRole__user_i__4D94879B" FromRole="UserRole" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Order__set_id__5DCAEF64">
+          <End Type="SquaresModel.Set" Role="Set" Multiplicity="0..1" />
+          <End Type="SquaresModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Set">
               <PropertyRef Name="set_id" />
@@ -264,9 +353,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__user_id__60A75C0F">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK__Order__user_id__5CD6CB2B">
+          <End Type="SquaresModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SquaresModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="user_id" />
@@ -276,9 +365,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Set__user_id__5535A963">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Set" Type="Self.Set" Multiplicity="*" />
+        <Association Name="FK__UserRole__role_i__4E88ABD4">
+          <End Type="SquaresModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="SquaresModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Set__user_id__5165187F">
+          <End Type="SquaresModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SquaresModel.Set" Role="Set" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="user_id" />
@@ -288,9 +389,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Set_Tag__set_id__5CD6CB2B">
-          <End Role="Set" Type="Self.Set" Multiplicity="0..1" />
-          <End Role="Set_Tag" Type="Self.Set_Tag" Multiplicity="*" />
+        <Association Name="FK__Set_Tag__set_id__59063A47">
+          <End Type="SquaresModel.Set" Role="Set" Multiplicity="0..1" />
+          <End Type="SquaresModel.Set_Tag" Role="Set_Tag" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Set">
               <PropertyRef Name="set_id" />
@@ -300,9 +401,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tile__set_id__5812160E">
-          <End Role="Set" Type="Self.Set" Multiplicity="0..1" />
-          <End Role="Tile" Type="Self.Tile" Multiplicity="*" />
+        <Association Name="FK__Tile__set_id__5441852A">
+          <End Type="SquaresModel.Set" Role="Set" Multiplicity="0..1" />
+          <End Type="SquaresModel.Tile" Role="Tile" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Set">
               <PropertyRef Name="set_id" />
@@ -312,9 +413,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Set_Tag__tag_id__5DCAEF64">
-          <End Role="Tag" Type="Self.Tag" Multiplicity="0..1" />
-          <End Role="Set_Tag" Type="Self.Set_Tag" Multiplicity="*" />
+        <Association Name="FK__Set_Tag__tag_id__59FA5E80">
+          <End Type="SquaresModel.Tag" Role="Tag" Multiplicity="0..1" />
+          <End Type="SquaresModel.Set_Tag" Role="Set_Tag" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tag">
               <PropertyRef Name="tag_id" />
@@ -324,40 +425,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SquaresEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Orders" EntityType="Self.Order" />
-          <EntitySet Name="Sets" EntityType="Self.Set" />
-          <EntitySet Name="Set_Tag" EntityType="Self.Set_Tag" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="Tags" EntityType="Self.Tag" />
-          <EntitySet Name="Tiles" EntityType="Self.Tile" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK__Order__set_id__619B8048" Association="Self.FK__Order__set_id__619B8048">
-            <End Role="Set" EntitySet="Sets" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Order__user_id__60A75C0F" Association="Self.FK__Order__user_id__60A75C0F">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Set__user_id__5535A963" Association="Self.FK__Set__user_id__5535A963">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Set" EntitySet="Sets" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Set_Tag__set_id__5CD6CB2B" Association="Self.FK__Set_Tag__set_id__5CD6CB2B">
-            <End Role="Set" EntitySet="Sets" />
-            <End Role="Set_Tag" EntitySet="Set_Tag" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tile__set_id__5812160E" Association="Self.FK__Tile__set_id__5812160E">
-            <End Role="Set" EntitySet="Sets" />
-            <End Role="Tile" EntitySet="Tiles" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Set_Tag__tag_id__5DCAEF64" Association="Self.FK__Set_Tag__tag_id__5DCAEF64">
-            <End Role="Tag" EntitySet="Tags" />
-            <End Role="Set_Tag" EntitySet="Set_Tag" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        <Association Name="FK__UserRole__user_i__4D94879B">
+          <End Type="SquaresModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SquaresModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -366,70 +446,76 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="SquaresModel.Order">
               <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="set_id" ColumnName="set_id" />
                 <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
+                <ScalarProperty Name="set_id" ColumnName="set_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="SquaresModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sets">
             <EntityTypeMapping TypeName="SquaresModel.Set">
               <MappingFragment StoreEntitySet="Set">
-                <ScalarProperty Name="set_id" ColumnName="set_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="upload_date" ColumnName="upload_date" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="set_id" ColumnName="set_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Set_Tag">
             <EntityTypeMapping TypeName="SquaresModel.Set_Tag">
               <MappingFragment StoreEntitySet="Set_Tag">
-                <ScalarProperty Name="settag_id" ColumnName="settag_id" />
-                <ScalarProperty Name="set_id" ColumnName="set_id" />
                 <ScalarProperty Name="tag_id" ColumnName="tag_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="SquaresModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="set_id" ColumnName="set_id" />
+                <ScalarProperty Name="settag_id" ColumnName="settag_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tags">
             <EntityTypeMapping TypeName="SquaresModel.Tag">
               <MappingFragment StoreEntitySet="Tag">
-                <ScalarProperty Name="tag_id" ColumnName="tag_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="tag_id" ColumnName="tag_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tiles">
             <EntityTypeMapping TypeName="SquaresModel.Tile">
               <MappingFragment StoreEntitySet="Tile">
-                <ScalarProperty Name="tile_id" ColumnName="tile_id" />
-                <ScalarProperty Name="set_id" ColumnName="set_id" />
                 <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="set_id" ColumnName="set_id" />
+                <ScalarProperty Name="tile_id" ColumnName="tile_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="SquaresModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="isDesigner" ColumnName="isDesigner" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="SquaresModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="userRole_id" ColumnName="userRole_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

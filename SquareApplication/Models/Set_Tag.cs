@@ -14,9 +14,9 @@ namespace SquareApplication.Models
     
     public partial class Set_Tag
     {
+        public int settag_id { get; set; }
         public Nullable<int> set_id { get; set; }
         public Nullable<int> tag_id { get; set; }
-        public int settag_id { get; set; }
     
         public virtual Set Set { get; set; }
         public virtual Tag Tag { get; set; }

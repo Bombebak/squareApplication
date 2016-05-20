@@ -204,6 +204,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CreateDesignController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SetController.cs" />
+    <Compile Include="DAL\SetRepository.cs" />
     <Compile Include="DAL\UserRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -217,9 +219,13 @@
     <Compile Include="Models\Order.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>SquaresModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Set.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SetViewModel.cs" />
     <Compile Include="Models\Set_Tag.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
@@ -238,9 +244,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>SquaresModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Tag.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
@@ -248,6 +251,9 @@
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
+      <DependentUpon>SquaresModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserRole.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserViewModel.cs" />
@@ -1143,6 +1149,8 @@
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1185,8 +1193,19 @@
     <Content Include="Views\CreateDesign\CreateDesign.cshtml" />
     <Content Include="Views\Navigation.cshtml" />
     <Content Include="Views\Home\Landing.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Account\_ChangeProfileSettings.cshtml" />
+    <Content Include="Views\Account\_UserActivity.cshtml" />
+    <Content Include="Views\Set\_CreateSet.cshtml" />
+    <Content Include="Views\Set\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\SetUploads\1\" />
+    <Folder Include="Assets\SetUploads\2\" />
+    <Folder Include="Assets\SetUploads\3\" />
+    <Folder Include="Assets\SetUploads\4\" />
+    <Folder Include="Assets\SetUploads\5\" />
+    <Folder Include="Assets\SetUploads\6\" />
     <Folder Include="Views\Navigation\" />
   </ItemGroup>
   <ItemGroup>
