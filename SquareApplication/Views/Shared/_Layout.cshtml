@@ -36,7 +36,19 @@
         <nav>
             <div class="centerTextInDiv squareBlue  top50left50 fixed">Explore</div>
             <div class="centerTextInDiv squareBrown top0right50 fixed">About</div>
-            <div class="centerTextInDiv squareOrange top50right0  fixed">Login</div>
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    <div class="centerTextInDiv squareOrange top50right0  fixed"><a href="javascript:document.getElementById('logoutForm').submit()">LogOff</a></div>
+                }
+
+
+            }
+            else
+            {
+                <div class="centerTextInDiv squareOrange top50right0  fixed">Login</div>
+            }
             <div class="centerTextInDiv squareBlue top0left0 fixed">
                 <div class="circleLogo">    </div>
             </div>

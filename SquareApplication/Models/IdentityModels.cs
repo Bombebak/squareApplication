@@ -1,33 +1,51 @@
 ﻿using System.Data.Entity;
 using System.Security.Claims;
+using System.Security.Principal;
 using System.Threading.Tasks;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SquareApplication.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class ApplicationUser : IdentityUser
+    public class UserIdentity : IIdentity, IPrincipal
     {
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
-        {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
-            return userIdentity;
-        }
-    }
+        private readonly FormsAuthenticationTicket _ticket;
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public UserIdentity(FormsAuthenticationTicket ticket)
         {
+            _ticket = ticket;
         }
 
-        public static ApplicationDbContext Create()
+        public string AuthenticationType
         {
-            return new ApplicationDbContext();
+            get { return "User"; }
+        }
+
+        public bool IsAuthenticated
+        {
+            get { return true; }
+        }
+
+        public string Name
+        {
+            get { return _ticket.Name; }
+        }
+
+        public string UserId
+        {
+            get { return _ticket.UserData; }
+        }
+
+        public bool IsInRole(string role)
+        {
+            return Roles.IsUserInRole(role);
+        }
+
+        public IIdentity Identity
+        {
+            get { return this; }
         }
     }
 }
