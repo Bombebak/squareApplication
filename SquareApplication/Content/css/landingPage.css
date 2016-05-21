@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background: #000;
+    margin-top: 100px;
 }
 video {
     position: fixed;
@@ -20,6 +21,50 @@ video {
     opacity: .5;
 }
 
+.login {
+    position: absolute;
+    top: 5px;
+    line-height: 2em;
+    height: 2em;
+    right: 5px;
+     background: rgba(255,255,255,0.1);
+}
+.login:hover {
+    background: rgba(255,255,255,0.5);
+    text-decoration: none;
+}
+
+.body-content {
+    margin-top: 150px;
+}
+.square200 {
+  height: 150px;
+  width: 150px;
+  color: white;
+  -webkit-border-radius: 0;
+  -ms-border-radius: 0;
+    font-size: 22px;
+}
+
+#blueSquare {
+    background: #75A48B;
+    line-height: 150px;
+    text-align: center;
+    margin-left: 15px;
+    display: inline-block;
+    float: left;
+  
+}
+
+#redSquare {
+    display: inline-block;
+    float: right;
+    background: #EC2F39;
+    line-height: 150px;
+    text-align: center;
+    margin-right: 15px;
+}
+
 #polina {
     font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
     font-weight:100;
@@ -32,10 +77,14 @@ video {
     font-size: 1.2rem;
 }
 h1 {
-    font-size: 3rem;
+    font-size: 5rem;
     text-transform: uppercase;
     margin-top: 0;
     letter-spacing: .3rem;
+    margin-bottom: 75px;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,1);
+    
 }
 #polina button {
     display: block;
@@ -54,21 +103,44 @@ h1 {
     background: rgba(0,0,0,0.5);
 }
 
+main {
+    text-align: center;
+}
+
+.link200r {
+    float: right;
+}
+
+.link200l {
+    float:left
+}
+
 a {
     display: inline-block;
     color: #fff;
     text-decoration: none;
-    background:rgba(0,0,0,0.5);
-    padding: .5rem;
+
+  
     transition: .6s background;
 }
-a:hover{
-    background:rgba(0,0,0,0.9);
-}
+
 @media screen and (max-width: 500px) {
     div{width:70%;}
+
+     #redSquare {
+         position: absolute;
+         left: 165px;
+         top: 690px
+    }
+
+    #blueSquare {
+        position: absolute;
+        left: 150px;
+    }
 }
 @media screen and (max-device-width: 800px) {
     html { background: url(//demosthenes.info/assets/images/polina.jpg) #000 no-repeat center center fixed; }
     #bgvid { display: none; }
+
+   
 }
