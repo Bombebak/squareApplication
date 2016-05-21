@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Explore";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Explore</h2>
+
+@foreach (var set in ViewBag.sets)
+{
+    <div>@set.name</div>
+    <p>@set.User.name</p>
+    <ul>
+        @foreach (var tile in set.Tiles)
+        {
+            <li>@tile.url</li>
+        }
+    </ul>
+}

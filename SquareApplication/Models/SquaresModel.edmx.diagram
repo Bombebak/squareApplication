@@ -21,6 +21,7 @@
         <AssociationConnector Association="SquaresModel.FK__Tile__set_id__5441852A" />
         <AssociationConnector Association="SquaresModel.FK__Set_Tag__tag_id__59FA5E80" />
         <AssociationConnector Association="SquaresModel.FK__UserRole__user_i__4D94879B" />
+        <EntityTypeShape EntityType="SquaresModel.vSetWithTilesAndUser" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

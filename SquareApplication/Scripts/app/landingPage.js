@@ -5,7 +5,7 @@
    
     $(document).ready(function () {
         $('nav').hide();
-        $('#footer').show().hide();
+        $('#footer').hide();
         $('hr').hide();
     });
 

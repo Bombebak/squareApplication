@@ -203,6 +203,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CreateDesignController.cs" />
+    <Compile Include="Controllers\ExploreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SetController.cs" />
     <Compile Include="DAL\SetRepository.cs" />
@@ -257,6 +258,9 @@
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserViewModel.cs" />
+    <Compile Include="Models\vSetWithTilesAndUser.cs">
+      <DependentUpon>SquaresModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountMembershipService.cs" />
     <Compile Include="Startup.cs" />
@@ -1198,6 +1202,7 @@
     <Content Include="Views\Account\_UserActivity.cshtml" />
     <Content Include="Views\Set\_CreateSet.cshtml" />
     <Content Include="Views\Set\Details.cshtml" />
+    <Content Include="Views\Explore\Explore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\SetUploads\1\" />
