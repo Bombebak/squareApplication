@@ -73,7 +73,22 @@
           <Property Name="user_id" Type="int" />
           <Property Name="role_id" Type="int" />
         </EntityType>
-        <Association Name="FK__Order__set_id__5DCAEF64">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Squares.dbo.vSetWithTilesAndUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vSetWithTilesAndUser">
+          <Key>
+            <PropertyRef Name="set_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="price" Type="int" />
+          <Property Name="set_id" Type="int" Nullable="false" />
+          <Property Name="upload_date" Type="datetime" />
+          <Property Name="userName" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="tile_id" Type="int" />
+          <Property Name="url" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <Association Name="FK__Order__set_id__24927208">
           <End Role="Set" Type="Self.Set" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -85,7 +100,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__user_id__5CD6CB2B">
+        <Association Name="FK__Order__user_id__239E4DCF">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -97,7 +112,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Set__user_id__5165187F">
+        <Association Name="FK__Set__user_id__182C9B23">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Set" Type="Self.Set" Multiplicity="*" />
           <ReferentialConstraint>
@@ -109,7 +124,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Set_Tag__set_id__59063A47">
+        <Association Name="FK__Set_Tag__set_id__1FCDBCEB">
           <End Role="Set" Type="Self.Set" Multiplicity="0..1" />
           <End Role="Set_Tag" Type="Self.Set_Tag" Multiplicity="*" />
           <ReferentialConstraint>
@@ -121,7 +136,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Set_Tag__tag_id__59FA5E80">
+        <Association Name="FK__Set_Tag__tag_id__20C1E124">
           <End Role="Tag" Type="Self.Tag" Multiplicity="0..1" />
           <End Role="Set_Tag" Type="Self.Set_Tag" Multiplicity="*" />
           <ReferentialConstraint>
@@ -133,7 +148,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tile__set_id__5441852A">
+        <Association Name="FK__Tile__set_id__1B0907CE">
           <End Role="Set" Type="Self.Set" Multiplicity="0..1" />
           <End Role="Tile" Type="Self.Tile" Multiplicity="*" />
           <ReferentialConstraint>
@@ -145,7 +160,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserRole__role_i__4E88ABD4">
+        <Association Name="FK__UserRole__role_i__15502E78">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
           <ReferentialConstraint>
@@ -157,7 +172,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserRole__user_i__4D94879B">
+        <Association Name="FK__UserRole__user_i__145C0A3F">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
           <ReferentialConstraint>
@@ -178,35 +193,47 @@
           <EntitySet Name="Tile" EntityType="Self.Tile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Order__set_id__5DCAEF64" Association="Self.FK__Order__set_id__5DCAEF64">
+          <EntitySet Name="vSetWithTilesAndUser" EntityType="Self.vSetWithTilesAndUser" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vSetWithTilesAndUser].[name] AS [name], 
+    [vSetWithTilesAndUser].[price] AS [price], 
+    [vSetWithTilesAndUser].[set_id] AS [set_id], 
+    [vSetWithTilesAndUser].[upload_date] AS [upload_date], 
+    [vSetWithTilesAndUser].[userName] AS [userName], 
+    [vSetWithTilesAndUser].[email] AS [email], 
+    [vSetWithTilesAndUser].[tile_id] AS [tile_id], 
+    [vSetWithTilesAndUser].[url] AS [url]
+    FROM [dbo].[vSetWithTilesAndUser] AS [vSetWithTilesAndUser]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Order__set_id__24927208" Association="Self.FK__Order__set_id__24927208">
             <End Role="Set" EntitySet="Set" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__user_id__5CD6CB2B" Association="Self.FK__Order__user_id__5CD6CB2B">
+          <AssociationSet Name="FK__Order__user_id__239E4DCF" Association="Self.FK__Order__user_id__239E4DCF">
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__Set__user_id__5165187F" Association="Self.FK__Set__user_id__5165187F">
+          <AssociationSet Name="FK__Set__user_id__182C9B23" Association="Self.FK__Set__user_id__182C9B23">
             <End Role="User" EntitySet="User" />
             <End Role="Set" EntitySet="Set" />
           </AssociationSet>
-          <AssociationSet Name="FK__Set_Tag__set_id__59063A47" Association="Self.FK__Set_Tag__set_id__59063A47">
+          <AssociationSet Name="FK__Set_Tag__set_id__1FCDBCEB" Association="Self.FK__Set_Tag__set_id__1FCDBCEB">
             <End Role="Set" EntitySet="Set" />
             <End Role="Set_Tag" EntitySet="Set_Tag" />
           </AssociationSet>
-          <AssociationSet Name="FK__Set_Tag__tag_id__59FA5E80" Association="Self.FK__Set_Tag__tag_id__59FA5E80">
+          <AssociationSet Name="FK__Set_Tag__tag_id__20C1E124" Association="Self.FK__Set_Tag__tag_id__20C1E124">
             <End Role="Tag" EntitySet="Tag" />
             <End Role="Set_Tag" EntitySet="Set_Tag" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tile__set_id__5441852A" Association="Self.FK__Tile__set_id__5441852A">
+          <AssociationSet Name="FK__Tile__set_id__1B0907CE" Association="Self.FK__Tile__set_id__1B0907CE">
             <End Role="Set" EntitySet="Set" />
             <End Role="Tile" EntitySet="Tile" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserRole__role_i__4E88ABD4" Association="Self.FK__UserRole__role_i__4E88ABD4">
+          <AssociationSet Name="FK__UserRole__role_i__15502E78" Association="Self.FK__UserRole__role_i__15502E78">
             <End Role="Role" EntitySet="Role" />
             <End Role="UserRole" EntitySet="UserRole" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserRole__user_i__4D94879B" Association="Self.FK__UserRole__user_i__4D94879B">
+          <AssociationSet Name="FK__UserRole__user_i__145C0A3F" Association="Self.FK__UserRole__user_i__145C0A3F">
             <End Role="User" EntitySet="User" />
             <End Role="UserRole" EntitySet="UserRole" />
           </AssociationSet>
@@ -256,6 +283,7 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UserRole" EntitySet="UserRoles" />
           </AssociationSet>
+          <EntitySet Name="vSetWithTilesAndUsers" EntityType="SquaresModel.vSetWithTilesAndUser" />
         </EntityContainer>
         <EntityType Name="Order">
           <Key>
@@ -437,6 +465,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vSetWithTilesAndUser">
+          <Key>
+            <PropertyRef Name="set_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="set_id" Type="Int32" Nullable="false" />
+          <Property Name="upload_date" Type="DateTime" Precision="3" />
+          <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tile_id" Type="Int32" />
+          <Property Name="url" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -516,6 +557,20 @@
                 <ScalarProperty Name="role_id" ColumnName="role_id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="userRole_id" ColumnName="userRole_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vSetWithTilesAndUsers">
+            <EntityTypeMapping TypeName="SquaresModel.vSetWithTilesAndUser">
+              <MappingFragment StoreEntitySet="vSetWithTilesAndUser">
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="tile_id" ColumnName="tile_id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="upload_date" ColumnName="upload_date" />
+                <ScalarProperty Name="set_id" ColumnName="set_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

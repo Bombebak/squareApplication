@@ -25,6 +25,11 @@ namespace SquareApplication.Controllers
             return View();
         }
 
+        public ActionResult Landing()
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

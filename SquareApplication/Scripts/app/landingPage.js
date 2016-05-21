@@ -2,6 +2,13 @@
     var vid = document.getElementById("bgvid");
     var pauseButton = document.querySelector("#polina button");
 
+   
+    $(document).ready(function () {
+        $('nav').hide();
+        $('#footer').hide();
+        $('hr').hide();
+    });
+
     function vidFade() {
         vid.classList.add("stopfade");
     }
@@ -14,17 +21,16 @@
     });
 
 
-    pauseButton.addEventListener("click", function () {
-        vid.classList.toggle("stopfade");
-        if (vid.paused) {
-            vid.play();
-            pauseButton.innerHTML = "Pause";
-        } else {
-            vid.pause();
-            pauseButton.innerHTML = "Paused";
-        }
-    })
-});
-/**
- * Created by alice on 13/05/2016.
- */
+    //pauseButton.addEventListener("click", function() {
+    //    vid.classList.toggle("stopfade");
+    //    if (vid.paused) {
+    //        vid.play();
+    //        pauseButton.innerHTML = "Pause";
+    //    } else {
+    //        vid.pause();
+    //        pauseButton.innerHTML = "Paused";
+    //    }
+    //});
+
+})();
+

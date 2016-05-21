@@ -21,10 +21,10 @@ namespace SquareApplication.Models
             : base("name=SquaresEntities")
         {
         }
-        
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            throw new UnintentionalCodeFirstException();
         }
 
         public User GetUser(string name)
@@ -32,7 +32,7 @@ namespace SquareApplication.Models
             var user = Users.SingleOrDefault(u => u.name == name);
             return user;
         }
-    
+
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Set> Sets { get; set; }
@@ -41,5 +41,6 @@ namespace SquareApplication.Models
         public virtual DbSet<Tile> Tiles { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
+        public virtual DbSet<vSetWithTilesAndUser> vSetWithTilesAndUsers { get; set; }
     }
 }

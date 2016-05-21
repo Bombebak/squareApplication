@@ -49,6 +49,10 @@ namespace SquareApplication.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Login");
+            }
             return View();
         }
 
@@ -253,13 +257,13 @@ namespace SquareApplication.Controllers
                 }
                 catch (Exception)
                 {
-                    
+
                     throw;
                 }
                 TempData["TempUserMsg"] = "<div class='alert alert-success'><p>Update succesfull" + "</p>" +
                                                         "<p><span class='glyphicon glyphicon-ok'></span> You have succesfully updated your information. </p></div>";
-                return RedirectToAction("UserProfile");
-                //return PartialView(viewModel);
+                //return RedirectToAction("UserProfile");
+                return PartialView(viewModel);
             }
             return View(viewModel);
         }
