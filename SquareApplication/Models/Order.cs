@@ -7,17 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SquareApplication
+namespace SquareApplication.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Tile
+    public partial class Order
     {
-        public int tile_id { get; set; }
+        public int order_id { get; set; }
+        public Nullable<int> user_id { get; set; }
         public Nullable<int> set_id { get; set; }
-        public string url { get; set; }
+        public Nullable<System.DateTime> purchase_date { get; set; }
     
         public virtual Set Set { get; set; }
+        public virtual User User { get; set; }
     }
 }

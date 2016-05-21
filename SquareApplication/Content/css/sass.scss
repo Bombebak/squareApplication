@@ -26,9 +26,8 @@ main{
   width: $size;
   height: $size;
 }
-.square100 {
-  height: 50px;
-  width: 50px;
+.square50 {
+  @include makeMeSquare(50px);
   color: white;
   -webkit-border-radius: 0;
   -ms-border-radius: 0;
@@ -40,23 +39,23 @@ main{
 }
 // Different color squares
 .squareRed{
-  @extend .square100;
+  @extend .square50;
   @include colourSquare($red);
 }
 .squareOrange{
-  @extend .square100;
+  @extend .square50;
   @include colourSquare($orange);
 }
 .squareBlue{
-  @extend .square100;
+  @extend .square50;
   @include colourSquare($blue);
 }
 .squareBrown{
-  @extend .square100;
+  @extend .square50;
   @include  colourSquare($brown);
 }
 .squareGrey{
-  @extend .square100;
+  @extend .square50;
   @include colourSquare($grey);
 }
 

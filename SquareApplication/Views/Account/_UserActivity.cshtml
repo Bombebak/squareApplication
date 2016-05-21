@@ -1,0 +1,24 @@
+﻿@model IEnumerable<SquareApplication.Models.UserActivityViewModel>
+
+<head>
+    <script src="/Scripts/jquery-2.2.3.min.js" type="text/javascript"></script>
+    <script src="/Scripts/app/script.js" type="text/javascript"></script>
+</head>
+
+<h4>Your uploads</h4>
+
+@Html.ActionLink("Create set", "CreateSet", "Set", null, new { @class = "modal-link btn btn-primary" })
+
+<div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-content">
+    </div>
+</div>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@Html.ActionLink(item.SetTitle, "Details", "Set", null, new{id = item.SetId})
+        </li>
+        
+    }
+</ul>

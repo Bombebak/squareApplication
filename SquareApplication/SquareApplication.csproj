@@ -55,7 +55,7 @@
     <Reference Include="IronRuby.Libraries.Yaml, Version=1.1.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
       <HintPath>..\packages\IronRuby.1.1.3\Lib\IronRuby.Libraries.Yaml.dll</HintPath>
       <Private>True</Private>
-          </Reference>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -199,59 +199,73 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CreateDesignController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SetController.cs" />
+    <Compile Include="DAL\SetRepository.cs" />
+    <Compile Include="DAL\UserRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\CustomMembershipProvider.cs" />
+    <Compile Include="Infrastructure\CustomRoleProvider.cs" />
+    <Compile Include="Interfaces\IMembershipService.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Order.cs">
+    <Compile Include="Models\Order.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Set.cs">
+    <Compile Include="Models\Role.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Set_Tag.cs">
+    <Compile Include="Models\Set.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SquaresModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
+    <Compile Include="Models\SetViewModel.cs" />
+    <Compile Include="Models\Set_Tag.cs">
+      <DependentUpon>SquaresModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SquaresModel.Context.cs">
       <DependentUpon>SquaresModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SquaresModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\SquaresModel.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SquaresModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\SquaresModel.Designer.cs">
       <DependentUpon>SquaresModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Models\Tag.cs">
+      <DependentUpon>SquaresModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tile.cs">
+      <DependentUpon>SquaresModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>SquaresModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserRole.cs">
+      <DependentUpon>SquaresModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AccountMembershipService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>SquaresModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tag.cs">
-      <DependentUpon>SquaresModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tile.cs">
-      <DependentUpon>SquaresModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>SquaresModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-SquareApplication-20160517104849.mdf" />
+    <Content Include="App_Data\aspnet-SquareApplication-20160517104849_log.ldf">
+      <DependentUpon>aspnet-SquareApplication-20160517104849.mdf</DependentUpon>
+    </Content>
     <Content Include="Assets\images\1.jpg" />
     <Content Include="Assets\images\10.jpg" />
     <Content Include="Assets\images\11.jpg" />
@@ -319,6 +333,16 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Models\SquaresModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SquaresModel.edmx</DependentUpon>
+      <LastGenOutput>SquaresModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SquaresModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SquaresModel.edmx</DependentUpon>
+      <LastGenOutput>SquaresModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -346,6 +370,7 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\app\account\accountControls.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\dragNdrop.js" />
     <Content Include="Scripts\app\grid.js" />
@@ -366,6 +391,13 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Content\style.scss" />
     <Content Include="Content\css\sass.scss" />
+    <EntityDeploy Include="Models\SquaresModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SquaresModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SquaresModel.edmx.diagram">
+      <DependentUpon>SquaresModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1117,6 +1149,8 @@
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1127,16 +1161,6 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="SquaresModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SquaresModel.edmx</DependentUpon>
-      <LastGenOutput>SquaresModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="SquaresModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SquaresModel.edmx</DependentUpon>
-      <LastGenOutput>SquaresModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1163,27 +1187,25 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\CreateDesign\CreateDesign.cshtml" />
     <Content Include="Views\Navigation.cshtml" />
-    <EntityDeploy Include="SquaresModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SquaresModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="SquaresModel.edmx.diagram">
-      <DependentUpon>SquaresModel.edmx</DependentUpon>
-    </Content>
+    <Content Include="Views\Home\Landing.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Account\_ChangeProfileSettings.cshtml" />
+    <Content Include="Views\Account\_UserActivity.cshtml" />
+    <Content Include="Views\Set\_CreateSet.cshtml" />
+    <Content Include="Views\Set\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Assets\SetUploads\1\" />
+    <Folder Include="Assets\SetUploads\2\" />
+    <Folder Include="Assets\SetUploads\3\" />
+    <Folder Include="Assets\SetUploads\4\" />
+    <Folder Include="Assets\SetUploads\5\" />
+    <Folder Include="Assets\SetUploads\6\" />
     <Folder Include="Views\Navigation\" />
   </ItemGroup>
   <ItemGroup>

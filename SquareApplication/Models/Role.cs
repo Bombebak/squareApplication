@@ -7,30 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SquareApplication
+namespace SquareApplication.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Role()
         {
-            this.Orders = new HashSet<Order>();
-            this.Sets = new HashSet<Set>();
+            this.UserRoles = new HashSet<UserRole>();
         }
     
-        public int user_id { get; set; }
+        public int role_id { get; set; }
         public string name { get; set; }
-        public string email { get; set; }
-        public string address { get; set; }
-        public string password { get; set; }
-        public Nullable<bool> isDesigner { get; set; }
+        public string description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Set> Sets { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

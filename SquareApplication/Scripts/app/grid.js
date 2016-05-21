@@ -3,14 +3,14 @@
  */
 (function (){
 
-       for (var i = 0; i <26; i++) {
+       for (var i = 1; i <26; i++) {
            var cell = $('<div class="productGridItem" ondrop="drop(event)" ondragover="allowDrop(event)">');
            var id = "cell" + i;
            cell.attr('id', id);
            $('#droppableGrid').append(cell);
        }
 
-    for (var i=1;i<25; i++){
+    for (var i=1;i<26; i++){
         var img= $('<img class="arrangedTiles" ondragstart="drag(event)" draggable="true" onclick="selectTile(this)">');
         var name= i+".jpg";
         var path="/Assets/images/"+ name;

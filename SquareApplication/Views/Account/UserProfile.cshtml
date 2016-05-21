@@ -1,0 +1,38 @@
+﻿@model SquareApplication.Models.AccountProfileViewModel
+
+<head>
+    <script src="/Scripts/jquery-2.2.3.min.js" type="text/javascript"></script>
+    <script src="/Scripts/app/script.js" type="text/javascript"></script>
+</head>
+
+@{
+    ViewBag.Title = "UserProfile";
+}
+
+<div class="container">
+    <h2>Your profile</h2>
+    <div id="content">
+        <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+            <li class="active">
+                <a href="#_ChangeProfileSettingsTab"
+                   data-toggle="tab">Profile</a>
+            </li>
+            <li>
+                <a href="#_UserActivityTab" data-toggle="tab">Activity</a>
+            </li>
+        </ul>
+        <div id="my-tab-content" class="tab-content">
+            <div class="tab-pane  active" id="_ChangeProfileSettingsTab">
+                <div class="row header">
+                    @{Html.RenderPartial("_ChangeProfileSettings", this.ViewData.Model.ChangeProfileViewModel);}
+                </div>
+            </div>
+            <div class="tab-pane" id="_UserActivityTab">
+                <div class="row header">
+                    @{Html.RenderPartial("_UserActivity", this.ViewData.Model.UserActivityViewModel);}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
