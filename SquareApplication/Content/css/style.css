@@ -17,14 +17,36 @@
     format('truetype');
 }
 /**DOM elem**/
+    /*typography*/
+p {
+    font-family:_LatoRegular;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family:_LatoBold;
+}
+nav {
+    font-family: _LatoBold;
+    font-size:smaller;
+    margin-bottom: 150px;
+}
+header{
+        z-index:1;
+
+}
+
+ a:hover, a:focus {
+    color: white;
+    text-decoration: none;
+}
+
 /* Footer */
 footer{
     padding:60px 0 60px 0;
     position: relative;
     width: 100%;
-    bottom: -17px;
+    bottom: 0;
     background-repeat: no-repeat;
-    /*background-image: url("~/Assets/images/site/Footer3.JPG");*/
     background-image: url("../../Assets/images/site/Footer3.JPG");
     background-size: cover;
 
@@ -52,8 +74,20 @@ footer> .flexItem > img{
     margin-left: auto;
     margin-right: auto;
 }
+/* Typography */
+.thumbnail {
+     padding: 0; 
+    border:0;
+    border-radius:0;
+    transition:none;
+   }
 
+.thumbnail:hover {
+    box-shadow: 0 2px 4px #919890;}
 
+.thumbnail > .floatLeft img {
+    margin:0;
+}
 
 /*********/
 .invertColors {
@@ -65,6 +99,10 @@ footer> .flexItem > img{
 #selectedTileStyle{
     display: block;
 }
+
+#loginLink {
+    color:white;
+}
 .doubleSize{
     transform: scale(2);
 float: right;
@@ -72,8 +110,6 @@ float: right;
 }
 
 
-
-/
 .flexContainer {
     display: flex;
     flex-direction: row;
@@ -105,10 +141,6 @@ a{
 .setTitle{
    font-family: _Harlow;
     font-size: larger;
-}
-
-.marginTopForClearBoth{
-    margin-top: -3px;
 }
 
 .square100{
