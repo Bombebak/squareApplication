@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Squares</title>
     @Styles.Render("~/Content/css")
+       @Styles.Render("~/Content/reset.css")
     @Styles.Render("~/Content/css/sass.css")
-
-
+    @Styles.Render("~/Content/css/style.css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -55,6 +55,24 @@
             <p>&copy; @DateTime.Now.Year - Squares</p>
         </footer>
     </div>
+
+    <footer class="flexContainer">
+        <div class="flexItem">
+            <p>Contacts</p>
+            <p>Services</p>
+            <p>Shop</p>
+        </div>
+        <div class="flexItem">
+            <p>Squares</p>
+            <p>Meijlgade 24</p>
+            <p>Aarhus, DK</p>
+        </div>
+        <div class="flexItem">
+            <p>A project by</p>
+            <img src="~/Assets/images/site/KongOrange.png">
+        </div>
+        @*<p>&copy; @DateTime.Now.Year - Squares Application</p>*@
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

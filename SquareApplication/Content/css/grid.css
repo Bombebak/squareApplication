@@ -114,6 +114,8 @@
     /*margin: 0 1% 2% 1%;*/
     border: solid 1px rgba(158, 155, 155, 0.23);
     /*border-radius: 4px;*/
+        margin-bottom: -3px;
+
 }
 
 .ourContainer {
