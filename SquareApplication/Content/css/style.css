@@ -13,3 +13,56 @@ float: right;
 
 }
 
+
+
+/* Footer */
+footer{
+    padding:60px 0 60px 0;
+    position: relative;
+    width: 100%;
+    bottom: -17px;
+    background-repeat: no-repeat;
+    /*background-image: url("~/Assets/images/site/Footer3.JPG");*/
+    background-image: url("../../Assets/images/site/Footer3.JPG");
+    background-size: cover;
+
+}
+footer> div> p, i {
+    color: #eeeeee;
+    text-align: center;
+
+}
+footer> div> p{
+    /*font-family: _Raleway;*/
+    margin-bottom: 10px;
+}
+
+footer > div {
+    height: 100%;
+    display: inline-block;
+}
+
+footer> .flexItem > img{
+    width: 100px;
+    height: 68px;
+    /* margin: auto; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-flow: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+}
+
+.flexItem{
+    /*this defines where extra space is going to*/
+    flex-grow: 1 ;
+}
+

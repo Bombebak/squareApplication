@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+       @Styles.Render("~/Content/reset.css")
     @Styles.Render("~/Content/css/sass.css")
-
-
+    @Styles.Render("~/Content/css/style.css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -48,10 +48,30 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+      
+
+            
+        
     </div>
+
+    <footer class="flexContainer">
+        <div class="flexItem">
+            <p>Contacts</p>
+            <p>Services</p>
+            <p>Delivery</p>
+            <p>Shop</p>
+        </div>
+        <div class="flexItem">
+            <p>Squares</p>
+            <p>Meijlgade 24</p>
+            <p>Aarhus, DK</p>
+        </div>
+        <div class="flexItem">
+            <p>A project by</p>
+            <img src="~/Assets/images/site/KongOrange.png">
+        </div>
+        @*<p>&copy; @DateTime.Now.Year - Squares Application</p>*@
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

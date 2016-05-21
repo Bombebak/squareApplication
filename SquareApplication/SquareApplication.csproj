@@ -311,6 +311,8 @@
     <Content Include="Assets\images\panipan.jpg" />
     <Content Include="Assets\images\panreka.jpg" />
     <Content Include="Assets\images\panzegar.jpg" />
+    <Content Include="Assets\images\site\Footer3.JPG" />
+    <Content Include="Assets\images\site\KongOrange.png" />
     <Content Include="Assets\images\ulvogkat.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -321,6 +323,7 @@
     <Content Include="Content\css\reset.css" />
     <Content Include="Content\css\sass.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\reset.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
