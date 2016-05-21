@@ -2,18 +2,89 @@
 @{
     ViewBag.Title = "Explore";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <h2>Explore</h2>
 
-@foreach (var set in ViewBag.sets)
-{
-    <div>@set.name</div>
-    <p>@set.User.name</p>
-    <ul>
-        @foreach (var tile in set.Tiles)
-        {
-            <li>@tile.url</li>
-        }
-    </ul>
-}
+
+@*
+<div class="col-xs-6 col-md-3 centered">
+
+    @foreach (var set in ViewBag.sets)
+    {
+        <a href="#" class="thumbnail inlineBlock marginBottom1Percent">
+            // No reason to loop through them since we only pull 3 of them 
+            @foreach (var tile in set.Tiles)
+            {
+                <div>@tile.url</div>
+                <img class="floatLeft" src="http://placehold.it/100x100" />
+                <img class="floatLeft" src="http://placehold.it/100x100" />
+                <img class="clearBoth floatLeft marginTopForClearBoth" src="http://placehold.it/100x100" />
+            }
+           
+            <div class="square100Thumbnail floatLeft displayThumb marginTopForClearBoth">
+                <p class="setTitle centerTextInDiv">
+                    @set.name
+                </p>  <p class="">@set.User.name</p>
+            </div>
+        </a>
+        <div></div>
+        <p></p>
+        <ul>
+            @foreach (var tile in set.Tiles)
+            {
+                <li>@tile.url</li>
+            }
+        </ul>
+    }
+</div>
+
+*@
+<div class="col-xs-6 col-md-3 centered">
+    <a href="#" class="thumbnail inlineBlock marginBottom1Percent">
+        <img class="floatLeft" src="http://placehold.it/100x100" />
+        <img class="floatLeft" src="http://placehold.it/100x100" />
+        <img class="clearBoth floatLeft marginTopForClearBoth" src="http://placehold.it/100x100" />
+        <div class="square100Thumbnail floatLeft displayThumb marginTopForClearBoth">
+            <p class="setTitle centerTextInDiv">
+                Buy Me
+            </p>  <p class="">by Mr. PotatoHead</p>
+        </div>
+    </a>
+
+    <a href="#" class="thumbnail inlineBlock marginBottom1Percent">
+        <img class="floatLeft" src="http://placehold.it/100x100" />
+        <img class="floatLeft" src="http://placehold.it/100x100" />
+        <img class="clearBoth floatLeft marginTopForClearBoth" src="http://placehold.it/100x100" />
+        <div class="square100Thumbnail floatLeft displayThumb marginTopForClearBoth">
+            <p class="setTitle centerTextInDiv">
+                Buy Me
+            </p>  <p class="">by Mr. PotatoHead</p>
+        </div>
+    </a>
+
+    <a href="#" class="thumbnail inlineBlock marginBottom1Percent">
+        <img class="floatLeft" src="http://placehold.it/100x100" />
+        <img class="floatLeft" src="http://placehold.it/100x100" />
+        <img class="clearBoth floatLeft marginTopForClearBoth" src="http://placehold.it/100x100" />
+        <div class="square100Thumbnail floatLeft displayThumb marginTopForClearBoth">
+            <p class="setTitle centerTextInDiv">
+                Buy Me
+            </p>  <p class="">by Mr. PotatoHead</p>
+        </div>
+    </a>
+
+    <a href="#" class="thumbnail inlineBlock marginBottom1Percent">
+        <img class="floatLeft" src="http://placehold.it/100x100" />
+        <img class="floatLeft" src="http://placehold.it/100x100" />
+        <img class="clearBoth floatLeft marginTopForClearBoth" src="http://placehold.it/100x100" />
+        <div class="square100Thumbnail floatLeft displayThumb marginTopForClearBoth">
+            <p class="setTitle centerTextInDiv">
+                Buy Me
+            </p>  <p class="">by Mr. PotatoHead</p>
+        </div>
+    </a>
+
+
+</div>

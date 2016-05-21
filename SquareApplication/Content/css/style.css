@@ -1,20 +1,22 @@
-.invertColors {
-    -webkit-filter: invert(100%);
-}
-.noBorder{
-    border: 0px;
-}
-#selectedTileStyle{
-    display: block;
-}
-.doubleSize{
-    transform: scale(2);
-float: right;
-
+/*Fonts*/
+@font-face {
+    font-family: '_LatoBold';
+    src: url('../../Assets/fonts/Lato-Bold.ttf')
+    format('truetype');
 }
 
+@font-face {
+    font-family: '_LatoRegular';
+    src: url('../../Assets/fonts/Lato-Regular.ttf')
+    format('truetype');
+}
 
-
+@font-face {
+    font-family: '_Harlow';
+    src: url('../../Assets/fonts/Harlow%20Solid%20Italic%20Italic.ttf')
+    format('truetype');
+}
+/**DOM elem**/
 /* Footer */
 footer{
     padding:60px 0 60px 0;
@@ -51,6 +53,27 @@ footer> .flexItem > img{
     margin-right: auto;
 }
 
+
+
+/*********/
+.invertColors {
+    -webkit-filter: invert(100%);
+}
+.noBorder{
+    border: 0px;
+}
+#selectedTileStyle{
+    display: block;
+}
+.doubleSize{
+    transform: scale(2);
+float: right;
+
+}
+
+
+
+/
 .flexContainer {
     display: flex;
     flex-direction: row;
@@ -66,3 +89,46 @@ footer> .flexItem > img{
     flex-grow: 1 ;
 }
 
+
+a{
+    text-decoration: none;
+}
+
+.centered{
+    margin: 0 auto;
+    text-align: center;}
+
+.square100Thumbnail > p, h1,h2,h3,h4{
+    text-align: center;
+}
+
+.setTitle{
+   font-family: _Harlow;
+    font-size: larger;
+}
+
+.marginTopForClearBoth{
+    margin-top: -3px;
+}
+
+.square100{
+    width: 100px;
+    height: 100px;
+    /*margin-right: 50px;*/
+    border:0px;
+}
+
+.clearBoth{
+    clear:both;
+}
+
+.floatLeft{
+    float: left;
+}
+
+.inlineBlock{
+    display: inline-block;
+}
+
+.marginBottom1Percent{
+   margin: 0 1vh 1vh 0;}

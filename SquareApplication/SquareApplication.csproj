@@ -405,6 +405,9 @@
     <Content Include="Models\SquaresModel.edmx.diagram">
       <DependentUpon>SquaresModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Assets\fonts\Harlow Solid Italic Italic.ttf" />
+    <Content Include="Assets\fonts\Lato-Bold.ttf" />
+    <Content Include="Assets\fonts\Lato-Regular.ttf" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
