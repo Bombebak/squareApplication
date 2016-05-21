@@ -30,10 +30,13 @@ function selectTile(image){
     selected.setAttribute('id','copy'+index);
     //created a copy which can serve as id
     //new problem -  it triggers the same events even after in grid
-    tile=selected.id;
-    selected.classList.add('doubleSize');
-    document.getElementById('selectedTileStyle').innerHTML='';
+    tile = selected.id;
+    //selected.classList.add('doubleSize');
+    document.getElementById('selectedTileStyle').innerHTML = '';
     $('#selectedTileStyle').append(selected);
+    selected.classList.add('previewImage');
+    selected.classList.remove('arrangedTiles');
+
     index++;
 }
 

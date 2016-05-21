@@ -12,22 +12,29 @@
     </head>
 
         <body>
-            <section id="droppableGrid" class="productGridContainer blockDisplay"></section>
-            <section>
-                <div id="imageContainter">
-                </div>
+            <section class="ourContainer">
+                <button id="removeGrid" class="square50 blockDisplay" onclick="removeGrid()">Grid</button>
+
+                <section id="droppableGrid" class="productGridContainer"></section>
+
+                <section class="inlineImageContainer">
+                    <button id="rotate" class="square50" onclick="rotate()">
+                        Rotate
+                        <!--<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>-->
+                    </button>
+                    <button id="invert" class="square50" onclick="invert()">Invert</button>
+                    <div id="selectedTileStyle" class="preview">
+                        <img class="previewImage" src="http://placehold.it/299x299">
+                    </div>
+                    <div id="imageContainter" class="overflowImages">
+                    </div>
+                </section>
             </section>
+            
+            <!--<button id="Materials" onclick="materialize()">Remove Grid</button>-->
 
-
-
-            <button id="Materials" onclick="materialize()">Remove Grid</button>
-            <section id="selectedTileStyle"></section>
-            <button id="rotate" onclick="rotate()">Rotate</button>
-            <button id="invert" onclick="invert()">Invert</button>
-            <button id="removeGrid" onclick="removeGrid()">Remove Grid</button>
-
-            <a class="hvr-pulse">Potato</a>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+           <!-- Scripts -->
+            <script rel="script" src="~/Scripts/jquery-2.2.3.min.js"></script>
             <script rel="script" src="~/Scripts/app/dragNdrop.js"></script>
             <script rel="script" src="~/Scripts/app/grid.js"></script>
             <script rel="script" src="~/Scripts/app/script.js"></script>
