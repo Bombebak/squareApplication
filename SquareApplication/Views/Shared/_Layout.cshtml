@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Squares</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/css/sass.css")
 
@@ -15,7 +15,7 @@
     <header class="marginBottom150">
         <nav>
             <div class="centerTextInDiv squareBlue  top50left50 fixed">Explore</div>
-            <div class="centerTextInDiv squareBrown top0right50 fixed">About</div>
+            <a href="/home/about"><div class="centerTextInDiv squareBrown top0right50 fixed">About</div></a>
             @if (Request.IsAuthenticated)
             {
                 using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -39,17 +39,20 @@
             {
                 <div class="centerTextInDiv squareOrange top50right0  fixed">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</div>
             }
-            <div class="centerTextInDiv squareBlue top0left0 fixed">
-                <div class="circleLogo">    </div>
-            </div>
+            <a href="/">
+                <div class="centerTextInDiv squareBlue top0left0 fixed">
+                    <div class="circleLogo">    </div>
+                </div>
+            </a>
         </nav>
 
     </header>
     <div class="container body-content">
         @RenderBody()
+        <div style="clear: both"></div>
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer id="footer">
+            <p>&copy; @DateTime.Now.Year - Squares</p>
         </footer>
     </div>
 

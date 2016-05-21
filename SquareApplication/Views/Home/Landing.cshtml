@@ -1,20 +1,29 @@
-﻿
-<html ng-app="squareApp">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+
+    <link rel="stylesheet" href="../../Content/css/landingPage.css"/>
+    <link rel="stylesheet" href="../../Content/css/sass.css"/>
 </head>
 <body>
 
-<div ng-show="login"></div>
+<video autoplay poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="bgvid" loop>
+    <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button -->
+    @*<source src="../media/SampleVideo_720x480_1mb.mp4" type="video/mp4">*@
+    <source src="//demosthenes.info/assets/videos/polina.webm" type="video/webm">
+
+</video>
+
+<main>
+    <h1>Welcome to Squares!</h1>
+    <a href="/Home/Explore" class="link200l">
+        <div class="square200" id="blueSquare">Explore</div></a>
+    <a href="/CreateDesign/CreateDesign" class="link200r">
+        <div class="square200" id="redSquare">Create</div></a>
+</main>
+
+    <script src="../../Scripts/jquery-2.2.3.min.js"></script>
+<script src="../../Scripts/app/landingPage.js"></script>
 </body>
+
 </html>
-
-<div ng-app="squareApp">
-
-    
-</div>
-
-@Html.ActionLink("Explore", "Explore", "Home")
-@Html.ActionLink("Create", "CreateDesign", "Home")

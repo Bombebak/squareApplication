@@ -32,7 +32,14 @@ main{
   color: white;
   -webkit-border-radius: 0;
   -ms-border-radius: 0;
+}
 
+.square200{
+    height:100;
+    width:100;
+    color:white;
+    -webkit-border-radius: 0;
+    -ms-border-radius: 0;
 }
 
 @mixin colourSquare($color) {
