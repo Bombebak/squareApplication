@@ -66,11 +66,6 @@
 
 }
 
-.productGridItem img{
-    height: 200px;
-    width: 200px;
-
-}
 .productGridItem img :active{
     -webkit-animation:hue 60s infinite linear;
 

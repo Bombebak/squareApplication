@@ -30,14 +30,14 @@
                                 </ul>
                             </li>
                         </ul>
-                        
+                      
                         
                     </div>
                 }
             }
             else
             {
-                <div class="centerTextInDiv squareOrange top50right0  fixed">@Html.ActionLink("Log in", "Login", "Account", null, new { id = "loginLink", @class = "modal-link" })</div>
+                <div class="centerTextInDiv squareOrange top50right0  fixed">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</div>
             }
             <a href="/explore/explore">
                 <div class="centerTextInDiv squareBlue top0left0 fixed">
@@ -50,12 +50,7 @@
     <div class="container body-content">
         @RenderBody()
         <div style="clear: both"></div>
-        <hr />
-        @*<footer id="footer">
-            <p>&copy; @DateTime.Now.Year - Squares</p>
-        </footer>*@
-    </div>
-
+         </div>
     <footer class="flexContainer">
         <div class="flexItem">
             <p>Contacts</p>
@@ -77,7 +72,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/angular")
-    <script src="/Scripts/app/script.js" type="text/javascript"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
