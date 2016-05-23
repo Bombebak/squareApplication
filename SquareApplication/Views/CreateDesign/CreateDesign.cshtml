@@ -1,6 +1,4 @@
-﻿<!DOCTYPE html>
-
-<html>
+﻿@model SquareApplication.Models.selectedSetViewModel
 <head>
         <meta charset=utf-8>
         <meta name="viewport" content="width=620">
@@ -10,7 +8,6 @@
         <link rel="stylesheet" href="~/Content/css/grid.css" />
         <link rel="stylesheet" href="~/Content/css/style.css" />
     </head>
-
         <body>
             <section class="ourContainer">
                 <button id="removeGrid" class="square50 squareRed blockDisplay" onclick="removeGrid()">Grid</button>
@@ -38,10 +35,43 @@
             <script rel="script" src="~/Scripts/app/dragNdrop.js"></script>
             <script rel="script" src="~/Scripts/app/grid.js"></script>
             <script rel="script" src="~/Scripts/app/script.js"></script>
-
-
         </body>
 
+<body>
+<section class="ourContainer">
+    <button id="removeGrid" class="square50 blockDisplay" onclick="removeGrid()">Grid</button>
+
+    <section id="droppableGrid" class="productGridContainer"></section>
+
+    <section class="inlineImageContainer">
+        <button id="rotate" class="square50" onclick="rotate()">
+            Rotate
+            <!--<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>-->
+        </button>
+        <button id="invert" class="square50" onclick="invert()">Invert</button>
+        <div id="selectedTileStyle" class="preview">
+            <img class="previewImage" src="http://placehold.it/299x299">
+        </div>
+        <div id="imageContainter" class="overflowImages">
+            @{ var i = 0;}
+            @foreach (var tile in @Model.tiles)
+            {
+                var id = i + ".jpeg"; 
+                <img src="@tile" id="@id" class="arrangedTiles" ondragstart="drag(event)" draggable="true" onclick="selectTile(this)"/>
+                i++;
+            }
+        </div>
+    </section>
+</section>
+
+<!--<button id="Materials" onclick="materialize()">Remove Grid</button>-->
+
+<!-- Scripts -->
+<script rel="script" src="~/Scripts/jquery-2.2.3.min.js"></script>
+<script rel="script" src="~/Scripts/app/dragNdrop.js"></script>
+<script rel="script" src="~/Scripts/app/grid.js"></script>
+<script rel="script" src="~/Scripts/app/script.js"></script>
 
 
-</html>
+</body>
+

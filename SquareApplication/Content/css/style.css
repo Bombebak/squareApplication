@@ -29,7 +29,7 @@ nav {
     font-family: _LatoBold;
     font-size:smaller;
     margin-bottom: 150px;
-}
+} 
 header{
         z-index:1;
 
@@ -41,6 +41,10 @@ nav > a {
     color: white;
     text-decoration: none;
 }
+
+.nav a.dropdown-toggle {
+     color: white;
+ }
 
 /* Footer */
 footer{
