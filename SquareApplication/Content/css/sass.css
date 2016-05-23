@@ -82,7 +82,7 @@ main {
   top: 0;
   left: 0; }
 
-.customized-modal, .customized-modal-registerPartial, .customized-modal-loginPartial {
+.customized-modal, .customized-modal-registerPartial, .customized-modal-loginPartial, .customized-modal-deleteSet {
   background-color: #fff;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
@@ -136,6 +136,29 @@ main {
       left: 30vw; } }
   @media (min-width: 1279px) {
     .customized-modal-loginPartial {
+      width: 35vw;
+      height: 30vw;
+      top: 20vh;
+      left: 30vw; } }
+
+.customized-modal-deleteSet {
+  /*Mobile version 375-767*/
+  /*Tablet version 768-1279*/
+  /*Laptop version*/ }
+  @media (min-width: 375px) and (max-width: 767px) {
+    .customized-modal-deleteSet {
+      width: 75vw;
+      height: 130vw;
+      top: 20vh;
+      left: 30vw; } }
+  @media (min-width: 768px) and (max-width: 1279px) {
+    .customized-modal-deleteSet {
+      width: 45vw;
+      height: 70vw;
+      top: 20vh;
+      left: 30vw; } }
+  @media (min-width: 1279px) {
+    .customized-modal-deleteSet {
       width: 35vw;
       height: 30vw;
       top: 20vh;
