@@ -1,0 +1,60 @@
+﻿
+
+.aboutSquareBox {
+    float: left;
+    width: 300px;
+    height: 300px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 65px;
+    padding-right: 5px;
+    padding-left: 2px;
+    border: 10px solid #42282E;
+}
+
+.aboutSquareBoximg {
+    float: left;
+    width: 300px;
+    height: 300px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border: 0px;
+}
+
+@media (min-width:992px) {
+    .abouttitle {
+        margin-top: 170px;
+        margin-bottom: 25px;
+    }
+
+    .aboutsubtitle {
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+}
+
+
+@media (min-width:768px) {
+    .abouttitle {
+        margin-top: 150px;
+    }
+    .aboutsubtitle {
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    .abouttitle {
+        margin-top: 125px;
+    }
+    .aboutsubtitle {
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+}

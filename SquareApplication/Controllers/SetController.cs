@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -40,10 +41,10 @@ namespace SquareApplication.Controllers
         [HttpPost]
         public ActionResult CreateSet(CreateSetViewModel viewModel, IEnumerable<HttpPostedFileBase> files)
         {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return View();
+            //}
             if (files.Count() == 0 || files.FirstOrDefault() == null)
             {
                 return View();
@@ -59,7 +60,7 @@ namespace SquareApplication.Controllers
             db.Sets.Add(modelSet);
             foreach (var file in files)
             {
-                var supportedImages = new[] { ".jpg", ".jpeg", ".png"};
+                var supportedImages = new[] { ".jpg", ".jpeg", ".png" };
 
                 if (file.ContentLength == 0) continue;
                 var fileName = Guid.NewGuid().ToString();
@@ -73,26 +74,43 @@ namespace SquareApplication.Controllers
                             viewModel.SetId, fileName, extension);
 
                         SaveToFolder(img, fileName, extension, new Size(200, 200), viewModel.TileUrl);
-
+                        //Adding tiles to the set
                         var modelTile = new Tile()
                         {
                             set_id = modelSet.set_id,
                             url = viewModel.TileUrl
                         };
                         db.Tiles.Add(modelTile);
-                        try
+                        //Adding tags to the set
+                        string[] enteredTagsList = viewModel.TagTitle.Split(',');
+                        foreach (string item in enteredTagsList)
                         {
-                            db.SaveChanges();
-                        }
-                        catch (Exception)
-                        {
+                            var modelTag = new Tag()
+                            {
+                                name = item
+                            };
+                            db.Tags.Add(modelTag);
+                            var modelSetTag = new Set_Tag()
+                            {
+                                set_id = modelSet.set_id,
+                                tag_id = modelTag.tag_id
+                            };
+                            db.Set_Tag.Add(modelSetTag);
+                            try
+                            {
+                                db.SaveChanges();
+                            }
+                            catch (Exception)
+                            {
 
-                            throw;
+                                throw;
+                            }
                         }
+
                     }
                 }
-                
-                return RedirectToAction("UserProfile", "Account");
+
+                return RedirectToAction("Details", "Set", new { setId = viewModel.SetId });
 
             }
             return PartialView("_CreateSet");
@@ -100,9 +118,131 @@ namespace SquareApplication.Controllers
 
         public ActionResult Details(int setId)
         {
-            return View();
+            var viewModel = (from s in db.Sets
+                             where s.set_id == setId
+                             select new DetailsSetViewModel()
+                             {
+                                 SetId = setId,
+                                 SetCost = (int)s.price,
+                                 UploadedTime = (DateTime)s.upload_date,
+                                 UserId = (int)s.user_id,
+                                 SetTitle = s.name
+                             }).SingleOrDefault();
+            return View(viewModel);
         }
 
+        [Authorize(Roles = "Designer")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditSet(EditSetViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var model = (from s in db.Sets
+                             where s.set_id == viewModel.SetId
+                             select s).SingleOrDefault();
+                if (model != null)
+                {
+                    model.price = viewModel.SetCost;
+                    try
+                    {
+                        db.Entry(model).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                    TempData["TempSetMsg"] = "<div class='alert alert-success'><p>Update succesfull" + "</p>" +
+                                                        "<p><span class='glyphicon glyphicon-ok'></span> You have succesfully updated your set. </p></div>";
+
+                    return RedirectToAction("Details", new { setId = viewModel.SetId });
+
+                }
+            }
+            return RedirectToAction("UserProfile", "Account");
+        }
+        [Authorize(Roles = "Designer")]
+        [HttpGet]
+        public ActionResult DeleteSet(int setId)
+        {
+            var viewModel = (from s in db.Sets
+                             where s.set_id == setId
+                             select new DeleteSetViewModel()
+                             {
+                                 SetId = setId,
+                                 UserId = (int)s.user_id,
+                                 SetTitle = s.name,
+                                 TileCount = s.Tiles.Count()
+                             }).SingleOrDefault();
+            if (viewModel != null)
+            {
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("_DeleteSet", viewModel);
+                }
+                return View("DeleteSet", viewModel);
+            }
+            TempData["TempUserMsg"] = "<div class='alert alert-danger'><p>Delete unsuccesfull" + "</p>" +
+                                      "<p><span class='glyphicon glyphicon-remove'></span> A problem occured when trying to delete your set.</p>" +
+                                      "<p>Try again later or contact the adminstrator.</p></div>";
+
+            return RedirectToAction("UserProfile", "Account");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteSet(DeleteSetViewModel viewModel)
+        {
+            if (viewModel != null)
+            {
+                var model = (from s in db.Sets
+                             where s.set_id == viewModel.SetId
+                             select s).SingleOrDefault();
+
+                if (model == null)
+                {
+                    TempData["TempUserMsg"] = "<div class='alert alert-danger'><p>Delete unsuccesfull" + "</p>" +
+                                      "<p><span class='glyphicon glyphicon-remove'></span> A problem occured when trying to delete your set.</p>" +
+
+                                      "<p>Try again later or contact the adminstrator.</p></div>";
+                    return RedirectToAction("UserProfile", "Account");
+                }
+
+                db.Sets.Remove(model);
+
+                var tiles = from t in db.Tiles
+                            where t.set_id == viewModel.SetId
+                            select t;
+
+                foreach (var item in tiles)
+                {
+                    string imagePath = Request.MapPath("/Assets/SetUploads/" + model.user_id + model.set_id + item.url);
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        System.IO.File.Delete(imagePath);
+                    }
+                    db.Tiles.Remove(item);
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+
+                }
+
+                TempData["TempUserMsg"] = "<div class='alert alert-success'><p>Delete succesfull" + "</p>" +
+                                                       "<p><span class='glyphicon glyphicon-ok'></span> You have succesfully deleted your set. </p></div>";
+
+                return RedirectToAction("UserProfile", "Account");
+            }
+            return RedirectToAction("UserProfile", "Account");
+        }
+
+        #region helperMethods
         private void SaveToFolder(Image img, string fileName, string extension, Size newSize, string pathToSave)
         {
             // Get new resolution
@@ -131,5 +271,6 @@ namespace SquareApplication.Controllers
 
             return finalSize;
         }
+        #endregion
     }
 }

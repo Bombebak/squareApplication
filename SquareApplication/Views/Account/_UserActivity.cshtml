@@ -17,7 +17,9 @@
 <ul>
     @foreach (var item in Model)
     {
-        <li>@Html.ActionLink(item.SetTitle, "Details", "Set", null, new{id = item.SetId})
+        <li>@item.SetTitle
+            <p>@Html.ActionLink("Edit", "Details", "Set", new {setId = item.SetId}, new {@class = "squareOrange"})</p>
+            <p>@Html.ActionLink("Delete", "DeleteSet", "Set", new { setId = item.SetId }, new { @class = "modal-link squareOrange" })</p>
         </li>
         
     }
