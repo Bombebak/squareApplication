@@ -25,6 +25,9 @@ p {
 h1, h2, h3, h4, h5 {
     font-family:_LatoBold;
 }
+h1 {
+    font-size:26px;
+}
 nav {
     font-family: _LatoBold;
     font-size:smaller;
@@ -80,7 +83,47 @@ footer> .flexItem > img{
     margin-left: auto;
     margin-right: auto;
 }
-/* Typography */
+/* Bootstrap */
+.btn:hover {
+       border:0;
+}
+.btn-primary {
+    padding:0;
+        height: 50px;
+    width: 50px;
+    /* line-height: 50px; */
+    border-radius: 0;
+    background-color: lightgray;
+    text-align: center;
+    border-color: darkgray;
+    color: #575656;  
+}
+
+.btn-default {
+    padding:0;
+   height: 50px;
+    width: 50px;
+    background-color:#DC9B74 ;
+        text-align: center;
+    border-radius: 0;
+
+}
+
+.checkbox {
+    margin-left:4%;
+}
+
+.glyphicon-chevron-right, .glyphicon-chevron-left{
+    color:#75A48B;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus{
+    background-color:#DC9B74;
+}
+
+
+/*------*/
+
 .thumbnail {
      padding: 0; 
     border:0;
@@ -148,12 +191,23 @@ a{
    font-family: _Harlow;
     font-size: larger;
 }
-
+.square50 {
+    width:50px;
+    height:50px;
+}
 .square100{
     width: 100px;
     height: 100px;
     /*margin-right: 50px;*/
     border:0px;
+}
+
+.greyText {
+    color: #575656;
+}
+
+.width94 {
+    width: 94%;
 }
 
 .clearBoth{
@@ -171,10 +225,27 @@ a{
 .marginBottom1Percent{
    margin: 0 1vh 1vh 0;}
 
+.margin0 {
+    margin:0;
+}
 
+.marginBottom5 {
+    margin-bottom:5%;
+}
+
+.marginLeft {
+    margin-left: 2vw;
+}
 
 .marginTop150{
     margin-top: 150px;
+}
+
+.padding-left0 {
+    padding-left:0;
+    }
+.marginTopBottom {
+    margin:5% 0 5% 0;
 }
 
 .square100ThumbnailDarkBlue > input{
