@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model SquareApplication.Models.selectedSetViewModel
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -11,36 +12,37 @@
         <link rel="stylesheet" href="~/Content/css/style.css" />
     </head>
 
-        <body>
-            <section class="ourContainer">
-                <button id="removeGrid" class="square50 blockDisplay" onclick="removeGrid()">Grid</button>
+<body>
+<img src="@Model.tiles.First()"/>
+<section class="ourContainer">
+    <button id="removeGrid" class="square50 blockDisplay" onclick="removeGrid()">Grid</button>
 
-                <section id="droppableGrid" class="productGridContainer"></section>
+    <section id="droppableGrid" class="productGridContainer"></section>
 
-                <section class="inlineImageContainer">
-                    <button id="rotate" class="square50" onclick="rotate()">
-                        Rotate
-                        <!--<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>-->
-                    </button>
-                    <button id="invert" class="square50" onclick="invert()">Invert</button>
-                    <div id="selectedTileStyle" class="preview">
-                        <img class="previewImage" src="http://placehold.it/299x299">
-                    </div>
-                    <div id="imageContainter" class="overflowImages">
-                    </div>
-                </section>
-            </section>
-            
-            <!--<button id="Materials" onclick="materialize()">Remove Grid</button>-->
+    <section class="inlineImageContainer">
+        <button id="rotate" class="square50" onclick="rotate()">
+            Rotate
+            <!--<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>-->
+        </button>
+        <button id="invert" class="square50" onclick="invert()">Invert</button>
+        <div id="selectedTileStyle" class="preview">
+            <img class="previewImage" src="http://placehold.it/299x299">
+        </div>
+        <div id="imageContainter" class="overflowImages">
+        </div>
+    </section>
+</section>
 
-           <!-- Scripts -->
-            <script rel="script" src="~/Scripts/jquery-2.2.3.min.js"></script>
-            <script rel="script" src="~/Scripts/app/dragNdrop.js"></script>
-            <script rel="script" src="~/Scripts/app/grid.js"></script>
-            <script rel="script" src="~/Scripts/app/script.js"></script>
+<!--<button id="Materials" onclick="materialize()">Remove Grid</button>-->
+
+<!-- Scripts -->
+<script rel="script" src="~/Scripts/jquery-2.2.3.min.js"></script>
+<script rel="script" src="~/Scripts/app/dragNdrop.js"></script>
+<script rel="script" src="~/Scripts/app/grid.js"></script>
+<script rel="script" src="~/Scripts/app/script.js"></script>
 
 
-        </body>
+</body>
 
 
 
