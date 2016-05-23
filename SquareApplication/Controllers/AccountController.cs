@@ -53,7 +53,7 @@ namespace SquareApplication.Controllers
             {
                 return PartialView("_Login");
             }
-            return View();
+            return View("Login");
         }
 
         //
@@ -101,6 +101,10 @@ namespace SquareApplication.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Register");
+            }
             return View();
         }
 

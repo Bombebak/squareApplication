@@ -1,0 +1,26 @@
+﻿@model SquareApplication.Models.DeleteSetViewModel
+
+<div class="customized-modal-deleteSet">
+    <button id="modalCancelBtn" class="btn btn-primary">Close</button>
+    <div class="modal-header">
+        <h4 class="modal-title text-center" id="myModalLabel">You are deleting a set!</h4>
+    </div>
+    @using (Html.BeginForm("DeleteSet", "Set", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        <div class="modal-body">
+            <div class="form-horizontal">
+                <mark class="text-center">
+                    Title of set: @Html.DisplayFor(model => model.SetTitle)
+                </mark>
+                <p>
+                    It contains @Model.TileCount tiles
+                </p>
+
+            </div>
+            <p class="text-center certain">Are you sure?</p>
+        </div>
+        <div class="modal-footer">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </div>
+    }
+</div>

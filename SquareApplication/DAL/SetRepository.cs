@@ -19,7 +19,8 @@ namespace SquareApplication.DAL
                 select new UserActivityViewModel()
                 {
                     SetTitle = s.name,
-                    UploadDate = (DateTime) s.upload_date
+                    UploadDate = (DateTime) s.upload_date,
+                    SetId = s.set_id
                 });
         }
 
