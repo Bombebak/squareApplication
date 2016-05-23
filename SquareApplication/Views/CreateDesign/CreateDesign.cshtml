@@ -13,7 +13,6 @@
     </head>
 
 <body>
-<img src="@Model.tiles.First()"/>
 <section class="ourContainer">
     <button id="removeGrid" class="square50 blockDisplay" onclick="removeGrid()">Grid</button>
 
@@ -29,6 +28,13 @@
             <img class="previewImage" src="http://placehold.it/299x299">
         </div>
         <div id="imageContainter" class="overflowImages">
+            @{ var i = 0;}
+            @foreach (var tile in @Model.tiles)
+            {
+                var id = i + ".jpeg"; 
+                <img src="@tile" id="@id" class="arrangedTiles" ondragstart="drag(event)" draggable="true" onclick="selectTile(this)"/>
+                i++;
+            }
         </div>
     </section>
 </section>
@@ -43,7 +49,4 @@
 
 
 </body>
-
-
-
 </html>

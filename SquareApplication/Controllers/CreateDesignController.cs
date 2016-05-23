@@ -11,8 +11,14 @@ namespace SquareApplication.Controllers
     public class CreateDesignController : Controller
     {
      
-        public ActionResult CreateDesign(int set_id)
+        public ActionResult CreateDesign(int? set_id)
         {
+            if (set_id == null)
+            {
+                // It means the request comes from the landing page
+                // So we load the default set:
+                set_id = 1;
+            }
             selectedSetViewModel selectedSet;
             using (SquaresEntities db = new SquaresEntities())
             {
