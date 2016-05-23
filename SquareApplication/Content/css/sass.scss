@@ -166,15 +166,15 @@ main {
     @extend .customized-modal;
     /*Mobile version 375-767*/
     @media (min-width: 375px) and (max-width: 767px) {
-        @include customized-modal-size(75vw, 130vw, 20vh, 30vw);
+        @include customized-modal-size(75vw, 100vw, 10vh, 11vw);
     }
     /*Tablet version 768-1279*/
     @media (min-width: 768px) and (max-width: 1279px) {
-        @include customized-modal-size(45vw, 70vw, 20vh, 30vw);
+        @include customized-modal-size(50vw, 60vw, 20vh, 25vw);
     }
     /*Laptop version*/
     @media (min-width: 1279px) {
-        @include customized-modal-size(35vw, 30vw, 20vh, 30vw);
+        @include customized-modal-size(35vw, 25vw, 20vh, 30vw);
     }
 }
 
@@ -182,15 +182,15 @@ main {
     @extend .customized-modal;
     /*Mobile version 375-767*/
     @media (min-width: 375px) and (max-width: 767px) {
-        @include customized-modal-size(75vw, 130vw, 20vh, 30vw);
+        @include customized-modal-size(75vw, 60vw, 15vh, 13vw);
     }
     /*Tablet version 768-1279*/
     @media (min-width: 768px) and (max-width: 1279px) {
-        @include customized-modal-size(45vw, 70vw, 20vh, 30vw);
+        @include customized-modal-size(45vw, 30vw, 20vh, 22vw);
     }
     /*Laptop version*/
     @media (min-width: 1279px) {
-        @include customized-modal-size(35vw, 30vw, 20vh, 30vw);
+        @include customized-modal-size(35vw, 20vw, 20vh, 30vw);
     }
 }
 

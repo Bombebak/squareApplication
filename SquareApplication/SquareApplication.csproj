@@ -248,6 +248,7 @@
     <Compile Include="Models\Tag.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TagsViewModel.cs" />
     <Compile Include="Models\Tile.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>

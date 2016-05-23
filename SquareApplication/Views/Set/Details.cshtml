@@ -1,11 +1,15 @@
-﻿@model SquareApplication.Models.DetailsSetViewModel
+﻿@using System.Activities.Statements
+@model SquareApplication.Models.DetailsSetViewModel
 
 @{
     ViewBag.Title = "Details";
 }
 
 <div class="container">
-    @Html.Raw(TempData["TempSetMsg"])
+    <div class="">
+       @Html.Raw(TempData["TempSetMsg"]) 
+    </div>
+    
     <div class="row">
         @using (Html.BeginForm("EditSet", "Set", FormMethod.Post, new {@enctype = "multipart/form-data"}))
         {
@@ -32,22 +36,49 @@
                 </div>
             </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model., new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.SetCost, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.SetCost)
-        </div>
-    </div>
+            <div id="tagList" class="form-group">
+                @Html.LabelFor(model => model.SetTagsList, new {@class = "control-label col-md-2"})
+                <p>
+                    @Html.Raw(TempData["TempTagMsg"])
+                </p>
+                
+                @if (Model.SetTagsList != null)
+                {
+                    <div class="col-md-10">
+                        @foreach (var item in Model.SetTagsList)
+                        {
+                            @Ajax.ActionLink(" ", "DeleteTag", "Set", new {tagId = item.TagId, setId = item.SetId},
+                                new AjaxOptions()
+                                {
+                                    UpdateTargetId = "tagList",
+                                    InsertionMode = InsertionMode.Replace,
+                                    HttpMethod = "POST"
 
-            <div class="modal-footer">
+                                }, new {@class = "glyphicon glyphicon-remove"})
+                            <span>@item.TagName</span>
+                        }
+                        @Html.ValidationMessageFor(model => model.SetCost)
+                        
+                    </div>
+                }
+
+
+                @if (Model.SetTagsList == null)
+                {
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.TagTitle, new {@class = "form-control"})
+                    </div>
+                }
+
+            </div>
+
+
+            <div class="form-group">
                 <input type="submit" value="Update" class="btn btn-primary"/>
             </div>
         }
 
     </div>
 </div>
-
-
 area for tiles
 

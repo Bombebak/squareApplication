@@ -110,7 +110,7 @@ namespace SquareApplication.Controllers
                     }
                 }
 
-                return RedirectToAction("Details", "Set", new { setId = viewModel.SetId });
+                return RedirectToAction("Details", "Set", new { setId = modelSet.set_id });
 
             }
             return PartialView("_CreateSet");
@@ -118,7 +118,9 @@ namespace SquareApplication.Controllers
 
         public ActionResult Details(int setId)
         {
+            
             var viewModel = (from s in db.Sets
+
                              where s.set_id == setId
                              select new DetailsSetViewModel()
                              {
@@ -128,6 +130,32 @@ namespace SquareApplication.Controllers
                                  UserId = (int)s.user_id,
                                  SetTitle = s.name
                              }).SingleOrDefault();
+
+            if (viewModel == null)
+            {
+                return HttpNotFound();
+            }
+
+            var tags = from st in db.Set_Tag
+                       join t in db.Tags
+                           on st.tag_id equals t.tag_id
+                           where st.set_id == setId
+                       select new TagsViewModel()
+                       {
+                           SetId = setId,
+                           TagId = t.tag_id,
+                           TagName = t.name
+                       };
+            List<TagsViewModel> enteredTagsList = new List<TagsViewModel>();
+            if (tags.Any())
+            {
+                foreach (var item in tags)
+                {
+                    enteredTagsList.Add(item);
+                }
+                viewModel.SetTagsList = enteredTagsList;
+            }
+
             return View(viewModel);
         }
 
@@ -144,6 +172,35 @@ namespace SquareApplication.Controllers
                 if (model != null)
                 {
                     model.price = viewModel.SetCost;
+                    if (viewModel.TagTitle != null)
+                    {
+                        string[] enteredTagsList = viewModel.TagTitle.Split(',');
+                        foreach (string item in enteredTagsList)
+                        {
+                            var modelTag = new Tag()
+                            {
+                                name = item
+                            };
+                            db.Tags.Add(modelTag);
+                            var modelSetTag = new Set_Tag()
+                            {
+                                set_id = viewModel.SetId,
+                                tag_id = modelTag.tag_id
+                            };
+                            db.Set_Tag.Add(modelSetTag);
+                            try
+                            {
+                                db.SaveChanges();
+                            }
+                            catch (Exception)
+                            {
+
+                                throw;
+                            }
+                        }
+                    }
+                   
+
                     try
                     {
                         db.Entry(model).State = EntityState.Modified;
@@ -159,6 +216,8 @@ namespace SquareApplication.Controllers
                     return RedirectToAction("Details", new { setId = viewModel.SetId });
 
                 }
+                TempData["TempSetMsg"] = "<div class='alert alert-danger'><p>Update succesfull" + "</p>" +
+                                                        "<p><span class='glyphicon glyphicon-remove'></span> An error has occured when trying to update your set. </p></div>";
             }
             return RedirectToAction("UserProfile", "Account");
         }
@@ -216,7 +275,7 @@ namespace SquareApplication.Controllers
 
                 foreach (var item in tiles)
                 {
-                    string imagePath = Request.MapPath("/Assets/SetUploads/" + model.user_id + model.set_id + item.url);
+                    string imagePath = Request.MapPath(item.url);
                     if (System.IO.File.Exists(imagePath))
                     {
                         System.IO.File.Delete(imagePath);
@@ -240,6 +299,39 @@ namespace SquareApplication.Controllers
                 return RedirectToAction("UserProfile", "Account");
             }
             return RedirectToAction("UserProfile", "Account");
+        }
+
+        [Authorize(Roles = "Designer")]
+        [HttpGet]
+        public ActionResult DeleteTag(int tagId, int setId)
+        {
+            var model = (from t in db.Tags
+                where t.tag_id == tagId
+                select t).SingleOrDefault();
+            if (model != null)
+            {
+                var setTag = (from st in db.Set_Tag
+                    where st.tag_id == tagId
+                    select st).FirstOrDefault();
+
+                db.Set_Tag.Remove(setTag);
+                db.Tags.Remove(model);
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                TempData["TempTagMsg"] = "<div class='alert alert-success'><p>Delete succesfull" + "</p>" +
+                                                       "<p><span class='glyphicon glyphicon-ok'></span> You have succesfully deleted a tag. </p></div>";
+
+                return RedirectToAction("Details", new { setId });
+            }
+            TempData["TempTagMsg"] = "<div class='alert alert-danger'><p>Delete unsuccesfull" + "</p>" +
+                                                       "<p><span class='glyphicon glyphicon-remove'></span> A error has occured when tryin to delete a tag. </p></div>";
+            return RedirectToAction("Details", new{ setId });
         }
 
         #region helperMethods
