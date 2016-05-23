@@ -11,7 +11,7 @@ namespace SquareApplication.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("Landing");
         }
 
         public ActionResult About()
@@ -25,10 +25,10 @@ namespace SquareApplication.Controllers
             return View();
         }
 
-        public ActionResult Landing()
-        {
-            return View();
-        }
+        //public ActionResult Landing()
+        //{
+        //    return View();
+        //}
 
         public ActionResult Contact()
         {

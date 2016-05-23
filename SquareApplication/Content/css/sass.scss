@@ -239,6 +239,41 @@ main {
   text-align: center;
 }
 
+//extras
+$darkerBlue: rgb(100,151,121);
+@mixin lineHeight($height){
+  line-height: $height;
+}
+
+
+
+.centerTextInDiv{
+  text-align: center;
+  vertical-align: middle;
+  @include lineHeight(50px);
+}
+
+//div.square100Thumbnail{
+//  @include lineHeight(100px);
+//}
+
+.square100ThumbnailBlue{
+  @include makeMeSquare(100px);
+  padding: 0;
+  color: white;
+  @include lineHeight(100px);
+  font-family: _LatoRegular;
+  font-size: small;
+  @include colourSquare($blue);
+}
+.square100ThumbnailDarkBlue{
+  @extend .square100ThumbnailBlue;
+  @include colourSquare($darkerBlue);
+}
+
+
+
+/*Media queries*/
 
 @media screen and (min-width: 0px) {
   #logoNav{
