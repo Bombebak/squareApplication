@@ -66,14 +66,20 @@ main{
   @include colourSquare($grey);
 }
 
-@mixin topLeftNav($top,$left){
+
+@mixin topRightLeft($top,$right,$left){
+  top: $top;
+  right: $right;
+  left: $left;
+}
+/*@mixin topLeftNav($top,$left){
   top: $top;
   left: $left;
 }
 @mixin topRightNav($top,$right){
   top: $top;
   right: $right;
-}
+}*/
 .centerTextInDiv{
   text-align: center;
   vertical-align: middle;
@@ -87,17 +93,33 @@ main{
 
 
 .top0left0{
-  @include topLeftNav(0,0);
+  //@include topLeftNav(0,0);
+  @include topRightLeft(0,auto,0);
 }
 .top50left50{
-  @include topLeftNav(50px,50px);
+  //@include topLeftNav(50px,50px);
+  @include topRightLeft(50px,auto,50px);
+
 }
 .top0right50{
-  @include topRightNav(0,50px);
+  //@include topRightNav(0,50px);
+  @include topRightLeft(0,50px,auto);
+
 }
 .top50right0{
-  @include topRightNav(50px,0);
+  //@include topRightNav(50px,0);
+  @include topRightLeft(50px,0,auto);
+
 }
+
+//mobile
+.top0right0{
+  @include topRightLeft(0,0,auto);
+}
+.top50right50{
+  @include topRightLeft(50px,50px, auto);
+}
+
 
 /* Thumbs */
 
@@ -110,8 +132,49 @@ main{
   font-size: small;
 
 }
+
 .displayThumb{
   display: inline-block;
   vertical-align: middle;
   text-align: center;
+}
+
+
+@media screen and (min-width: 0px) {
+  #logoNav{
+    @include topRightLeft(0,0,auto);  }
+  #exploreNav{
+    @include topRightLeft(50px,50px, auto);
+
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #logoNav{
+    @include topRightLeft(0,0,auto);
+  }
+  #exploreNav{
+    @include topRightLeft(50px,50px, auto);
+
+  }
+}
+
+@media screen and (min-width: 991px) {
+  #logoNav{
+    @include topRightLeft(0,0,auto);
+  }
+  #exploreNav{
+    @include topRightLeft(50px,50px, auto);
+
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #logoNav{
+    @include topRightLeft(0,auto,0);
+  }
+  #exploreNav{
+    @include topRightLeft(50px,auto, 50px);
+
+  }
 }

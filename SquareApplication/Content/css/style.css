@@ -34,7 +34,9 @@ header{
         z-index:1;
 
 }
-
+nav > a {
+    color:white;
+}
  a:hover, a:focus {
     color: white;
     text-decoration: none;
