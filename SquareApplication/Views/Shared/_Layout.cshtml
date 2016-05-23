@@ -12,8 +12,8 @@
 
 </head>
 <body>
-    <header class="marginBottom150">
-        <nav>
+    <header >
+        <nav >
             <a href="/Explore/explore"><div class="centerTextInDiv squareBlue  top50left50 fixed">Explore</div></a>
             <a href="/home/about"><div class="centerTextInDiv squareBrown top0right50 fixed">About</div></a>
             @if (Request.IsAuthenticated)
@@ -47,14 +47,14 @@
         </nav>
 
     </header>
-<div class="container body-content">
+    <div class="container body-content">
     <div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-content">
         </div>
     </div>
-    @RenderBody()
-    <div style="clear: both"></div>
-</div>
+        @RenderBody()
+        <div style="clear: both"></div>
+         </div>
     <footer class="flexContainer">
         <div class="flexItem">
             <p>Contacts</p>
@@ -70,7 +70,6 @@
             <p>A project by</p>
             <img src="~/Assets/images/site/KongOrange.png">
         </div>
-        @*<p>&copy; @DateTime.Now.Year - Squares Application</p>*@
     </footer>
 
     @Scripts.Render("~/bundles/jquery")

@@ -5,18 +5,18 @@ $orange: #DC9B74;
 $grey: #666666;
 
 .circleLogo {
-    height: 40px;
-    width: 40px;
-    border-radius: 50px;
-    border: solid 1px grey;
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  border: solid 1px grey;
     margin: 4px;
-    background-color: white;
+  background-color: white;
 }
 
 header {
-    position: absolute;
-    display: block;
-    clear: both;
+position: absolute;
+  display: block;
+  clear: both;
 }
 
 main {
@@ -25,15 +25,15 @@ main {
 }
 
 @mixin makeMeSquare($size) {
-    width: $size;
-    height: $size;
+  width: $size;
+  height: $size;
 }
 
 .square50 {
-    @include makeMeSquare(50px);
-    color: white;
-    -webkit-border-radius: 0;
-    -ms-border-radius: 0;
+  @include makeMeSquare(50px);
+  color: white;
+  -webkit-border-radius: 0;
+  -ms-border-radius: 0;
 }
 
 .square200 {
@@ -45,52 +45,52 @@ main {
 }
 
 @mixin colourSquare($color) {
-    background-color: $color;
+  background-color: $color;
 }
 // Different color squares
 .squareRed {
-    @extend .square50;
-    @include colourSquare($red);
+  @extend .square50;
+  @include colourSquare($red);
 }
 
 .squareOrange {
-    @extend .square50;
-    @include colourSquare($orange);
+  @extend .square50;
+  @include colourSquare($orange);
 }
 
 .squareBlue {
-    @extend .square50;
-    @include colourSquare($blue);
+  @extend .square50;
+  @include colourSquare($blue);
 }
 
 .squareBrown {
-    @extend .square50;
+  @extend .square50;
     @include colourSquare($brown);
 }
 
 .squareGrey {
-    @extend .square50;
-    @include colourSquare($grey);
+  @extend .square50;
+  @include colourSquare($grey);
 }
 
 @mixin topLeftNav($top,$left) {
-    top: $top;
-    left: $left;
+  top: $top;
+  left: $left;
 }
 
 @mixin topRightNav($top,$right) {
-    top: $top;
-    right: $right;
+  top: $top;
+  right: $right;
 }
 
 .centerTextInDiv {
-    text-align: center;
-    vertical-align: middle;
-    line-height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
 }
 
 .fixed {
-    position: fixed;
+  position: fixed;
 }
 
 .marginBottom150 {
@@ -99,19 +99,19 @@ main {
 
 
 .top0left0 {
-    @include topLeftNav(0,0);
+  @include topLeftNav(0,0);
 }
 
 .top50left50 {
-    @include topLeftNav(50px,50px);
+  @include topLeftNav(50px,50px);
 }
 
 .top0right50 {
-    @include topRightNav(0,50px);
+  @include topRightNav(0,50px);
 }
 
 .top50right0 {
-    @include topRightNav(50px,0);
+  @include topRightNav(50px,0);
 }
 
 /* -------------------- modal begin -------------------- */
@@ -195,3 +195,20 @@ main {
 }
 
 /* -------------------- modal end -------------------- */
+
+/* Thumbs */
+
+.square100Thumbnail{
+  @include makeMeSquare(100px);
+  @include colourSquare($red);
+  padding: 0;
+  color: white;
+  font-family: _LatoRegular;
+  font-size: small;
+
+}
+.displayThumb{
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}

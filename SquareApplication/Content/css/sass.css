@@ -165,5 +165,19 @@ main {
       left: 30vw; } }
 
 /* -------------------- modal end -------------------- */
+/* Thumbs */
+.square100Thumbnail {
+  width: 100px;
+  height: 100px;
+  background-color: #EC2F39;
+  padding: 0;
+  color: white;
+  font-family: _LatoRegular;
+  font-size: small; }
+
+.displayThumb {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center; }
 
 /*# sourceMappingURL=sass.css.map */

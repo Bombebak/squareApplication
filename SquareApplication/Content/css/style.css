@@ -1,28 +1,52 @@
-.invertColors {
-    -webkit-filter: invert(100%);
+/*Fonts*/
+@font-face {
+    font-family: '_LatoBold';
+    src: url('../../Assets/fonts/Lato-Bold.ttf')
+    format('truetype');
 }
-.noBorder{
-    border: 0px;
+
+@font-face {
+    font-family: '_LatoRegular';
+    src: url('../../Assets/fonts/Lato-Regular.ttf')
+    format('truetype');
 }
-#selectedTileStyle{
-    display: block;
+
+@font-face {
+    font-family: '_Harlow';
+    src: url('../../Assets/fonts/Harlow%20Solid%20Italic%20Italic.ttf')
+    format('truetype');
 }
-.doubleSize{
-    transform: scale(2);
-float: right;
+/**DOM elem**/
+    /*typography*/
+p {
+    font-family:_LatoRegular;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family:_LatoBold;
+}
+nav {
+    font-family: _LatoBold;
+    font-size:smaller;
+    margin-bottom: 150px;
+}
+header{
+        z-index:1;
 
 }
 
-
+ a:hover, a:focus {
+    color: white;
+    text-decoration: none;
+}
 
 /* Footer */
 footer{
     padding:60px 0 60px 0;
     position: relative;
     width: 100%;
-    bottom: -17px;
+    bottom: 0;
     background-repeat: no-repeat;
-    /*background-image: url("~/Assets/images/site/Footer3.JPG");*/
     background-image: url("../../Assets/images/site/Footer3.JPG");
     background-size: cover;
 
@@ -50,6 +74,41 @@ footer> .flexItem > img{
     margin-left: auto;
     margin-right: auto;
 }
+/* Typography */
+.thumbnail {
+     padding: 0; 
+    border:0;
+    border-radius:0;
+    transition:none;
+   }
+
+.thumbnail:hover {
+    box-shadow: 0 2px 4px #919890;}
+
+.thumbnail > .floatLeft img {
+    margin:0;
+}
+
+/*********/
+.invertColors {
+    -webkit-filter: invert(100%);
+}
+.noBorder{
+    border: 0px;
+}
+#selectedTileStyle{
+    display: block;
+}
+
+#loginLink {
+    color:white;
+}
+.doubleSize{
+    transform: scale(2);
+float: right;
+
+}
+
 
 .flexContainer {
     display: flex;
@@ -66,3 +125,42 @@ footer> .flexItem > img{
     flex-grow: 1 ;
 }
 
+
+a{
+    text-decoration: none;
+}
+
+.centered{
+    margin: 0 auto;
+    text-align: center;}
+
+.square100Thumbnail > p, h1,h2,h3,h4{
+    text-align: center;
+}
+
+.setTitle{
+   font-family: _Harlow;
+    font-size: larger;
+}
+
+.square100{
+    width: 100px;
+    height: 100px;
+    /*margin-right: 50px;*/
+    border:0px;
+}
+
+.clearBoth{
+    clear:both;
+}
+
+.floatLeft{
+    float: left;
+}
+
+.inlineBlock{
+    display: inline-block;
+}
+
+.marginBottom1Percent{
+   margin: 0 1vh 1vh 0;}
