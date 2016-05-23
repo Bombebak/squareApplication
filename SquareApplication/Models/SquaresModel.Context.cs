@@ -21,18 +21,18 @@ namespace SquareApplication.Models
             : base("name=SquaresEntities")
         {
         }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
 
         public User GetUser(string name)
         {
             var user = Users.SingleOrDefault(u => u.name == name);
             return user;
         }
-
+    
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }
+    
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Set> Sets { get; set; }
