@@ -11,22 +11,19 @@ namespace SquareApplication.Controllers
     public class ExploreController : Controller
     {
 
+        // GET: Explore
         public ActionResult Explore()
         {
-            return View("Explore");
-        }
-        // GET: Explore
-        //public ActionResult Explore()
-        //{
-        //    IList<Set> sets = new List<Set>();
+            IList<Set> sets = new List<Set>();
 
-        //    using (SquaresEntities db = new SquaresEntities())
-        //    {
-        //        sets = db.Sets.Include("Tiles").Include("User").ToList();
-        //    }
-        //    ViewBag.sets = sets;
-        //    return View();
-        //}
+            using (SquaresEntities db = new SquaresEntities())
+            {
+                sets = db.Sets.Include("Tiles").Include("User").ToList();
+                
+            }
+            ViewBag.sets = sets;
+            return View();
+        }
 
         //[HttpPost]
         //public ActionResult Explore(int set_id)

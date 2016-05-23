@@ -224,6 +224,7 @@
     <Compile Include="Models\Role.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\selectedSetViewModel.cs" />
     <Compile Include="Models\Set.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
