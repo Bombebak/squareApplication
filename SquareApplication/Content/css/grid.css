@@ -2,7 +2,7 @@
     display: block;
 }
 .halfSize{
-    transform: scale(0.1);;
+    transform: scale(0.1);
 }
 
 /* Pulse http://ianlunn.github.io/Hover/ */
@@ -132,7 +132,9 @@
 }
 
 .overflowImages{
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x:auto;
+
 background: rgba(255, 255, 255, 0.77);
     margin-top: 20px;
 }
