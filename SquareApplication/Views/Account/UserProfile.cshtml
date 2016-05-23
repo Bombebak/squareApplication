@@ -16,9 +16,13 @@
                 <a href="#_ChangeProfileSettingsTab"
                    data-toggle="tab">Your profile</a>
             </li>
-            <li>
-                <a href="#_UserActivityTab" data-toggle="tab">Activity</a>
-            </li>
+            @if (User.IsInRole("Designer"))
+            {
+                <li>
+                    <a href="#_UserActivityTab" data-toggle="tab">Activity</a>
+                </li>
+            }
+
         </ul>
         <div id="my-tab-content" class="tab-content">
             <div class="tab-pane  active" id="_ChangeProfileSettingsTab">
@@ -26,12 +30,14 @@
                     @{Html.RenderPartial("_ChangeProfileSettings", this.ViewData.Model.ChangeProfileViewModel);}
                 </div>
             </div>
-            <div class="tab-pane" id="_UserActivityTab">
-                <div class="row header">
-                    @{Html.RenderPartial("_UserActivity", this.ViewData.Model.UserActivityViewModel);}
+            @if (User.IsInRole("Designer"))
+            {
+                <div class="tab-pane" id="_UserActivityTab">
+                    <div class="row header">
+                        @{Html.RenderPartial("_UserActivity", this.ViewData.Model.UserActivityViewModel);}
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 </div>
-
