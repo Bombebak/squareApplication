@@ -13,5 +13,11 @@ namespace SquareApplication.Controllers
         {
             return View("CreateDesign");
         }
+
+        public ActionResult CreateDesign(int setId)
+        {
+            
+            return View("CreateDesign");
+        }
     }
 }

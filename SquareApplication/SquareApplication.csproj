@@ -270,7 +270,7 @@
     <Content Include="App_Data\aspnet-SquareApplication-20160517104849_log.ldf">
       <DependentUpon>aspnet-SquareApplication-20160517104849.mdf</DependentUpon>
     </Content>
-    <Content Include="Assets\images\1.jpg" />
+    <Content Include="Assets\SetUploads\1\1.jpg" />
     <Content Include="Assets\images\10.jpg" />
     <Content Include="Assets\images\11.jpg" />
     <Content Include="Assets\images\12.jpg" />
@@ -281,7 +281,7 @@
     <Content Include="Assets\images\17.jpg" />
     <Content Include="Assets\images\18.jpg" />
     <Content Include="Assets\images\19.jpg" />
-    <Content Include="Assets\images\2.jpg" />
+    <Content Include="Assets\SetUploads\1\2.jpg" />
     <Content Include="Assets\images\20.jpg" />
     <Content Include="Assets\images\21.jpg" />
     <Content Include="Assets\images\22.jpg" />
@@ -292,7 +292,7 @@
     <Content Include="Assets\images\27.jpg" />
     <Content Include="Assets\images\28.jpg" />
     <Content Include="Assets\images\29.jpg" />
-    <Content Include="Assets\images\3.jpg" />
+    <Content Include="Assets\SetUploads\1\3.jpg" />
     <Content Include="Assets\images\30.jpg" />
     <Content Include="Assets\images\31.jpg" />
     <Content Include="Assets\images\32.jpg" />
@@ -302,12 +302,12 @@
     <Content Include="Assets\images\36.jpg" />
     <Content Include="Assets\images\37.jpg" />
     <Content Include="Assets\images\38.jpg" />
-    <Content Include="Assets\images\4.jpg" />
-    <Content Include="Assets\images\5.jpg" />
-    <Content Include="Assets\images\6.jpg" />
-    <Content Include="Assets\images\7.jpg" />
-    <Content Include="Assets\images\8.jpg" />
-    <Content Include="Assets\images\9.jpg" />
+    <Content Include="Assets\SetUploads\1\4.jpg" />
+    <Content Include="Assets\SetUploads\1\5.jpg" />
+    <Content Include="Assets\SetUploads\2\6.jpg" />
+    <Content Include="Assets\SetUploads\2\7.jpg" />
+    <Content Include="Assets\SetUploads\2\8.jpg" />
+    <Content Include="Assets\SetUploads\2\9.jpg" />
     <Content Include="Assets\images\blizniak.jpg" />
     <Content Include="Assets\images\panibut.jpg" />
     <Content Include="Assets\images\panie.jpg" />
@@ -322,6 +322,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\explore.css" />
     <Content Include="Content\css\grid.css" />
     <Content Include="Content\css\landingPage.css" />
     <Content Include="Content\css\reset.css" />
@@ -1212,8 +1213,6 @@
     <Content Include="Views\Account\_Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\SetUploads\1\" />
-    <Folder Include="Assets\SetUploads\2\" />
     <Folder Include="Assets\SetUploads\3\" />
     <Folder Include="Assets\SetUploads\4\" />
     <Folder Include="Assets\SetUploads\5\" />
