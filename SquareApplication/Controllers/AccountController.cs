@@ -60,7 +60,8 @@ namespace SquareApplication.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
+        [ValidateAjax]
         public ActionResult Login(LoginViewModel model, string returnUrl)
         {
 
@@ -79,18 +80,21 @@ namespace SquareApplication.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Explore", "Explore");
                     }
 
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Email and password doesn't match.");
+                    TempData["TempUserMsg"] = "<div class='alert alert-danger'><p>Update succesfull" + "</p>" +
+                                                        "<p><span class='glyphicon glyphicon-remove'></span> An error has occured when trying to update your set. </p></div>";
+                    ModelState.AddModelError("model", "Email and password doesn't match.");
+                    return RedirectToAction("Login");
+                    //return PartialView("Login", model);
                 }
 
             }
-
-            return View(model);
+            return View("Login", model);
         }
 
 

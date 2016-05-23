@@ -18,14 +18,15 @@ namespace SquareApplication.Models
 
         public int TagId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "A set title is required")]
+        [StringLength(160)]
         [Display(Name="Title")]
         public string SetTitle { get; set; }
 
         public string TileUrl { get; set; }
 
         [Required]
-        [Display(Name = "Title")]
+        [Display(Name = "Images")]
         public string Images { get; set; }
 
         [Required]
