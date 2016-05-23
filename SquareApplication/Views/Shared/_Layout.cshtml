@@ -14,7 +14,12 @@
 <body>
     <header >
         <nav >
-            <a href="/Explore/explore"><div class="centerTextInDiv squareBlue  top50left50 fixed">Explore</div></a>
+            <nav>   
+                <div id="logoNav" class="centerTextInDiv squareBlue top0left0 fixed">
+                    <div class="circleLogo">    </div>
+                </div>
+            </nav>
+            <a href="/Explore/explore"><div id="exploreNav" class="centerTextInDiv squareBlue  top50left50 fixed">Explore</div></a>
             <a href="/home/about"><div class="centerTextInDiv squareBrown top0right50 fixed">About</div></a>
             @if (Request.IsAuthenticated)
             {
@@ -40,7 +45,7 @@
                 <div class="centerTextInDiv squareOrange top50right0  fixed">@Html.ActionLink("Log in", "Login", "Account", null, new { id = "loginLink", @class = "modal-link" })</div>
             }
             <a href="/explore/explore">
-                <div class="centerTextInDiv squareBlue top0left0 fixed">
+                <div id="logoNav" class="centerTextInDiv squareBlue top0left0 fixed">
                     <div class="circleLogo">    </div>
                 </div>
             </a>

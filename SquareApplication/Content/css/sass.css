@@ -44,6 +44,19 @@ main {
 .squareGrey {
   background-color: #666666; }
 
+/*@mixin topLeftNav($top,$left){
+=======
+@mixin topLeftNav($top,$left) {
+>>>>>>> origin/master
+  top: $top;
+  left: $left;
+}
+
+@mixin topRightNav($top,$right) {
+  top: $top;
+  right: $right;
+<<<<<<< HEAD
+}*/
 .centerTextInDiv {
   text-align: center;
   vertical-align: middle;
@@ -57,19 +70,33 @@ main {
 
 .top0left0 {
   top: 0;
+  right: auto;
   left: 0; }
 
 .top50left50 {
   top: 50px;
+  right: auto;
   left: 50px; }
 
 .top0right50 {
   top: 0;
-  right: 50px; }
+  right: 50px;
+  left: auto; }
 
 .top50right0 {
   top: 50px;
-  right: 0; }
+  right: 0;
+  left: auto; }
+
+.top0right0 {
+  top: 0;
+  right: 0;
+  left: auto; }
+
+.top50right50 {
+  top: 50px;
+  right: 50px;
+  left: auto; }
 
 /* -------------------- modal begin -------------------- */
 .cover {
@@ -179,5 +206,46 @@ main {
   display: inline-block;
   vertical-align: middle;
   text-align: center; }
+
+@media screen and (min-width: 0px) {
+  #logoNav {
+    top: 0;
+    right: 0;
+    left: auto; }
+
+  #exploreNav {
+    top: 50px;
+    right: 50px;
+    left: auto; } }
+@media screen and (min-width: 768px) {
+  #logoNav {
+    top: 0;
+    right: 0;
+    left: auto; }
+
+  #exploreNav {
+    top: 50px;
+    right: 50px;
+    left: auto; } }
+@media screen and (min-width: 991px) {
+  #logoNav {
+    top: 0;
+    right: 0;
+    left: auto; }
+
+  #exploreNav {
+    top: 50px;
+    right: 50px;
+    left: auto; } }
+@media screen and (min-width: 1200px) {
+  #logoNav {
+    top: 0;
+    right: auto;
+    left: 0; }
+
+  #exploreNav {
+    top: 50px;
+    right: auto;
+    left: 50px; } }
 
 /*# sourceMappingURL=sass.css.map */

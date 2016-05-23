@@ -73,7 +73,16 @@ main {
   @include colourSquare($grey);
 }
 
+
+@mixin topRightLeft($top,$right,$left){
+  top: $top;
+  right: $right;
+  left: $left;
+}
+/*@mixin topLeftNav($top,$left){
+=======
 @mixin topLeftNav($top,$left) {
+>>>>>>> origin/master
   top: $top;
   left: $left;
 }
@@ -81,9 +90,13 @@ main {
 @mixin topRightNav($top,$right) {
   top: $top;
   right: $right;
+<<<<<<< HEAD
+}*/
+.centerTextInDiv{
 }
 
 .centerTextInDiv {
+
   text-align: center;
   vertical-align: middle;
   line-height: 50px;
@@ -98,20 +111,32 @@ main {
 }
 
 
-.top0left0 {
-  @include topLeftNav(0,0);
+.top0left0{
+  //@include topLeftNav(0,0);
+  @include topRightLeft(0,auto,0);
+}
+.top50left50{
+  //@include topLeftNav(50px,50px);
+  @include topRightLeft(50px,auto,50px);
+
+}
+.top0right50{
+  //@include topRightNav(0,50px);
+  @include topRightLeft(0,50px,auto);
+
+}
+.top50right0{
+  //@include topRightNav(50px,0);
+  @include topRightLeft(50px,0,auto);
+
 }
 
-.top50left50 {
-  @include topLeftNav(50px,50px);
+//mobile
+.top0right0{
+  @include topRightLeft(0,0,auto);
 }
-
-.top0right50 {
-  @include topRightNav(0,50px);
-}
-
-.top50right0 {
-  @include topRightNav(50px,0);
+.top50right50{
+  @include topRightLeft(50px,50px, auto);
 }
 
 /* -------------------- modal begin -------------------- */
@@ -207,8 +232,84 @@ main {
   font-size: small;
 
 }
+
 .displayThumb{
   display: inline-block;
   vertical-align: middle;
   text-align: center;
+}
+
+//extras
+$darkerBlue: rgb(100,151,121);
+@mixin lineHeight($height){
+  line-height: $height;
+}
+
+
+
+.centerTextInDiv{
+  text-align: center;
+  vertical-align: middle;
+  @include lineHeight(50px);
+}
+
+//div.square100Thumbnail{
+//  @include lineHeight(100px);
+//}
+
+.square100ThumbnailBlue{
+  @include makeMeSquare(100px);
+  padding: 0;
+  color: white;
+  @include lineHeight(100px);
+  font-family: _LatoRegular;
+  font-size: small;
+  @include colourSquare($blue);
+}
+.square100ThumbnailDarkBlue{
+  @extend .square100ThumbnailBlue;
+  @include colourSquare($darkerBlue);
+}
+
+
+
+/*Media queries*/
+
+@media screen and (min-width: 0px) {
+  #logoNav{
+    @include topRightLeft(0,0,auto);  }
+  #exploreNav{
+    @include topRightLeft(50px,50px, auto);
+
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #logoNav{
+    @include topRightLeft(0,0,auto);
+  }
+  #exploreNav{
+    @include topRightLeft(50px,50px, auto);
+
+  }
+}
+
+@media screen and (min-width: 991px) {
+  #logoNav{
+    @include topRightLeft(0,0,auto);
+  }
+  #exploreNav{
+    @include topRightLeft(50px,50px, auto);
+
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #logoNav{
+    @include topRightLeft(0,auto,0);
+  }
+  #exploreNav{
+    @include topRightLeft(50px,auto, 50px);
+
+  }
 }

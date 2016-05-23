@@ -34,7 +34,9 @@ header{
         z-index:1;
 
 }
-
+nav > a {
+    color:white;
+}
  a:hover, a:focus {
     color: white;
     text-decoration: none;
@@ -164,3 +166,16 @@ a{
 
 .marginBottom1Percent{
    margin: 0 1vh 1vh 0;}
+
+
+
+.marginTop150{
+    margin-top: 150px;
+}
+
+.square100ThumbnailDarkBlue > input{
+    width:85%;
+    height: 24%;
+    color: #3c3c3c;
+    border:0;
+}
