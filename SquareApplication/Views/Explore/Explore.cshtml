@@ -15,14 +15,14 @@
     @foreach (var s in ViewBag.sets)
     {
 
-        <a href="#" class="thumbnail inlineBlock marginBottom1Percent">
+        <a href="@Url.Action("CreateDesign","CreateDesign", new {set_id = s.set_id})" class="thumbnail inlineBlock marginBottom1Percent">
             @{ var i = 0;}
             @foreach (var t in s.Tiles)
             {
                 if (i < 2)
                 {
-                    <img class="floatLeft square100" src="@t.url" />
-                    
+                    <img class="floatLeft square100" src="@t.url"/>
+
                 }
                 if (i == 2)
                 {

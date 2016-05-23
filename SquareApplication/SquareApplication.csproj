@@ -223,6 +223,7 @@
     <Compile Include="Models\Role.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\selectedSetViewModel.cs" />
     <Compile Include="Models\Set.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
@@ -270,6 +271,15 @@
     <Content Include="App_Data\aspnet-SquareApplication-20160517104849_log.ldf">
       <DependentUpon>aspnet-SquareApplication-20160517104849.mdf</DependentUpon>
     </Content>
+    <Content Include="Assets\images\1.jpg" />
+    <Content Include="Assets\images\2.jpg" />
+    <Content Include="Assets\images\3.jpg" />
+    <Content Include="Assets\images\4.jpg" />
+    <Content Include="Assets\images\5.jpg" />
+    <Content Include="Assets\images\6.jpg" />
+    <Content Include="Assets\images\7.jpg" />
+    <Content Include="Assets\images\8.jpg" />
+    <Content Include="Assets\images\9.jpg" />
     <Content Include="Assets\SetUploads\1\1.jpg" />
     <Content Include="Assets\images\10.jpg" />
     <Content Include="Assets\images\11.jpg" />
