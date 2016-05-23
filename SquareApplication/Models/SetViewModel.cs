@@ -50,6 +50,12 @@ namespace SquareApplication.Models
         [Display(Name = "Title")]
         public string SetTitle { get; set; }
 
+        [Display(Name = "Tags")]
+        public string TagTitle { get; set; }
+
+        [Display(Name = "Tags")]
+        public List<TagsViewModel> SetTagsList { get; set; }
+
         public DateTime UploadedTime { get; set; }
 
         [Display(Name = "Price for set")]
@@ -67,6 +73,12 @@ namespace SquareApplication.Models
 
         [Display(Name = "Title")]
         public string SetTitle { get; set; }
+
+        [Display(Name = "Tags")]
+        public string TagTitle { get; set; }
+
+        [Display(Name = "Tags")]
+        public List<TagsViewModel> SetTagsList { get; set; }
 
         public DateTime UploadedTime { get; set; }
 

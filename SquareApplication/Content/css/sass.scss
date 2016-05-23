@@ -191,15 +191,15 @@ main {
     @extend .customized-modal;
     /*Mobile version 375-767*/
     @media (min-width: 375px) and (max-width: 767px) {
-        @include customized-modal-size(75vw, 130vw, 20vh, 30vw);
+        @include customized-modal-size(75vw, 100vw, 10vh, 11vw);
     }
     /*Tablet version 768-1279*/
     @media (min-width: 768px) and (max-width: 1279px) {
-        @include customized-modal-size(45vw, 70vw, 20vh, 30vw);
+        @include customized-modal-size(50vw, 60vw, 20vh, 25vw);
     }
     /*Laptop version*/
     @media (min-width: 1279px) {
-        @include customized-modal-size(35vw, 30vw, 20vh, 30vw);
+        @include customized-modal-size(35vw, 25vw, 20vh, 30vw);
     }
 }
 
@@ -207,15 +207,15 @@ main {
     @extend .customized-modal;
     /*Mobile version 375-767*/
     @media (min-width: 375px) and (max-width: 767px) {
-        @include customized-modal-size(75vw, 130vw, 20vh, 30vw);
+        @include customized-modal-size(75vw, 60vw, 15vh, 13vw);
     }
     /*Tablet version 768-1279*/
     @media (min-width: 768px) and (max-width: 1279px) {
-        @include customized-modal-size(45vw, 70vw, 20vh, 30vw);
+        @include customized-modal-size(45vw, 30vw, 20vh, 22vw);
     }
     /*Laptop version*/
     @media (min-width: 1279px) {
-        @include customized-modal-size(35vw, 30vw, 20vh, 30vw);
+        @include customized-modal-size(35vw, 20vw, 20vh, 30vw);
     }
 }
 
@@ -239,6 +239,41 @@ main {
   text-align: center;
 }
 
+//extras
+$darkerBlue: rgb(100,151,121);
+@mixin lineHeight($height){
+  line-height: $height;
+}
+
+
+
+.centerTextInDiv{
+  text-align: center;
+  vertical-align: middle;
+  @include lineHeight(50px);
+}
+
+//div.square100Thumbnail{
+//  @include lineHeight(100px);
+//}
+
+.square100ThumbnailBlue{
+  @include makeMeSquare(100px);
+  padding: 0;
+  color: white;
+  @include lineHeight(100px);
+  font-family: _LatoRegular;
+  font-size: small;
+  @include colourSquare($blue);
+}
+.square100ThumbnailDarkBlue{
+  @extend .square100ThumbnailBlue;
+  @include colourSquare($darkerBlue);
+}
+
+
+
+/*Media queries*/
 
 @media screen and (min-width: 0px) {
   #logoNav{

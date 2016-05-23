@@ -152,19 +152,19 @@ main {
   @media (min-width: 375px) and (max-width: 767px) {
     .customized-modal-loginPartial {
       width: 75vw;
-      height: 130vw;
-      top: 20vh;
-      left: 30vw; } }
+      height: 100vw;
+      top: 10vh;
+      left: 11vw; } }
   @media (min-width: 768px) and (max-width: 1279px) {
     .customized-modal-loginPartial {
-      width: 45vw;
-      height: 70vw;
+      width: 50vw;
+      height: 60vw;
       top: 20vh;
-      left: 30vw; } }
+      left: 25vw; } }
   @media (min-width: 1279px) {
     .customized-modal-loginPartial {
       width: 35vw;
-      height: 30vw;
+      height: 25vw;
       top: 20vh;
       left: 30vw; } }
 
@@ -175,19 +175,19 @@ main {
   @media (min-width: 375px) and (max-width: 767px) {
     .customized-modal-deleteSet {
       width: 75vw;
-      height: 130vw;
-      top: 20vh;
-      left: 30vw; } }
+      height: 60vw;
+      top: 15vh;
+      left: 13vw; } }
   @media (min-width: 768px) and (max-width: 1279px) {
     .customized-modal-deleteSet {
       width: 45vw;
-      height: 70vw;
+      height: 30vw;
       top: 20vh;
-      left: 30vw; } }
+      left: 22vw; } }
   @media (min-width: 1279px) {
     .customized-modal-deleteSet {
       width: 35vw;
-      height: 30vw;
+      height: 20vw;
       top: 20vh;
       left: 30vw; } }
 
