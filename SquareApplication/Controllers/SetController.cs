@@ -315,6 +315,7 @@ namespace SquareApplication.Controllers
                     select st).FirstOrDefault();
 
                 db.Set_Tag.Remove(setTag);
+                db.SaveChanges();
                 db.Tags.Remove(model);
                 try
                 {
