@@ -14,12 +14,12 @@
         if (data.classList.contains("arrangedTiles")) {
             $('.arrangedTiles').addClass('hvr-wobble-horizontal');
         }    }
-        }
+        
            //var img=document.getElementById(ev.target.id).cloneNode(true);
            // //img.style.transform = "scale(0.5)";
            // $(img).attr('class','halfSize');
            // ev.dataTransfer.setDragImage(img,0,0);
-        }
+        
 
     function drop(ev) {
         ev.preventDefault();
