@@ -191,7 +191,7 @@ main {
     @extend .customized-modal;
     /*Mobile version 375-767*/
     @media (min-width: 375px) and (max-width: 767px) {
-        @include customized-modal-size(75vw, 100vw, 10vh, 11vw);
+        @include customized-modal-size(75vw, 71vh, 10vh, 11vw);
     }
     /*Tablet version 768-1279*/
     @media (min-width: 768px) and (max-width: 1279px) {
