@@ -9,7 +9,12 @@
     function drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
 
+        var data = ev.target;
 
+        if (data.classList.contains("arrangedTiles")) {
+            $('.arrangedTiles').addClass('hvr-wobble-horizontal');
+        }    }
+        }
            //var img=document.getElementById(ev.target.id).cloneNode(true);
            // //img.style.transform = "scale(0.5)";
            // $(img).attr('class','halfSize');
@@ -17,7 +22,10 @@
         }
 
     function drop(ev) {
-              ev.preventDefault();
+        ev.preventDefault();
+                    $('img').removeClass('hvr-wobble-horizontal');
+
+
         var data = ev.dataTransfer.getData("text");
         var parent=findAncestor(ev.target,"productGridItem");
         if (parent == null)
