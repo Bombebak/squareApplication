@@ -7,7 +7,7 @@
 
 <h4 class="marginTopBottom">Your uploads</h4>
 
-@Html.ActionLink("Create set", "CreateSet", "Set", null, new { @class = "modal-link squareOrange" })
+@Html.ActionLink("Upload", "CreateSet", "Set", null, new { @class = "modal-link btn btn-default centerTextInDiv squareOrange" })
 
 <div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-content">
@@ -17,9 +17,11 @@
 @Html.Raw(TempData["TempSetMsg"])
 
 <div class="row">
+
     @foreach (var item in Model)
     {
-        <div class="well squaredSets" style="padding-bottom: 100px;">
+
+        <div class="well squaredSets inlineBlock">
             <table class="table">
                 <tr>
                     <th class="text-center" colspan="2">@item.SetTitle</th>

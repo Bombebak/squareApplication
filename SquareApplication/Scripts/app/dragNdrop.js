@@ -19,7 +19,8 @@
            // //img.style.transform = "scale(0.5)";
            // $(img).attr('class','halfSize');
            // ev.dataTransfer.setDragImage(img,0,0);
-        
+        }
+
     //function drop(ev) {
     //    ev.preventDefault();
     //                $('img').removeClass('hvr-wobble-horizontal');
@@ -49,7 +50,7 @@
         //TODO:duplicate all images
         ev.preventDefault();
 
-        $('img').removeClass('hvr-wobble-horizontal');
+                    $('img').removeClass('hvr-wobble-horizontal');
 
 
         var data = ev.dataTransfer.getData("text");
@@ -71,7 +72,7 @@
         if (document.getElementById(data).classList.contains('arrangedTiles')){
             document.getElementById(data).classList.remove('arrangedTiles');
         }
-        if ($('#selectedTileStyle').is(':empty')){
+          if ($('#selectedTileStyle').is(':empty')){
             var placeholder = $('<img class="previewImage" src="http://placehold.it/299x299"/>');
             $('#selectedTileStyle').append(placeholder);
         }
