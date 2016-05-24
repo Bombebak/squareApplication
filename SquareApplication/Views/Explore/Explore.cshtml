@@ -54,11 +54,19 @@
     @*  The sets from the backend *@
     <h1 class="marginBottom5">Explore</h1>
 
+    <a href="#" class="thumbnail inlineBlock marginBottom1Percent">
+        <div class="floatLeft square100ThumbnailBlue centerTextInDiv">Latest</div>
+        <div class="floatLeft square100ThumbnailBlue centerTextInDiv">Free</div>
+        <div class="clearBoth square100ThumbnailBlue floatLeft marginTopForClearBoth centerTextInDiv">Most Popular</div>
+        <div class="square100ThumbnailDarkBlue floatLeft displayThumb marginTopForClearBoth">
+            <input type="text" name="Tags" value="Tags" />
+        </div>
+    </a>
 
     @foreach (var s in ViewBag.sets)
     {
 
-        <a href="@Url.Action("CreateDesign","CreateDesign", new {set_id = s.set_id})" class="thumbnail inlineBlock marginBottom1Percent">
+        <a href="@Url.Action("CreateDesign", "CreateDesign", new {set_id = s.set_id})" class="thumbnail inlineBlock marginBottom1Percent">
             @{ var i = 0;}
             @foreach (var t in s.Tiles)
             {
@@ -133,15 +141,6 @@
     </a>
 
 
-</div>
-
-<!--Filters Tab-->
-@*<a href="#" class="thumbnail inlineBlock marginBottom1Percent">
-    <div class="floatLeft square100ThumbnailBlue centerTextInDiv">Latest</div>
-    <div class="floatLeft square100ThumbnailBlue centerTextInDiv">Free</div>
-    <div class="clearBoth square100ThumbnailBlue floatLeft marginTopForClearBoth centerTextInDiv">Most Popular</div>
-    <div class="square100ThumbnailDarkBlue floatLeft displayThumb marginTopForClearBoth">
-        <input type="text" name="Tags" value="Tags" />
     </div>
 </a>*@
 
@@ -165,19 +164,9 @@
                 <div class="item active">
     These es need a bit of styling
 
-                    <img src="http://placehold.it/350x150" alt="Missing Img">
-                    <div class="carousel-caption">
 
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="http://placehold.it/350x150" alt="MissingImg">
-                    <div class="carousel-caption">
 
-                    </div>
-                </div>
 
-            </div>
 
             <!-- Controls -->
             <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
