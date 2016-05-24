@@ -132,11 +132,18 @@ footer> .flexItem > img{
    }
 
 .thumbnail:hover {
-    box-shadow: 0 2px 4px #919890;}
+    box-shadow: 0 2px 4px #919890;
+
+}
 
 .thumbnail > .floatLeft img {
     margin:0;
 }
+
+    .thumbnail > img {
+            width:100px;
+            height:100px;
+    }
 
 /*********/
 .invertColors {
@@ -258,3 +265,7 @@ a{
 .top-page-header {
     margin-top: 150px;
 }
+
+
+
+
