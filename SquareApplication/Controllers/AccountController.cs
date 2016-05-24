@@ -127,7 +127,7 @@ namespace SquareApplication.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     SetupFormsAuthTicket(model.Email, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Explore", "Explore");
                 }
                 ModelState.AddModelError("", ErrorCodeToString(createStatus));
             }
@@ -230,7 +230,7 @@ namespace SquareApplication.Controllers
         {
             FormsAuthentication.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Explore", "Explore");
         }
 
         [Authorize]
