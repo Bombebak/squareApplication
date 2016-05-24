@@ -13,42 +13,40 @@
 </head>
 <body>
     <header >
-        <nav >
-            <nav>   
+        <nav>
+
+    <a href="/Explore/explore"><div id="exploreNav" class="centerTextInDiv squareBlue  top50left50 fixed">Explore</div></a>
+    <a href="/home/about"><div class="centerTextInDiv squareBrown top0right50 fixed">About</div></a>
+            <a href="/explore/explore">
                 <div id="logoNav" class="centerTextInDiv squareBlue top0left0 fixed">
-                    <div class="circleLogo">    </div>
+                    <div class="circleLogo"></div>
                 </div>
-            </nav>
-            <a href="/Explore/explore"><div id="exploreNav" class="centerTextInDiv squareBlue  top50left50 fixed">Explore</div></a>
-            <a href="/home/about"><div class="centerTextInDiv squareBrown top0right50 fixed">About</div></a>
-            @if (Request.IsAuthenticated)
+            </a>
+    @if (Request.IsAuthenticated)
             {
                 using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                 {
-                    <div class="centerTextInDiv squareOrange top50right0  fixed">
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Profile", "UserProfile", "Account")</li>
-                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">LogOff</a></li>
-                                </ul>
-                            </li>
+            <div class="centerTextInDiv squareOrange top50right0  fixed">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Profile", "UserProfile", "Account")</li>
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()">LogOff</a></li>
                         </ul>
-                      
-                        
-                    </div>
+                    </li>
+                </ul>
+
+
+            </div>
+          
                 }
-            }
-            else
-            {
+                }
+                else
+                {
                 <div class="centerTextInDiv squareOrange top50right0  fixed">@Html.ActionLink("Log in", "Login", "Account", null, new { id = "loginLink", @class = "modal-link" })</div>
-            }
-            <a href="/explore/explore">
-                <div id="logoNav" class="centerTextInDiv top0left0 fixed">
-                    <div class="circleLogo">    </div>
-                </div>
-            </a>
+                }
+              
         </nav>
 
     </header>

@@ -318,6 +318,8 @@
     <Content Include="Assets\images\panipan.jpg" />
     <Content Include="Assets\images\panreka.jpg" />
     <Content Include="Assets\images\panzegar.jpg" />
+    <Content Include="Assets\images\site\Carousel1.JPG" />
+    <Content Include="Assets\images\site\Carousel2.JPG" />
     <Content Include="Assets\images\site\Footer3.JPG" />
     <Content Include="Assets\images\site\KongOrange.png" />
     <Content Include="Assets\images\ulvogkat.jpg" />

@@ -25,10 +25,10 @@ namespace SquareApplication.Controllers
             return View();
         }
 
-        //public ActionResult Landing()
-        //{
-        //    return View();
-        //}
+        public ActionResult Landing()
+        {
+            return View();
+        }
 
         public ActionResult Contact()
         {
