@@ -46,6 +46,11 @@ main {
     -ms-border-radius: 0;
 }
 
+.productGridItem > img {
+    height: 100%;
+    width: 100%;
+}
+
 @mixin colourSquare($color) {
   background-color: $color;
 }

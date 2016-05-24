@@ -60,8 +60,7 @@ namespace SquareApplication.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        [ValidateAjax]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model, string returnUrl)
         {
 
@@ -86,11 +85,11 @@ namespace SquareApplication.Controllers
                 }
                 else
                 {
-                    TempData["TempUserMsg"] = "<div class='alert alert-danger'><p>Update succesfull" + "</p>" +
-                                                        "<p><span class='glyphicon glyphicon-remove'></span> An error has occured when trying to update your set. </p></div>";
+                    TempData["TempUserMsg"] = "<div class='alert alert-danger'><p>Login unsuccesfull" + "</p>" +
+                                                        "<p><span class='glyphicon glyphicon-remove'></span> Email and password doesn't match. </p></div>";
                     ModelState.AddModelError("model", "Email and password doesn't match.");
-                    return RedirectToAction("Login");
-                    //return PartialView("Login", model);
+                    //return RedirectToAction("Login");
+                    return View("Login", model);
                 }
 
             }
@@ -127,7 +126,7 @@ namespace SquareApplication.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     SetupFormsAuthTicket(model.Email, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Explore", "Explore");
                 }
                 ModelState.AddModelError("", ErrorCodeToString(createStatus));
             }
@@ -230,7 +229,7 @@ namespace SquareApplication.Controllers
         {
             FormsAuthentication.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Explore", "Explore");
         }
 
         [Authorize]

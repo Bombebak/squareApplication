@@ -1,4 +1,5 @@
 ﻿@Styles.Render("~/Content/css/sass.css")
+@Styles.Render("~/Content/css/style.css")
 
 @{
     ViewBag.Title = "Explore";
@@ -66,34 +67,34 @@
             </div>
         </a>
 
-        @foreach (var s in ViewBag.sets)
+  @foreach (var s in ViewBag.sets)
+  {
+
+    <a href="@Url.Action("CreateDesign", "CreateDesign", new {set_id = s.set_id})" class="thumbnail inlineBlock marginBottom1Percent">
+        @{ var i = 0;}
+        @foreach (var t in s.Tiles)
         {
+            if (i < 2)
+            {
+                <img class="floatLeft square100" src="@t.url" />
 
-            <a href="@Url.Action("CreateDesign","CreateDesign", new {set_id = s.set_id})" class="thumbnail inlineBlock marginBottom1Percent">
-                @{ var i = 0;}
-                @foreach (var t in s.Tiles)
-                {
-                    if (i < 2)
-                    {
-                        <img class="floatLeft square100" src="@t.url" />
+            }
+            if (i == 2)
+            {
+                <img class="clearBoth floatLeft square100" src="@t.url" />
+                break;
+            }
+            i++;
 
-                    }
-                    if (i == 2)
-                    {
-                        <img class="clearBoth floatLeft square100" src="@t.url" />
-                        break;
-                    }
-                    i++;
-
-                }
-                <div class="square100Thumbnail floatLeft displayThumb">
-                    <p class="setTitle centerTextInDiv">
-                        @s.name
-                    </p>
-                    <p> by @s.User.name</p>
-                </div>
-            </a>
-                    }
+        }
+        <div class="square100Thumbnail floatLeft displayThumb">
+            <p class="setTitle centerTextInDiv">
+                @s.name
+            </p>
+            <p> by @s.User.name</p>
+        </div>
+    </a>
+            }
 
         <a href="#" class="thumbnail inlineBlock marginBottom1Percent">
             <img class="floatLeft" src="http://placehold.it/100x100" />
@@ -143,17 +144,73 @@
             </div>
         </a>
 
+        <a href="#" class="thumbnail inlineBlock marginBottom1Percent">
+            <img class="floatLeft" src="http://placehold.it/100x100" />
+            <img class="floatLeft" src="http://placehold.it/100x100" />
+            <img class="clearBoth floatLeft" src="http://placehold.it/100x100" />
+            <div class="square100Thumbnail floatLeft displayThumb">
+                <p class="setTitle centerTextInDiv">
+                    Buy Me
+                </p>
+                <p class="">by Mr. PotatoHead</p>
+            </div>
+        </a>
+
+        <a href="#" class="thumbnail inlineBlock marginBottom1Percent">
+            <img class="floatLeft" src="http://placehold.it/100x100" />
+            <img class="floatLeft" src="http://placehold.it/100x100" />
+            <img class="clearBoth floatLeft" src="http://placehold.it/100x100" />
+            <div class="square100Thumbnail floatLeft displayThumb">
+                <p class="setTitle centerTextInDiv">
+                    Buy Me
+                </p>
+                <p class="">by Mr. PotatoHead</p>
+            </div>
+        </a>
+
     </div>
 
-</div>
-
-<!--Filters Tab-->
-@*<a href="#" class="thumbnail inlineBlock marginBottom1Percent">
-    <div class="floatLeft square100ThumbnailBlue centerTextInDiv">Latest</div>
-    <div class="floatLeft square100ThumbnailBlue centerTextInDiv">Free</div>
-    <div class="clearBoth square100ThumbnailBlue floatLeft marginTopForClearBoth centerTextInDiv">Most Popular</div>
-    <div class="square100ThumbnailDarkBlue floatLeft displayThumb marginTopForClearBoth">
-        <input type="text" name="Tags" value="Tags" />
     </div>
-</a>*@
+
+
+
+
+@* Create a carousel *@
+@*
+<main>
+    <div class="container">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+    These es need a bit of styling
+
+
+
+
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</main>
+*@
+
+    
+
+    
 

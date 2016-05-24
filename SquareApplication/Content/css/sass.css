@@ -29,6 +29,10 @@ main {
   -webkit-border-radius: 0;
   -ms-border-radius: 0; }
 
+.productGridItem > img {
+  height: 100%;
+  width: 100%; }
+
 .squareRed {
   background-color: #EC2F39; }
 

@@ -302,6 +302,11 @@
 
 }
 
+.productGridItem > img {
+    height: 100%;
+    width: 100%;
+}
+
 .ourContainer {
     margin:150px 50px 0 50px;
     height: 73vh;
