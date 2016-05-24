@@ -3,6 +3,8 @@ $red: #EC2F39;
 $brown: #42282e;
 $orange: #DC9B74;
 $grey: #666666;
+$darkerBlue: rgb(100,151,121);
+
 
 .circleLogo {
   height: 40px;
@@ -79,21 +81,7 @@ main {
   right: $right;
   left: $left;
 }
-/*@mixin topLeftNav($top,$left){
-=======
-@mixin topLeftNav($top,$left) {
->>>>>>> origin/master
-  top: $top;
-  left: $left;
-}
 
-@mixin topRightNav($top,$right) {
-  top: $top;
-  right: $right;
-<<<<<<< HEAD
-}*/
-.centerTextInDiv{
-}
 
 .centerTextInDiv {
 
@@ -239,8 +227,8 @@ main {
   text-align: center;
 }
 
+
 //extras
-$darkerBlue: rgb(100,151,121);
 @mixin lineHeight($height){
   line-height: $height;
 }
@@ -259,13 +247,14 @@ $darkerBlue: rgb(100,151,121);
 
 .square100ThumbnailBlue{
   @include makeMeSquare(100px);
+  @include colourSquare($blue);
+  @include lineHeight(100px);
   padding: 0;
   color: white;
-  @include lineHeight(100px);
   font-family: _LatoRegular;
   font-size: small;
-  @include colourSquare($blue);
 }
+
 .square100ThumbnailDarkBlue{
   @extend .square100ThumbnailBlue;
   @include colourSquare($darkerBlue);

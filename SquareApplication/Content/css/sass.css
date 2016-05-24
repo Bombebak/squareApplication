@@ -44,19 +44,6 @@ main {
 .squareGrey {
   background-color: #666666; }
 
-/*@mixin topLeftNav($top,$left){
-=======
-@mixin topLeftNav($top,$left) {
->>>>>>> origin/master
-  top: $top;
-  left: $left;
-}
-
-@mixin topRightNav($top,$right) {
-  top: $top;
-  right: $right;
-<<<<<<< HEAD
-}*/
 .centerTextInDiv {
   text-align: center;
   vertical-align: middle;
@@ -152,7 +139,7 @@ main {
   @media (min-width: 375px) and (max-width: 767px) {
     .customized-modal-loginPartial {
       width: 75vw;
-      height: 100vw;
+      height: 71vh;
       top: 10vh;
       left: 11vw; } }
   @media (min-width: 768px) and (max-width: 1279px) {
@@ -207,6 +194,25 @@ main {
   vertical-align: middle;
   text-align: center; }
 
+.centerTextInDiv {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px; }
+
+.square100ThumbnailBlue, .square100ThumbnailDarkBlue {
+  width: 100px;
+  height: 100px;
+  background-color: #75A48B;
+  line-height: 100px;
+  padding: 0;
+  color: white;
+  font-family: _LatoRegular;
+  font-size: small; }
+
+.square100ThumbnailDarkBlue {
+  background-color: #649779; }
+
+/*Media queries*/
 @media screen and (min-width: 0px) {
   #logoNav {
     top: 0;
