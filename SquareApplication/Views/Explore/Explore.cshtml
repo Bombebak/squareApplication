@@ -12,10 +12,20 @@
 
 
 <div class="centered">
+    <!--Filters Tab-->
+    @*<a href="#" class="thumbnail inlineBlock marginBottom1Percent">
+        <div class="floatLeft square100ThumbnailBlue centerTextInDiv">Latest</div>
+        <div class="floatLeft square100ThumbnailBlue centerTextInDiv">Free</div>
+        <div class="clearBoth square100ThumbnailBlue floatLeft marginTopForClearBoth centerTextInDiv">Most Popular</div>
+        <div class="square100ThumbnailDarkBlue floatLeft displayThumb marginTopForClearBoth">
+            <input type="text" name="Tags" value="Tags"/>
+        </div>
+    </a>*@
+
     @foreach (var s in ViewBag.sets)
     {
 
-        <a href="@Url.Action("CreateDesign","CreateDesign", new {set_id = s.set_id})" class="thumbnail inlineBlock marginBottom1Percent">
+        <a href="@Url.Action("CreateDesign", "CreateDesign", new {set_id = s.set_id})" class="thumbnail inlineBlock marginBottom1Percent">
             @{ var i = 0;}
             @foreach (var t in s.Tiles)
             {
@@ -92,15 +102,7 @@
 
 </div>
 
-<!--Filters Tab-->
-@*<a href="#" class="thumbnail inlineBlock marginBottom1Percent">
-    <div class="floatLeft square100ThumbnailBlue centerTextInDiv">Latest</div>
-    <div class="floatLeft square100ThumbnailBlue centerTextInDiv">Free</div>
-    <div class="clearBoth square100ThumbnailBlue floatLeft marginTopForClearBoth centerTextInDiv">Most Popular</div>
-    <div class="square100ThumbnailDarkBlue floatLeft displayThumb marginTopForClearBoth">
-        <input type="text" name="Tags" value="Tags" />
-    </div>
-</a>*@
+
 
 
 
