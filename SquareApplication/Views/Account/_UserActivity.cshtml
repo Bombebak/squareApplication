@@ -5,20 +5,40 @@
     <script src="/Scripts/app/script.js" type="text/javascript"></script>
 </head>
 
-<h4>Your uploads</h4>
+<h4 class="marginTopBottom">Your uploads</h4>
 
-@Html.ActionLink("Create set", "CreateSet", "Set", null, new { @class = "modal-link btn btn-primary" })
+@Html.ActionLink("Upload", "CreateSet", "Set", null, new { @class = "modal-link btn btn-default centerTextInDiv squareOrange" })
 
 <div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-content">
     </div>
 </div>
 
-<ul>
+@Html.Raw(TempData["TempSetMsg"])
+
+<div class="row">
+
     @foreach (var item in Model)
     {
-        <li>@Html.ActionLink(item.SetTitle, "Details", "Set", null, new{id = item.SetId})
-        </li>
-        
+
+        <div class="well squaredSets inlineBlock">
+            <table class="table">
+                <tr>
+                    <th class="text-center" colspan="2">@item.SetTitle</th>
+                </tr>
+                <tr>
+                    <td>@Html.ActionLink("Edit", "Details", "Set", new { setId = item.SetId }, new { @class = "squareOrange" })</td>
+                    <td class="text-right">@Html.ActionLink("Delete", "DeleteSet", "Set", new { setId = item.SetId }, new { @class = "modal-link squareOrange" })</td>
+                </tr>
+            </table>
+        </div>
     }
-</ul>
+</div>
+
+<style>
+    .squaredSets {
+        padding: 10px;
+        width: 150px;
+        height: 150px;
+    }
+</style>

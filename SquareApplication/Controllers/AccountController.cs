@@ -34,7 +34,7 @@ namespace SquareApplication.Controllers
         public IMembershipService MembershipService { get; set; }
         private UserRepository userRepository = new UserRepository();
         private SetRepository setRepository = new SetRepository();
-        private SquaresEntities db = new SquaresEntities();
+        private SquareDbEntities db = new SquareDbEntities();
 
         protected override void Initialize(RequestContext requestContext)
         {
@@ -53,7 +53,7 @@ namespace SquareApplication.Controllers
             {
                 return PartialView("_Login");
             }
-            return View();
+            return View("Login");
         }
 
         //
@@ -79,18 +79,21 @@ namespace SquareApplication.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Explore", "Explore");
                     }
 
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Email and password doesn't match.");
+                    TempData["TempUserMsg"] = "<div class='alert alert-danger'><p>Login unsuccesfull" + "</p>" +
+                                                        "<p><span class='glyphicon glyphicon-remove'></span> Email and password doesn't match. </p></div>";
+                    ModelState.AddModelError("model", "Email and password doesn't match.");
+                    //return RedirectToAction("Login");
+                    return View("Login", model);
                 }
 
             }
-
-            return View(model);
+            return View("Login", model);
         }
 
 
@@ -101,6 +104,10 @@ namespace SquareApplication.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Register");
+            }
             return View();
         }
 
@@ -119,7 +126,7 @@ namespace SquareApplication.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     SetupFormsAuthTicket(model.Email, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Explore", "Explore");
                 }
                 ModelState.AddModelError("", ErrorCodeToString(createStatus));
             }
@@ -222,7 +229,7 @@ namespace SquareApplication.Controllers
         {
             FormsAuthentication.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Explore", "Explore");
         }
 
         [Authorize]

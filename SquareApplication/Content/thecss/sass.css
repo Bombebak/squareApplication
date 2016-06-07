@@ -1,0 +1,261 @@
+.circleLogo {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  border: solid 1px grey;
+  margin: 4px;
+  background-color: white; }
+
+header {
+  position: absolute;
+  display: block;
+  clear: both; }
+
+main {
+  margin-left: 50px;
+  margin-right: 50px; }
+
+.square50, .squareRed, .squareOrange, .squareBlue, .squareBrown, .squareGrey {
+  width: 50px;
+  height: 50px;
+  color: white;
+  -webkit-border-radius: 0;
+  -ms-border-radius: 0; }
+
+.square200 {
+  height: 100;
+  width: 100;
+  color: white;
+  -webkit-border-radius: 0;
+  -ms-border-radius: 0; }
+
+.productGridItem > img {
+  height: 100%;
+  width: 100%; }
+
+.squareRed {
+  background-color: #EC2F39; }
+
+.squareOrange {
+  background-color: #DC9B74; }
+
+.squareBlue {
+  background-color: #75A48B; }
+
+.squareBrown {
+  background-color: #42282e; }
+
+.squareGrey {
+  background-color: #666666; }
+
+.centerTextInDiv {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px; }
+
+.fixed {
+  position: fixed; }
+
+.marginBottom150 {
+  margin-bottom: 150px; }
+
+.top0left0 {
+  top: 0;
+  right: auto;
+  left: 0; }
+
+.top50left50 {
+  top: 50px;
+  right: auto;
+  left: 50px; }
+
+.top0right50 {
+  top: 0;
+  right: 50px;
+  left: auto; }
+
+.top50right0 {
+  top: 50px;
+  right: 0;
+  left: auto; }
+
+.top0right0 {
+  top: 0;
+  right: 0;
+  left: auto; }
+
+.top50right50 {
+  top: 50px;
+  right: 50px;
+  left: auto; }
+
+/* -------------------- modal begin -------------------- */
+.cover {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.8;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.customized-modal, .customized-modal-registerPartial, .customized-modal-loginPartial, .customized-modal-deleteSet {
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  position: absolute; }
+
+/* Used to set the size and placement of the modal */
+.customized-modal-registerPartial {
+  /*Mobile version 375-767*/
+  /*Tablet version 768-1279*/
+  /*Laptop version*/ }
+  @media (min-width: 375px) and (max-width: 767px) {
+    .customized-modal-registerPartial {
+      width: 75vw;
+      height: 130vw;
+      top: 20vh;
+      left: 30vw; } }
+  @media (min-width: 768px) and (max-width: 1279px) {
+    .customized-modal-registerPartial {
+      width: 45vw;
+      height: 70vw;
+      top: 20vh;
+      left: 30vw; } }
+  @media (min-width: 1279px) {
+    .customized-modal-registerPartial {
+      width: 35vw;
+      height: 30vw;
+      top: 20vh;
+      left: 30vw; } }
+
+.customized-modal-loginPartial {
+  /*Mobile version 375-767*/
+  /*Tablet version 768-1279*/
+  /*Laptop version*/ }
+  @media (min-width: 375px) and (max-width: 767px) {
+    .customized-modal-loginPartial {
+      width: 75vw;
+      height: 71vh;
+      top: 10vh;
+      left: 11vw; } }
+  @media (min-width: 768px) and (max-width: 1279px) {
+    .customized-modal-loginPartial {
+      width: 50vw;
+      height: 60vw;
+      top: 20vh;
+      left: 25vw; } }
+  @media (min-width: 1279px) {
+    .customized-modal-loginPartial {
+      width: 35vw;
+      height: 25vw;
+      top: 20vh;
+      left: 30vw; } }
+
+.customized-modal-deleteSet {
+  /*Mobile version 375-767*/
+  /*Tablet version 768-1279*/
+  /*Laptop version*/ }
+  @media (min-width: 375px) and (max-width: 767px) {
+    .customized-modal-deleteSet {
+      width: 75vw;
+      height: 60vw;
+      top: 15vh;
+      left: 13vw; } }
+  @media (min-width: 768px) and (max-width: 1279px) {
+    .customized-modal-deleteSet {
+      width: 45vw;
+      height: 30vw;
+      top: 20vh;
+      left: 22vw; } }
+  @media (min-width: 1279px) {
+    .customized-modal-deleteSet {
+      width: 35vw;
+      height: 20vw;
+      top: 20vh;
+      left: 30vw; } }
+
+/* -------------------- modal end -------------------- */
+/* Thumbs */
+.square100Thumbnail {
+  width: 100px;
+  height: 100px;
+  background-color: #EC2F39;
+  padding: 0;
+  color: white;
+  font-family: _LatoRegular;
+  font-size: small; }
+
+.displayThumb {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center; }
+
+.centerTextInDiv {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px; }
+
+.square100ThumbnailBlue, .square100ThumbnailDarkBlue {
+  width: 100px;
+  height: 100px;
+  background-color: #75A48B;
+  line-height: 100px;
+  padding: 0;
+  color: white;
+  font-family: _LatoRegular;
+  font-size: small; }
+
+.square100ThumbnailDarkBlue {
+  background-color: #649779; }
+
+/*Media queries*/
+@media screen and (min-width: 0px) {
+  #logoNav {
+    top: 0;
+    right: 0;
+    left: auto; }
+
+  #exploreNav {
+    top: 50px;
+    right: 50px;
+    left: auto; } }
+@media screen and (min-width: 768px) {
+  #logoNav {
+    top: 0;
+    right: 0;
+    left: auto; }
+
+  #exploreNav {
+    top: 50px;
+    right: 50px;
+    left: auto; } }
+@media screen and (min-width: 991px) {
+  #logoNav {
+    top: 0;
+    right: 0;
+    left: auto; }
+
+  #exploreNav {
+    top: 50px;
+    right: 50px;
+    left: auto; } }
+@media screen and (min-width: 1200px) {
+  #logoNav {
+    top: 0;
+    right: auto;
+    left: 0; }
+
+  #exploreNav {
+    top: 50px;
+    right: auto;
+    left: 50px; } }
+
+/*# sourceMappingURL=sass.css.map */

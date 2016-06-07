@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 
-    <link rel="stylesheet" href="../../Content/css/landingPage.css"/>
-    <link rel="stylesheet" href="../../Content/css/sass.css"/>
+    <link rel="stylesheet" href="../../Content/thecss/landingPage.css" />
+    <link rel="stylesheet" href="../../Content/thecss/sass.css" />
 </head>
 <body>
 
@@ -15,7 +15,8 @@
 </video>
 
 <main>
-    <a href="/Account/login" class="login"><div class="square100">log in</div></a>
+    <a href="/Account/register" class="modal-link login">
+        <div class="square200">Register</div></a>
     <h1>Welcome to Squares!</h1>
     <a href="/Explore/Explore" class="link200l">
         <div class="square200" id="blueSquare">Explore</div></a>
@@ -23,8 +24,14 @@
         <div class="square200" id="redSquare">Create</div></a>
 </main>
 
-    <script src="../../Scripts/jquery-2.2.3.min.js"></script>
+    <div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+
+<script src="../../Scripts/jquery-2.2.3.min.js"></script>
 <script src="../../Scripts/app/landingPage.js"></script>
+<script src="../../Scripts/app/script.js" type="text/javascript"></script>
 </body>
 
 </html>

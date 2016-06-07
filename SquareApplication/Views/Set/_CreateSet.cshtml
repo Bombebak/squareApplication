@@ -34,6 +34,7 @@
             <div class="form-horizontal">
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.UserId)
+                @Html.HiddenFor(model => model.Registered)
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.SetTitle, new { @class = "control-label col-md-2" })
@@ -51,20 +52,25 @@
                     </div>
                 </div>
 
-                <div class="col-md-10">
-                    @Html.HiddenFor(model => model.Registered)
-                    @Html.ValidationMessageFor(model => model.Registered)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TagTitle, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.TagTitle, new { @class = "form-control", placeholder = "Separate tags with comma" })
+                        @Html.ValidationMessageFor(model => model.TagTitle)
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Images, new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.Images, new {@class = "control-label col-md-2"})
                     <div class="col-md-10">
-                        @*@Html.TextBoxFor(model => model.Images, new { type = "File", multiple = "true" })*@
-                        <input type="file" name="files"
+                        @*@Html.TextBoxFor(model => model.Images, new {type = "File", multiple = "true"})*@
+                        <input class="form-control" type="file" name="files"
                                multiple="multiple" accept=".jpg, .png" />
                         @Html.ValidationMessageFor(model => model.Images)
                     </div>
                 </div>
+
 
             </div>
 

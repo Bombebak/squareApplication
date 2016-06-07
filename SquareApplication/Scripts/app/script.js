@@ -50,6 +50,13 @@ $(function () {
     });
 });
 
+$(function() {
+    $('#modalExtraBtn').click(function() {
+        $('#loginPartial').modal('hide');
+        $('#registerPartial').modal('show');
+    });
+});
+
 (function () {
     "use strict";
 

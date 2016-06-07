@@ -68,7 +68,7 @@ namespace SquareApplication.Infrastructure
 
             if (user == null)
             {
-                using (var dbContext = new SquaresEntities())
+                using (var dbContext = new SquareDbEntities())
                 {
                     var userObj = new User { name = username, password = password, email = email, address = passwordQuestion };
 
@@ -208,7 +208,7 @@ namespace SquareApplication.Infrastructure
 
         public override string GetUserNameByEmail(string email)
         {
-            using (SquaresEntities db = new SquaresEntities())
+            using (SquareDbEntities db = new SquareDbEntities())
             {
                 var result = from u in db.Users where (u.email == email) select u;
 

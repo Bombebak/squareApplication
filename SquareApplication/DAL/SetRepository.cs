@@ -9,7 +9,7 @@ namespace SquareApplication.DAL
 {
     public class SetRepository
     {
-        private SquaresEntities db = new SquaresEntities();
+        private SquareDbEntities db = new SquareDbEntities();
 
         public IEnumerable<UserActivityViewModel> GetSetsFromUser(int userId)
         {
@@ -19,7 +19,8 @@ namespace SquareApplication.DAL
                 select new UserActivityViewModel()
                 {
                     SetTitle = s.name,
-                    UploadDate = (DateTime) s.upload_date
+                    UploadDate = (DateTime) s.upload_date,
+                    SetId = s.set_id
                 });
         }
 

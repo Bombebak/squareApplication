@@ -11,17 +11,13 @@ namespace SquareApplication.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("Landing");
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-            //using (SquaresEntities dbContext = new SquaresEntities())
-            //{
-            //    Console.WriteLine(dbContext.Database.Exists());
-            //    ViewBag.Message = dbContext.Orders.FirstOrDefault().purchase_date.ToString();
-            //}
+            ViewBag.Message = "About the Squares concept";
+          
             return View();
         }
 
@@ -30,11 +26,6 @@ namespace SquareApplication.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+     
     }
 }

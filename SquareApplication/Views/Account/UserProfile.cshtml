@@ -9,17 +9,21 @@
     ViewBag.Title = "UserProfile";
 }
 
-<div class="container" style="margin-top: 150px;">
-    <h2>Your profile</h2>
+<div class="container">
+    <h2 class="top-page-header">Your profile</h2>
     <div id="content">
         <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
             <li class="active">
                 <a href="#_ChangeProfileSettingsTab"
-                   data-toggle="tab">Profile</a>
+                   data-toggle="tab">Your profile</a>
             </li>
-            <li>
-                <a href="#_UserActivityTab" data-toggle="tab">Activity</a>
-            </li>
+            @if (User.IsInRole("Designer"))
+            {
+                <li>
+                    <a href="#_UserActivityTab" data-toggle="tab">Activity</a>
+                </li>
+            }
+
         </ul>
         <div id="my-tab-content" class="tab-content">
             <div class="tab-pane  active" id="_ChangeProfileSettingsTab">
@@ -27,12 +31,14 @@
                     @{Html.RenderPartial("_ChangeProfileSettings", this.ViewData.Model.ChangeProfileViewModel);}
                 </div>
             </div>
-            <div class="tab-pane" id="_UserActivityTab">
-                <div class="row header">
-                    @{Html.RenderPartial("_UserActivity", this.ViewData.Model.UserActivityViewModel);}
+            @if (User.IsInRole("Designer"))
+            {
+                <div class="tab-pane" id="_UserActivityTab">
+                    <div class="row header">
+                        @{Html.RenderPartial("_UserActivity", this.ViewData.Model.UserActivityViewModel);}
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 </div>
-

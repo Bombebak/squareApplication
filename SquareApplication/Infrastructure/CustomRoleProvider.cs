@@ -22,7 +22,7 @@ namespace SquareApplication.Infrastructure
 
         public override string[] GetRolesForUser(string username)
         {
-            using (var usersContext = new SquaresEntities())
+            using (var usersContext = new SquareDbEntities())
             {
                 var user = usersContext.GetUser(username);
             if (user == null)

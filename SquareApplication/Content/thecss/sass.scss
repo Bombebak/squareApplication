@@ -1,0 +1,309 @@
+$blue: #75A48B;
+$red: #EC2F39;
+$brown: #42282e;
+$orange: #DC9B74;
+$grey: #666666;
+$darkerBlue: rgb(100,151,121);
+
+
+.circleLogo {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  border: solid 1px grey;
+    margin: 4px;
+  background-color: white;
+}
+
+header {
+position: absolute;
+  display: block;
+  clear: both;
+}
+
+main {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+@mixin makeMeSquare($size) {
+  width: $size;
+  height: $size;
+}
+
+.square50 {
+  @include makeMeSquare(50px);
+  color: white;
+  -webkit-border-radius: 0;
+  -ms-border-radius: 0;
+}
+
+.square200 {
+    height: 100;
+    width: 100;
+    color: white;
+    -webkit-border-radius: 0;
+    -ms-border-radius: 0;
+}
+
+.productGridItem > img {
+    height: 100%;
+    width: 100%;
+}
+
+@mixin colourSquare($color) {
+  background-color: $color;
+}
+// Different color squares
+.squareRed {
+  @extend .square50;
+  @include colourSquare($red);
+}
+
+.squareOrange {
+  @extend .square50;
+  @include colourSquare($orange);
+}
+
+.squareBlue {
+  @extend .square50;
+  @include colourSquare($blue);
+}
+
+.squareBrown {
+  @extend .square50;
+    @include colourSquare($brown);
+}
+
+.squareGrey {
+  @extend .square50;
+  @include colourSquare($grey);
+}
+
+
+@mixin topRightLeft($top,$right,$left){
+  top: $top;
+  right: $right;
+  left: $left;
+}
+
+
+.centerTextInDiv {
+
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.marginBottom150 {
+    margin-bottom: 150px;
+}
+
+
+.top0left0{
+  //@include topLeftNav(0,0);
+  @include topRightLeft(0,auto,0);
+}
+.top50left50{
+  //@include topLeftNav(50px,50px);
+  @include topRightLeft(50px,auto,50px);
+
+}
+.top0right50{
+  //@include topRightNav(0,50px);
+  @include topRightLeft(0,50px,auto);
+
+}
+.top50right0{
+  //@include topRightNav(50px,0);
+  @include topRightLeft(50px,0,auto);
+
+}
+
+//mobile
+.top0right0{
+  @include topRightLeft(0,0,auto);
+}
+.top50right50{
+  @include topRightLeft(50px,50px, auto);
+}
+
+/* -------------------- modal begin -------------------- */
+.cover {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.8;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.customized-modal {
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 6px;
+    outline: 0;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    position: absolute;
+}
+        /* Used to set the size and placement of the modal */
+        @mixin customized-modal-size($width, $height, $top, $left) {
+            width: $width;
+            height: $height;
+            top: $top;
+            left: $left;
+        }
+
+    .customized-modal-registerPartial {
+        @extend .customized-modal;
+        /*Mobile version 375-767*/
+        @media (min-width: 375px) and (max-width: 767px) {
+            @include customized-modal-size(75vw, 130vw, 20vh, 30vw);
+        }
+        /*Tablet version 768-1279*/
+        @media (min-width: 768px) and (max-width: 1279px) {
+            @include customized-modal-size(45vw, 70vw, 20vh, 30vw);
+        }
+        /*Laptop version*/
+        @media (min-width: 1279px) {
+            @include customized-modal-size(35vw, 30vw, 20vh, 30vw);
+        }
+    }
+
+.customized-modal-loginPartial {
+    @extend .customized-modal;
+    /*Mobile version 375-767*/
+    @media (min-width: 375px) and (max-width: 767px) {
+        @include customized-modal-size(75vw, 71vh, 10vh, 11vw);
+    }
+    /*Tablet version 768-1279*/
+    @media (min-width: 768px) and (max-width: 1279px) {
+        @include customized-modal-size(50vw, 60vw, 20vh, 25vw);
+    }
+    /*Laptop version*/
+    @media (min-width: 1279px) {
+        @include customized-modal-size(35vw, 25vw, 20vh, 30vw);
+    }
+}
+
+.customized-modal-deleteSet {
+    @extend .customized-modal;
+    /*Mobile version 375-767*/
+    @media (min-width: 375px) and (max-width: 767px) {
+        @include customized-modal-size(75vw, 60vw, 15vh, 13vw);
+    }
+    /*Tablet version 768-1279*/
+    @media (min-width: 768px) and (max-width: 1279px) {
+        @include customized-modal-size(45vw, 30vw, 20vh, 22vw);
+    }
+    /*Laptop version*/
+    @media (min-width: 1279px) {
+        @include customized-modal-size(35vw, 20vw, 20vh, 30vw);
+    }
+}
+
+/* -------------------- modal end -------------------- */
+
+/* Thumbs */
+
+.square100Thumbnail{
+  @include makeMeSquare(100px);
+  @include colourSquare($red);
+  padding: 0;
+  color: white;
+  font-family: _LatoRegular;
+  font-size: small;
+
+}
+
+.displayThumb{
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+
+
+//extras
+@mixin lineHeight($height){
+  line-height: $height;
+}
+
+
+
+.centerTextInDiv{
+  text-align: center;
+  vertical-align: middle;
+  @include lineHeight(50px);
+}
+
+//div.square100Thumbnail{
+//  @include lineHeight(100px);
+//}
+
+.square100ThumbnailBlue{
+  @include makeMeSquare(100px);
+  @include colourSquare($blue);
+  @include lineHeight(100px);
+  padding: 0;
+  color: white;
+  font-family: _LatoRegular;
+  font-size: small;
+}
+
+.square100ThumbnailDarkBlue{
+  @extend .square100ThumbnailBlue;
+  @include colourSquare($darkerBlue);
+}
+
+
+
+/*Media queries*/
+
+@media screen and (min-width: 0px) {
+  #logoNav{
+    @include topRightLeft(0,0,auto);  }
+  #exploreNav{
+    @include topRightLeft(50px,50px, auto);
+
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #logoNav{
+    @include topRightLeft(0,0,auto);
+  }
+  #exploreNav{
+    @include topRightLeft(50px,50px, auto);
+
+  }
+}
+
+@media screen and (min-width: 991px) {
+  #logoNav{
+    @include topRightLeft(0,0,auto);
+  }
+  #exploreNav{
+    @include topRightLeft(50px,50px, auto);
+
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #logoNav{
+    @include topRightLeft(0,auto,0);
+  }
+  #exploreNav{
+    @include topRightLeft(50px,auto, 50px);
+
+  }
+}

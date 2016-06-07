@@ -20,7 +20,7 @@ namespace SquareApplication
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Database.SetInitializer<SquaresEntities>(null);
+            Database.SetInitializer<SquareDbEntities>(null);
         }
         public override void Init()
         {
