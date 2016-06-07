@@ -1,63 +1,67 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <link rel="favicon"
+          href="/favicon.ico" type="image/ico"/>
+    <meta name="keywords" content="Kongorange, Squares, Circle, Set, Tiles, Creative, Design, Explore" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Squares</title>
-    @Styles.Render("~/Content/css")
-       @Styles.Render("~/Content/reset.css")
-    @Styles.Render("~/Content/css/sass.css")
-    @Styles.Render("~/Content/css/style.css")
+    <link rel="stylesheet" href="../../Content/bootstrap.css"/>
+    <link rel="stylesheet" href="../../Content/Site.css"/>
+    @Styles.Render("~/Content/reset")
+    @Styles.Render("~/Content/thecss/sass")
+    @Styles.Render("~/Content/thecss/style")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <header >
+    <header>
         <nav>
 
-    <a href="/Explore/explore"><div id="exploreNav" class="centerTextInDiv squareBlue  top50left50 fixed">Explore</div></a>
-    <a href="/home/about"><div class="centerTextInDiv squareBrown top0right50 fixed">About</div></a>
+            <a href="/Explore/explore"><div id="exploreNav" class="centerTextInDiv squareBlue  top50left50 fixed">Explore</div></a>
+            <a href="/home/about"><div class="centerTextInDiv squareBrown top0right50 fixed">About</div></a>
             <a href="/explore/explore">
                 <div id="logoNav" class="centerTextInDiv squareBlue top0left0 fixed">
                     <div class="circleLogo"></div>
                 </div>
             </a>
-    @if (Request.IsAuthenticated)
+            @if (Request.IsAuthenticated)
             {
                 using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                 {
-            <div class="centerTextInDiv squareOrange top50right0  fixed">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Profile", "UserProfile", "Account")</li>
-                            <li><a href="javascript:document.getElementById('logoutForm').submit()">LogOff</a></li>
+                    <div class="centerTextInDiv squareOrange top50right0  fixed">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Profile", "UserProfile", "Account")</li>
+                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">LogOff</a></li>
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
 
 
-            </div>
-          
+                    </div>
+
                 }
-                }
-                else
-                {
+            }
+            else
+            {
                 <div class="centerTextInDiv squareOrange top50right0  fixed">@Html.ActionLink("Log in", "Login", "Account", null, new { id = "loginLink", @class = "modal-link" })</div>
-                }
-              
+            }
+
         </nav>
 
     </header>
     <div class="container body-content">
-    <div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-content">
+        <div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-content">
+            </div>
         </div>
-    </div>
         @RenderBody()
         <div style="clear: both"></div>
-         </div>
+    </div>
 
     <footer id="footer" class="flexContainer">
         <div class="flexItem">

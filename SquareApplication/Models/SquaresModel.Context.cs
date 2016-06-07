@@ -7,30 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Linq;
-
 namespace SquareApplication.Models
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class SquaresEntities : DbContext
+    public partial class SquareDbEntities : DbContext
     {
-        public SquaresEntities()
-            : base("name=SquaresEntities")
+        public SquareDbEntities()
+            : base("name=SquareDbEntities")
         {
+        }
+    
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
         }
 
         public User GetUser(string name)
         {
             var user = Users.SingleOrDefault(u => u.name == name);
             return user;
-        }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<Order> Orders { get; set; }
@@ -41,6 +41,14 @@ namespace SquareApplication.Models
         public virtual DbSet<Tile> Tiles { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
-        public virtual DbSet<vSetWithTilesAndUser> vSetWithTilesAndUsers { get; set; }
+    
+        public virtual ObjectResult<spGetSetsForDesigner_Result> spGetSetsForDesigner(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetSetsForDesigner_Result>("spGetSetsForDesigner", user_idParameter);
+        }
     }
 }

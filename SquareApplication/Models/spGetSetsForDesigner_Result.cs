@@ -10,17 +10,13 @@
 namespace SquareApplication.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class vSetWithTilesAndUser
+    public partial class spGetSetsForDesigner_Result
     {
         public string name { get; set; }
         public Nullable<int> price { get; set; }
         public int set_id { get; set; }
         public Nullable<System.DateTime> upload_date { get; set; }
-        public string userName { get; set; }
-        public string email { get; set; }
-        public Nullable<int> tile_id { get; set; }
-        public string url { get; set; }
+        public string name1 { get; set; }
     }
 }

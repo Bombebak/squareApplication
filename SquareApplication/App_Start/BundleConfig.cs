@@ -24,10 +24,25 @@ namespace SquareApplication
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                     "~/Content/bootstrap.css",
+                     "~/Content/Site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include("~/Script/angular.js"));
+
+            bundles.Add(new StyleBundle("~/Content/reset").Include(
+                      "~/Content/reset.css"));
+
+            bundles.Add(new StyleBundle("~/Content/thecss/explore").Include(
+                      "~/Content/thecss/explore.css"));
+
+            bundles.Add(new StyleBundle("~/Content/thecss/about").Include(
+                      "~/Content/thecss/about.css"));
+
+            bundles.Add(new StyleBundle("~/Content/thecss/sass").Include(
+                      "~/Content/thecss/sass.css"));
+
+            bundles.Add(new StyleBundle("~/Content/thecss/style").Include(
+                      "~/Content/thecss/style.css"));
         }
     }
 }

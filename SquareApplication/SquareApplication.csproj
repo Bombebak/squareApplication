@@ -232,20 +232,23 @@
     <Compile Include="Models\Set_Tag.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\spGetSetsForDesigner_Result.cs">
+      <DependentUpon>SquaresModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SquaresModel.Context.cs">
-      <DependentUpon>SquaresModel.Context.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>SquaresModel.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SquaresModel.cs">
-      <DependentUpon>SquaresModel.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SquaresModel.Designer.cs">
-      <DependentUpon>SquaresModel.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>SquaresModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Tag.cs">
       <DependentUpon>SquaresModel.tt</DependentUpon>
@@ -261,9 +264,6 @@
       <DependentUpon>SquaresModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserViewModel.cs" />
-    <Compile Include="Models\vSetWithTilesAndUser.cs">
-      <DependentUpon>SquaresModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountMembershipService.cs" />
     <Compile Include="Startup.cs" />
@@ -273,6 +273,9 @@
     <Content Include="App_Data\aspnet-SquareApplication-20160517104849_log.ldf">
       <DependentUpon>aspnet-SquareApplication-20160517104849.mdf</DependentUpon>
     </Content>
+    <Content Include="Assets\images\11.jpg" />
+    <Content Include="Assets\images\13.jpg" />
+    <Content Include="Assets\images\16.jpg" />
     <Content Include="Assets\images\site\Carousel1.JPG" />
     <Content Include="Assets\images\site\Carousel2.JPG" />
     <Content Include="Assets\images\site\Footer3.JPG" />
@@ -292,12 +295,13 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\css\about.css" />
-    <Content Include="Content\css\grid.css" />
-    <Content Include="Content\css\landingPage.css" />
-    <Content Include="Content\css\reset.css" />
-    <Content Include="Content\css\sass.css" />
-    <Content Include="Content\css\style.css" />
+    <Content Include="Content\thecss\about.css" />
+    <Content Include="Content\thecss\explore.css" />
+    <Content Include="Content\thecss\grid.css" />
+    <Content Include="Content\thecss\landingPage.css" />
+    <Content Include="Content\thecss\reset.css" />
+    <Content Include="Content\thecss\sass.css" />
+    <Content Include="Content\thecss\style.css" />
     <Content Include="Content\reset.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -311,16 +315,6 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Models\SquaresModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SquaresModel.edmx</DependentUpon>
-      <LastGenOutput>SquaresModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\SquaresModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SquaresModel.edmx</DependentUpon>
-      <LastGenOutput>SquaresModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -368,17 +362,28 @@
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Content\style.scss" />
-    <Content Include="Content\css\sass.scss" />
+    <Content Include="Content\thecss\sass.scss" />
+    <Content Include="Assets\fonts\Harlow Solid Italic Italic.ttf" />
+    <Content Include="Assets\fonts\Lato-Bold.ttf" />
+    <Content Include="Assets\fonts\Lato-Regular.ttf" />
     <EntityDeploy Include="Models\SquaresModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SquaresModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Models\SquaresModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SquaresModel.edmx</DependentUpon>
+      <LastGenOutput>SquaresModel.Context.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\SquaresModel.edmx.diagram">
       <DependentUpon>SquaresModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Assets\fonts\Harlow Solid Italic Italic.ttf" />
-    <Content Include="Assets\fonts\Lato-Bold.ttf" />
-    <Content Include="Assets\fonts\Lato-Regular.ttf" />
+    <Content Include="Models\SquaresModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SquaresModel.edmx</DependentUpon>
+      <LastGenOutput>SquaresModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Properties\PublishProfiles\SquaresG2.pubxml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1142,7 +1147,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1156,7 +1163,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />

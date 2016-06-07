@@ -20,7 +20,7 @@ namespace SquareApplication.Controllers
                 set_id = 1;
             }
             selectedSetViewModel selectedSet;
-            using (SquaresEntities db = new SquaresEntities())
+            using (SquareDbEntities db = new SquareDbEntities())
             {
                 var set = db.Sets.Where(s => s.set_id == set_id).Include("Tiles").Include("User").FirstOrDefault();
                 selectedSet = new selectedSetViewModel()

@@ -9,7 +9,8 @@ namespace SquareApplication.DAL
 {
     public class UserRepository : IDisposable
     {
-        public SquaresEntities db = new SquaresEntities();
+        
+        public SquareDbEntities db = new SquareDbEntities();
 
         public User GetUser(string name)
         {
@@ -30,7 +31,7 @@ namespace SquareApplication.DAL
 
         public User GetUserFromMail(string email)
         {
-            using (var dbContext = new SquaresEntities())
+            using (var dbContext = new SquareDbEntities())
             {
                 var user = dbContext.Users.SingleOrDefault(u => u.email == email);
                 return user;
@@ -38,7 +39,7 @@ namespace SquareApplication.DAL
         }
         public User GetUser(string email, string password)
         {
-            using (var dbContext = new SquaresEntities())
+            using (var dbContext = new SquareDbEntities())
             {
                 var user = dbContext.Users.SingleOrDefault(u => u.email == email && u.password == password);
                 return user;

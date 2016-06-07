@@ -19,7 +19,7 @@
            // //img.style.transform = "scale(0.5)";
            // $(img).attr('class','halfSize');
            // ev.dataTransfer.setDragImage(img,0,0);
-        }
+        //}
 
     //function drop(ev) {
     //    ev.preventDefault();

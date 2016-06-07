@@ -12,7 +12,7 @@ namespace SquareApplication.Controllers
 {
     public class SetController : Controller
     {
-        private SquaresEntities db = new SquaresEntities();
+        private SquareDbEntities db = new SquareDbEntities();
         // GET: Set
         public ActionResult Index()
         {

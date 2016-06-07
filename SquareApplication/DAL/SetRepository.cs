@@ -9,7 +9,7 @@ namespace SquareApplication.DAL
 {
     public class SetRepository
     {
-        private SquaresEntities db = new SquaresEntities();
+        private SquareDbEntities db = new SquareDbEntities();
 
         public IEnumerable<UserActivityViewModel> GetSetsFromUser(int userId)
         {

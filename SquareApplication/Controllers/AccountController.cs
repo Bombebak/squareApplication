@@ -34,7 +34,7 @@ namespace SquareApplication.Controllers
         public IMembershipService MembershipService { get; set; }
         private UserRepository userRepository = new UserRepository();
         private SetRepository setRepository = new SetRepository();
-        private SquaresEntities db = new SquaresEntities();
+        private SquareDbEntities db = new SquareDbEntities();
 
         protected override void Initialize(RequestContext requestContext)
         {

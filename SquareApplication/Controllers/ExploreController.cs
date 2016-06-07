@@ -16,8 +16,9 @@ namespace SquareApplication.Controllers
         {
             IList<Set> sets = new List<Set>();
 
-            using (SquaresEntities db = new SquaresEntities())
+            using (SquareDbEntities db = new SquareDbEntities())
             {
+
                 sets = db.Sets.Include("Tiles").Include("User").ToList();
                 
             }
